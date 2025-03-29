@@ -2,6 +2,7 @@
 \usepackage{ctex}
 
 \input{visuals.tex}
+\input{style.tex}
 
 \begin{document}
 \section{名词三性四格二数}
@@ -10,31 +11,21 @@
     \item 课本顺序：主宾与属，NADG
     \item 可视化：形格色性\textcolor{gray}{（数算一种特殊性）}
 \end{itemize}
-\begin{tabular}{|c|c|}
-    \hline
-    格 & 形\tabularnewline
-    \hline
-    N & test \square{white}[1] \tabularnewline
-    \hline
-    A & \diam{white}[1] \tabularnewline
-    \hline
-    D & \olive{white}[1] \tabularnewline
-    \hline
-    G & \tri{white}[1] \tabularnewline
-    \hline
-\end{tabular}%
-\begin{tabular}{|c|c|}
-    \hline
-    性 & 色\tabularnewline
-    \hline
-    M & \square{green} \tabularnewline
-    \hline
-    N & \square{purple} \tabularnewline
-    \hline
-    F & \square{yellow} \tabularnewline
-    \hline
-    P & \square{red} \tabularnewline
-    \hline
-\end{tabular}
+
+\renewcommand{\arraystretch}{1.5}{
+    \begin{tabular}{|M{2.5em}|M{3em}|M{2.5em}|M{3em}|}
+        \hline
+        格 & 形 & 性 & 色 \\
+        \hline
+        N & \square{white}[1] & M & \square{green} \\
+        \hline
+        A & \diam{white}[1] & N & \square{purple} \\
+        \hline
+        D & \olive{white}[1] & F & \square{yellow} \\
+        \hline
+        G & \tri{white}[1] & P & \square{red} \\
+        \hline
+    \end{tabular}
+}
 
 \end{document}

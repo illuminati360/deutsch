@@ -11,7 +11,7 @@
 
 \NewDocumentCommand{\square}{m O{0.0}}{
     % #1 = fill color, #2 = line width
-    \begin{tikzpicture}
+    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{2em}
 
         \pgfmathparse{#2 > 0 ? "black" : "none"}
@@ -22,7 +22,7 @@
 
 \NewDocumentCommand{\diam}{m O{0.0}}{
     % #1 = fill color, #2 = line width
-    \begin{tikzpicture}
+    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{2.5em}
         \def\b{2em}
 
@@ -33,9 +33,9 @@
 }
 
 \NewDocumentCommand{\olive}{m O{0.0}}{
-    \begin{tikzpicture}
-        \pgfmathsetmacro{\a}{1}
-        \pgfmathsetmacro{\b}{0.7}
+    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
+        \pgfmathsetmacro{\a}{2/1cm*1em}
+        \pgfmathsetmacro{\b}{1.4/1cm*1em}
         \pgfmathparse{(\a*\a + \b*\b)/4/\b}
         \let\r\pgfmathresult
         \pgfmathparse{atan2(2*\r-\b, \a)}
@@ -50,7 +50,7 @@
 }
 
 \NewDocumentCommand{\tri}{m O{0.0}}{
-    \begin{tikzpicture}
+    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{2em}
         \def\b{1.5em}
 
