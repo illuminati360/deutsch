@@ -1,0 +1,62 @@
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{xparse}
+\usepackage{ifthen}
+
+\definecolor{green}{HTML}{6ca877}
+\definecolor{purple}{HTML}{805695}
+\definecolor{yellow}{HTML}{e89959}
+\definecolor{red}{HTML}{e06262}
+\definecolor{gray}{HTML}{c7c1bc}
+
+\NewDocumentCommand{\square}{m O{0.0}}{
+    % #1 = fill color, #2 = line width
+    \begin{tikzpicture}
+        \def\a{2em}
+
+        \pgfmathparse{#2 > 0 ? "black" : "none"}
+        \let\bordercolor\pgfmathresult
+        \draw[fill=#1, draw=\bordercolor, line width=0.1] (0,0) rectangle (\a,\a);
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\diam}{m O{0.0}}{
+    % #1 = fill color, #2 = line width
+    \begin{tikzpicture}
+        \def\a{2.5em}
+        \def\b{2em}
+
+        \pgfmathparse{#2 > 0 ? "black" : "none"}
+        \let\bordercolor\pgfmathresult
+        \draw[fill=#1, draw=\bordercolor, line width=0.1] (0,\b/2) -- (\a/2,0) -- (\a,\b/2) -- (\a/2,\b) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\olive}{m O{0.0}}{
+    \begin{tikzpicture}
+        \pgfmathsetmacro{\a}{1}
+        \pgfmathsetmacro{\b}{0.7}
+        \pgfmathparse{(\a*\a + \b*\b)/4/\b}
+        \let\r\pgfmathresult
+        \pgfmathparse{atan2(2*\r-\b, \a)}
+        \let\x\pgfmathresult
+
+        \pgfmathparse{#2 > 0 ? "black" : "none"}
+        \let\bordercolor\pgfmathresult
+        \draw[fill=#1, draw=\bordercolor, line width=0.1]
+        (\a/2,\r-\a/2) arc[start angle=\x, end angle=180-\x, x radius=\r, y radius=\r]
+        (\a/2,\r-\a/2) arc[start angle=-\x, end angle=-180+\x, x radius=\r, y radius=\r];
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\tri}{m O{0.0}}{
+    \begin{tikzpicture}
+        \def\a{2em}
+        \def\b{1.5em}
+
+        \pgfmathparse{#2 > 0 ? "black" : "none"}
+        \let\bordercolor\pgfmathresult
+        \draw[fill=#1, draw=\bordercolor, line width=0.1]
+        (-\a/2, 0) -- (\a/2, \b/2) -- (\a/2, -\b/2) -- cycle;
+    \end{tikzpicture}
+}
