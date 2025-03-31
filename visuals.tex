@@ -6,12 +6,14 @@
 \usetikzlibrary{positioning} % Required for 'of' positioning
 \usetikzlibrary{arrows.meta} % For arrows
 
+% Color scheme from: https://www.dieseskleinebuch.de/
 \definecolor{green}{HTML}{6ca877}
 \definecolor{purple}{HTML}{805695}
 \definecolor{yellow}{HTML}{e89959}
 \definecolor{red}{HTML}{e06262}
 \definecolor{gray}{HTML}{c7c1bc}
 
+% Square
 \pgfkeys{
     /square/.is family, /square,
     default/.style = {color = {white}, border = {0.0}, fill = {full}},
@@ -31,6 +33,7 @@
     \end{tikzpicture}
 }
 
+% Diamond
 \pgfkeys{
     /diam/.is family, /diam,
     default/.style = {color = {white}, border = {0.0}, fill = {full}},
@@ -52,6 +55,7 @@
     \end{tikzpicture}
 }
 
+% Olive
 \pgfkeys{
     /olive/.is family, /olive,
     default/.style = {color = {white}, border = {0.0}, fill = {full}},
@@ -78,6 +82,7 @@
     \end{tikzpicture}
 }
 
+% triangle (left pointing)
 \pgfkeys{
     /tri/.is family, /tri,
     default/.style = {color = {white}, border = {0.0}, fill = {full}},
@@ -99,6 +104,7 @@
     \end{tikzpicture}
 }
 
+% pill
 \NewDocumentCommand{\pill}{m O{0.0}}{
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{2em}

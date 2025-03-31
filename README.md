@@ -14,12 +14,16 @@
 
 #### Development
 - Environment: VSCode and the [Tex Workshop Extension](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
+- Formating:
+```
+sudo pacman -S texlive-binextra
+# change formatter to latex-indent in plugin settings.
+```
 - Dependencies:
 ```
 sudo pacman -S \
     inkscape \
     texlive-lang \
-    texlive-binextra \
     perl-yaml-tiny  \
     perl-app-cpanminus \
     perl-file-homedir
@@ -29,5 +33,5 @@ sudo pacman -S \
 ---
 
 #### Roadmap
-- from anki plugin to standalone app
+- from [anki plugin](https://github.com/illuminati360/gfm) to standalone app
 - WYSIWYG note taking, export to latex
