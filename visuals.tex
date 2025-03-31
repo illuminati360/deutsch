@@ -2,6 +2,9 @@
 \usepackage{xcolor}
 \usepackage{xparse}
 \usepackage{ifthen}
+\usepackage{pgfkeys}
+\usetikzlibrary{positioning} % Required for 'of' positioning
+\usetikzlibrary{arrows.meta} % For arrows
 
 \definecolor{green}{HTML}{6ca877}
 \definecolor{purple}{HTML}{805695}
@@ -9,30 +12,56 @@
 \definecolor{red}{HTML}{e06262}
 \definecolor{gray}{HTML}{c7c1bc}
 
-\NewDocumentCommand{\square}{m O{0.0}}{
-    % #1 = fill color, #2 = line width
+\pgfkeys{
+    /square/.is family, /square,
+    default/.style = {color = {white}, border = {0.0}, fill = {full}},
+    color/.store in = \squarecolor,
+    border/.store in = \squareborder,
+    fill/.store in = \squarefill
+}
+
+\NewDocumentCommand{\square}{o}{
+    \pgfkeys{/square, default, #1}
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{2em}
 
-        \pgfmathparse{#2 > 0 ? "black" : "none"}
+        \pgfmathparse{\squareborder > 0 ? "black" : "none"}
         \let\bordercolor\pgfmathresult
-        \draw[fill=#1, draw=\bordercolor, line width=0.1] (0,0) rectangle (\a,\a);
+        \draw[fill=\squarecolor, draw=\bordercolor, line width=0.1em] (0,0) rectangle (\a,\a);
     \end{tikzpicture}
 }
 
-\NewDocumentCommand{\diam}{m O{0.0}}{
+\pgfkeys{
+    /diam/.is family, /diam,
+    default/.style = {color = {white}, border = {0.0}, fill = {full}},
+    color/.store in = \diamcolor,
+    border/.store in = \diamborder,
+    fill/.store in = \diamfill
+}
+
+\NewDocumentCommand{\diam}{o}{
+    \pgfkeys{/diam, default, #1}
     % #1 = fill color, #2 = line width
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{2.5em}
         \def\b{2em}
 
-        \pgfmathparse{#2 > 0 ? "black" : "none"}
+        \pgfmathparse{\diamborder > 0 ? "black" : "none"}
         \let\bordercolor\pgfmathresult
-        \draw[fill=#1, draw=\bordercolor, line width=0.1] (0,\b/2) -- (\a/2,0) -- (\a,\b/2) -- (\a/2,\b) -- cycle;
+        \draw[fill=\diamcolor, draw=\bordercolor, line width=0.1em] (0,\b/2) -- (\a/2,0) -- (\a,\b/2) -- (\a/2,\b) -- cycle;
     \end{tikzpicture}
 }
 
-\NewDocumentCommand{\olive}{m O{0.0}}{
+\pgfkeys{
+    /olive/.is family, /olive,
+    default/.style = {color = {white}, border = {0.0}, fill = {full}},
+    color/.store in = \olivecolor,
+    border/.store in = \oliveborder,
+    fill/.store in = \olivefill
+}
+
+\NewDocumentCommand{\olive}{o}{
+    \pgfkeys{/olive, default, #1}
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \pgfmathsetmacro{\a}{2/1cm*1em}
         \pgfmathsetmacro{\b}{1.4/1cm*1em}
@@ -41,22 +70,65 @@
         \pgfmathparse{atan2(2*\r-\b, \a)}
         \let\x\pgfmathresult
 
-        \pgfmathparse{#2 > 0 ? "black" : "none"}
+        \pgfmathparse{\oliveborder > 0 ? "black" : "none"}
         \let\bordercolor\pgfmathresult
-        \draw[fill=#1, draw=\bordercolor, line width=0.1]
+        \draw[fill=\olivecolor, draw=\bordercolor, line width=0.1em]
         (\a/2,\r-\a/2) arc[start angle=\x, end angle=180-\x, x radius=\r, y radius=\r]
         (\a/2,\r-\a/2) arc[start angle=-\x, end angle=-180+\x, x radius=\r, y radius=\r];
     \end{tikzpicture}
 }
 
-\NewDocumentCommand{\tri}{m O{0.0}}{
+\pgfkeys{
+    /tri/.is family, /tri,
+    default/.style = {color = {white}, border = {0.0}, fill = {full}},
+    color/.store in = \tricolor,
+    border/.store in = \triborder,
+    fill/.store in = \trifill
+}
+
+\NewDocumentCommand{\tri}{o}{
+    \pgfkeys{/tri, default, #1}
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{2em}
         \def\b{1.5em}
 
+        \pgfmathparse{\triborder > 0 ? "black" : "none"}
+        \let\bordercolor\pgfmathresult
+        \draw[fill=\tricolor, draw=\bordercolor, line width=0.1em]
+        (-\a/2, 0) -- (\a/2, \b/2) -- (\a/2, -\b/2) -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\pill}{m O{0.0}}{
+    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
+        \def\a{2em}
+        \def\r{0.8em}
+
         \pgfmathparse{#2 > 0 ? "black" : "none"}
         \let\bordercolor\pgfmathresult
-        \draw[fill=#1, draw=\bordercolor, line width=0.1]
-        (-\a/2, 0) -- (\a/2, \b/2) -- (\a/2, -\b/2) -- cycle;
+        \draw[fill=#1, draw=\bordercolor, line width=0.1em]
+        (\r, 0) -- (\r+\a, 0) arc[start angle=-90, end angle=90, radius=\r] --
+        (\r+\a, 2*\r) -- (\r, 2*\r) arc[start angle=90, end angle=270, radius=\r] -- cycle;
+    \end{tikzpicture}
+}
+
+\NewDocumentCommand{\card}{m m m m}{
+    % #1 = width, #2 = height, #3 = label
+    \begin{tikzpicture}
+        \def\barh{4ex}
+        \def\r{0.5em}
+
+        % background
+        \draw[rounded corners=0.5em, draw=black, line width=0.1em ]
+        (0, 0) rectangle(#1, #2);
+
+        % top bar
+        \draw[thick, fill=blue!10]
+        (0, #2-\barh) -- (0, #2-\r) arc[start angle=180, end angle=90, radius=\r] --
+        (\r, #2) -- (#1-\r, #2) arc[start angle=90, end angle=0, radius=\r] --
+        (#1, #2-\r) -- (#1, #2-\barh) -- cycle;
+        \node[anchor=west, font=\bfseries, xshift=0.5em, yshift=-0.2em] at (0, #2-\barh/2) {#3};
+
+        \node[anchor=north, align=center, text width=#1-1em] at (#1/2, #2-\barh) {#4};
     \end{tikzpicture}
 }

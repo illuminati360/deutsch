@@ -1,0 +1,16 @@
+\chapter*{Diagram}
+
+\def\NounContent{%
+    \begin{tikzpicture}
+        \node (pill1) at (0,0) {\pill{red}[1]};
+        \node (pill2) [right=of pill1] {\pill{green}[1]};
+        \draw[->] (pill1) -- (pill2) node[midway, above] {Arrow 1};
+    \end{tikzpicture}
+}
+
+\begin{tikzpicture}[node distance=5em, align=center, thick, arrows={-Stealth}]
+
+    % Define cards as nodes
+    \node (card1) at (0, 0) {\card{17em}{10em}{Noun}{\NounContent}};
+
+\end{tikzpicture}
