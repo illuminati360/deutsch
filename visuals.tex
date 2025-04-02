@@ -3,6 +3,7 @@
 \usepackage{xparse}
 \usepackage{ifthen}
 \usepackage{pgfkeys}
+\usepackage{xstring}
 \usetikzlibrary{calc}
 \usetikzlibrary{positioning} % Required for 'of' positioning
 \usetikzlibrary{arrows.meta} % For arrows
@@ -17,7 +18,7 @@
 % Square
 \pgfkeys{
     /square/.is family, /square,
-    default/.style = {color = {white}, border = {0.0}, fill = {full}},
+    default/.style = {color = {none}, border = {0.0}, fill = {full}},
     color/.store in = \squarecolor,
     border/.store in = \squareborder,
     fill/.store in = \squarefill
@@ -28,9 +29,24 @@
     \pgfkeys{/square, default, #1}%
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{2em}
+        \def\l{0.1em}
+
         \pgfmathparse{\squareborder > 0 ? "black" : "none"}
         \let\bordercolor\pgfmathresult
-        \draw[fill=\squarecolor, draw=\bordercolor, line width=0.1em] (0,0) rectangle (\a,\a);
+
+        % bottom half fill
+        \expandafter\ifstrequal\expandafter{\squarefill}{half}{
+            \def\fillcolor{none}
+        }{
+            \def\fillcolor{\squarecolor}
+        }
+        \draw[fill=\fillcolor, draw=\bordercolor, line width=\l] (0,0) rectangle (\a,\a);
+
+        \expandafter\ifstrequal\expandafter{\squarefill}{half}{
+            \expandafter\ifstrequal\expandafter{\squarecolor}{none}{}{
+                \draw[fill=\squarecolor, draw=none] (\l/2,\l/2) rectangle (\a-\l/2,\a/2+\l/2);
+            }
+        }{}
     \end{tikzpicture}
 }
 

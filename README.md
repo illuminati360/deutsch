@@ -32,6 +32,25 @@ sudo pacman -S \
 
 ---
 
+#### Rationales
+- Why Latex?
+    - Programmical yet flexible (elements are uniformed, deterministic)
+    - Modular and reusable (custom commands)
+    - Easier to maintain (e.g. changing design themes etc)
+    - Printable (requires no runtime)
+- Why not Latex?
+    - Learning Curve
+- Why not Markdown/Obsidian?
+    - Lack in expressiveness (e.g. stylized table, shapes)
+- Why not WYSIWYG like lyx, or WS word?
+    - Not programmical (can't generate card deck from csv)
+- Why not html/javsacript?
+    - Tremendous waste of time reinventing the wheel 
+    - Better suited for apps
+    - Requires runtime
+
+---
+
 #### Roadmap
 - from [anki plugin](https://github.com/illuminati360/gfm) to standalone app
 - WYSIWYG note taking, export to latex
