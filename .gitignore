@@ -1,5 +1,7 @@
 *.aux
+*.out
 *.log
 *.pdf
 *.gz
 svg-inkscape/*
+TODOS.md
