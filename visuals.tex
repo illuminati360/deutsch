@@ -22,11 +22,12 @@
 % Square
 \pgfkeys{
     /square/.is family, /square,
-    default/.style = {color = {none}, border = {0.0}, fill = {full}},
+    default/.style = {color = {none}, border = {0.0}, fill = {full}, pattern = {none}},
     color/.store in = \squarecolor,
     border/.store in = \squareborder,
     fill/.store in = \squarefill, % full, half, none, large, middle, small
     pattern/.store in = \squarepattern, % vert, diag
+    scale/.store in = \squarescale,
 }
 
 \newcommand\dsq[4]{
@@ -73,10 +74,24 @@
             \dsq{\squarecolor}{black}{\l}{\ai}
         }{}
 
+        % patterns
+        \expandafter\ifstrequal\expandafter{\squarepattern}{vert}{
+            \draw[draw=black, line width=\l, shift={(-\a/2, -\a/2)}]
+            (\a/3, 0) -- (\a/3, \a)
+            (\a/3*2, 0) -- (\a/3*2, \a);
+        }{}
+        \expandafter\ifstrequal\expandafter{\squarepattern}{diag}{
+            \draw[draw=black, line width=\l, shift={(-\a/2, -\a/2)}]
+            (0, \a/2) -- (\a/2, 0)
+            (0, \a) -- (\a, 0)
+            (\a/2, \a) -- (\a, \a/2);
+        }{}
+
         \ifdebug
             \draw[draw=red, line width=\l] (-\a/2,0) -- (\a/2,0);
             \draw[draw=red, line width=\l] (0,-\a/2) -- (0,\a/2);
         \fi
+
     \end{tikzpicture}
 }
 
@@ -87,6 +102,7 @@
     color/.store in = \diamcolor,
     border/.store in = \diamborder,
     fill/.store in = \diamfill, % large, middle, small
+    scale/.store in = \diamscale,
 }
 
 \newcommand\ddm[5]{
@@ -142,6 +158,7 @@
     color/.store in = \olivecolor,
     border/.store in = \oliveborder,
     fill/.store in = \olivefill, % large, middle, small
+    scale/.store in = \olivescale,
 }
 
 \newcommand\dol[6]{
@@ -207,6 +224,7 @@
     color/.store in = \tricolor,
     border/.store in = \triborder,
     fill/.store in = \trifill, % large, middle, small
+    scale/.store in = \triscale,
 }
 
 \newcommand\dtr[6]{
@@ -284,20 +302,39 @@
 % Cirle
 \pgfkeys{
     /cir/.is family, /cir,
-    default/.style = {color = {white}, border = {0.0}, fill = {full}, scale = {1.0}},
+    default/.style = {color = {white}, border = {0.0}, pattern = {none}, scale = {1.0}},
     color/.store in = \circolor,
     border/.store in = \cirborder,
-    scale/.store in = \cirscale,
     pattern/.store in = \cirpattern, % vert, diag
+    scale/.store in = \cirscale,
 }
 \NewDocumentCommand{\cir}{o}{%
     \pgfkeys{/cir, default, #1}%
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\r{1em*\cirscale}
+        \def\l{0.06em}
 
         \pgfmathparse{\cirborder > 0 ? "black" : "none"}
         \let\bordercolor\pgfmathresult
-        \draw[fill=\circolor, draw=\bordercolor, line width=0.1em](0,0) circle (\r);
+        \draw[fill=\circolor, draw=\bordercolor, line width=\l](0,0) circle (\r);
+
+        % patterns
+        \pgfmathsetmacro\sa{sin(75)}; \pgfmathsetmacro\ca{cos(75)}
+        \pgfmathsetmacro\sb{sin(60)}; \pgfmathsetmacro\cb{cos(60)}
+        \pgfmathsetmacro\sc{sin(45)}; \pgfmathsetmacro\cc{sin(45)}
+        \pgfmathsetmacro\sd{sin(15)}; \pgfmathsetmacro\cd{cos(15)}
+        \expandafter\ifstrequal\expandafter{\cirpattern}{vert}{
+            \draw[draw=black, line width=\l]
+            (-\r/2, -\r*\sb) -- (-\r/2, \r*\sb)
+            (0, -\r) -- (0, \r)
+            (\r/2, -\r*\sb) -- (\r/2, \r*\sb);
+        }{}
+        \expandafter\ifstrequal\expandafter{\cirpattern}{diag}{
+            \draw[draw=black, line width=\l]
+            (\r*\ca, -\r*\sa) -- (-\r*\cd, \r*\sd)
+            (\r*\sc, -\r*\cc) -- (-\r*\sc, \r*\cc)
+            (\r*\cd, -\r*\sd) -- (-\r*\ca, \r*\sa);
+        }{}
 
         \ifdebug
             \draw[draw=red, line width=\l] (-\r,0) -- (\r, 0);
@@ -309,10 +346,28 @@
 % Flower
 \pgfkeys{
     /flower/.is family, /flower,
-    default/.style = {color = {white}, scale = {1.0}},
+    default/.style = {color = {white}, pattern = {none}, scale = {1.0}},
     color/.store in = \flowercolor,
+    pattern/.store in = \flowerpattern, % vert, diag
     scale/.store in = \flowerscale,
-    pattern/.store in = \cirpattern, % vert, diag
+}
+
+\newcommand\dfl[3]{
+%1.r 2.b
+([shift={(0:#1)}]0,0)
+foreach \angle in {0,60,...,300} {
+let
+\p1 = ([shift={(\angle:#1)}]0,0), %A
+\p2 = ([shift={({\angle+90}:0.28*#1)}]\p1), %A1, control point
+\p3 = ([shift={({\angle+30}:{#1-#2})}]0,0), %B
+\p4 = ([shift={({\angle+30-90}:{0.12*#1})}]\p3), %B1, control point
+\p5 = ([shift={({\angle+30+90}:{0.12*#1})}]\p3), %B2, control point
+\p6 = ([shift={({\angle+60}:{#1})}]0,0), %C
+\p7 = ([shift={({\angle-30}:{0.28*#1})}]\p6) %C1
+in
+-- (\p1) .. controls (\p2) and (\p4) ..
+(\p3) .. controls (\p5) and (\p7) .. (\p6)
+} -- cycle;
 }
 
 \NewDocumentCommand{\flower}{o}{%
@@ -320,23 +375,29 @@
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\r{1em}
         \def\b{0.2em}
-        \coordinate (o) at (0,0);
+        \def\l{0.06em}
 
-        \path[fill=\flowercolor, draw=none]
-        ([shift={(0:\r)}]o)
-        foreach \angle in {0,60,...,300} {
-        let
-        \p1 = ([shift={(\angle:\r)}]o), %A
-        \p2 = ([shift={({\angle+90}:0.28*\r)}]\p1), %A1, control point
-        \p3 = ([shift={({\angle+30}:{\r-\b})}]o), %B
-        \p4 = ([shift={({\angle+30-90}:{0.12*\r})}]\p3), %B1, control point
-        \p5 = ([shift={({\angle+30+90}:{0.12*\r})}]\p3), %B2, control point
-        \p6 = ([shift={({\angle+60}:{\r})}]o), %C
-        \p7 = ([shift={({\angle-30}:{0.28*\r})}]\p6) %C1
-        in
-        -- (\p1) .. controls (\p2) and (\p4) ..
-        (\p3) .. controls (\p5) and (\p7) .. (\p6)
-        } -- cycle;
+        \path[fill=\flowercolor, draw=none] \dfl{\r}{\b}
+
+        \pgfmathsetmacro\sa{sin(75)}; \pgfmathsetmacro\ca{cos(75)}
+        \pgfmathsetmacro\sb{sin(60)}; \pgfmathsetmacro\cb{cos(60)}
+        \pgfmathsetmacro\sc{sin(45)}; \pgfmathsetmacro\cc{sin(45)}
+        \pgfmathsetmacro\sd{sin(15)}; \pgfmathsetmacro\cd{cos(15)}
+        \expandafter\ifstrequal\expandafter{\flowerpattern}{vert}{
+            \draw[draw=black, line width=\l]
+            (-\r/2, -\r*\sb) -- (-\r/2, \r*\sb)
+            (0, -\r+\b) -- (0, \r-\b)
+            (\r/2, -\r*\sb) -- (\r/2, \r*\sb);
+        }{}
+        \expandafter\ifstrequal\expandafter{\flowerpattern}{diag}{
+            \begin{scope}
+                \clip \dfl{\r}{\b};
+                \draw[draw=black, line width=\l]
+                (\r*\ca, -\r*\sa) -- (-\r*\cd, \r*\sd)
+                (\r*\sc, -\r*\cc) -- (-\r*\sc, \r*\cc)
+                (\r*\cd, -\r*\sd) -- (-\r*\ca, \r*\sa);
+            \end{scope}
+        }{}
 
         \ifdebug
             \draw[draw=red, line width=0.1em] (-\r,0) -- (\r,0);
