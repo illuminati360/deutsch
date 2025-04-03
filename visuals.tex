@@ -8,6 +8,10 @@
 \usetikzlibrary{positioning} % Required for 'of' positioning
 \usetikzlibrary{arrows.meta} % For arrows
 
+\newif\ifdebug
+% \debugtrue
+\debugfalse
+
 % Color scheme from: https://www.dieseskleinebuch.de/
 \definecolor{green}{HTML}{6ca877}
 \definecolor{purple}{HTML}{805695}
@@ -21,32 +25,58 @@
     default/.style = {color = {none}, border = {0.0}, fill = {full}},
     color/.store in = \squarecolor,
     border/.store in = \squareborder,
-    fill/.store in = \squarefill
+    fill/.store in = \squarefill, % full, half, none, large, middle, small
+    pattern/.store in = \squarepattern, % vert, diag
+}
+
+\newcommand\dsq[4]{
+    \draw[fill=#1, draw=#2, line width=#3] (-#4/2,-#4/2) rectangle (#4/2,#4/2);
 }
 
 % must add `%` to prevent \NewDocumentCommand from adding extra spaces.
 \NewDocumentCommand{\square}{o}{%
     \pgfkeys{/square, default, #1}%
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
-        \def\a{2em}
-        \def\l{0.1em}
+        \def\a{2em} %side length
+        \def\l{0.06em} %line width
 
         \pgfmathparse{\squareborder > 0 ? "black" : "none"}
         \let\bordercolor\pgfmathresult
 
-        % bottom half fill
-        \expandafter\ifstrequal\expandafter{\squarefill}{half}{
-            \def\fillcolor{none}
-        }{
+        % only fill when \squarefill is full or large
+        \def\fillcolor{none}
+        \expandafter\ifstrequal\expandafter{\squarefill}{full}{
             \def\fillcolor{\squarecolor}
-        }
-        \draw[fill=\fillcolor, draw=\bordercolor, line width=\l] (0,0) rectangle (\a,\a);
-
-        \expandafter\ifstrequal\expandafter{\squarefill}{half}{
-            \expandafter\ifstrequal\expandafter{\squarecolor}{none}{}{
-                \draw[fill=\squarecolor, draw=none] (\l/2,\l/2) rectangle (\a-\l/2,\a/2+\l/2);
-            }
         }{}
+        \expandafter\ifstrequal\expandafter{\squarefill}{large}{
+            \def\fillcolor{\squarecolor}
+        }{}
+
+        % draw the outter square
+        \dsq{\fillcolor}{\bordercolor}{\l}{\a}
+
+        % half fill
+        \expandafter\ifstrequal\expandafter{\squarefill}{half}{
+            \draw[fill=\squarecolor, draw=none] (-\a/2+\l/2,-\a/2\l/2) rectangle (-\a/2-\l/2,\l/2);
+        }{}
+
+        \def\ai{\a*0.8} % inner square side length
+        % inner square if specified
+        \expandafter\ifstrequal\expandafter{\squarefill}{large}{
+            \dsq{none}{black}{\l}{\ai}
+        }{}
+        \expandafter\ifstrequal\expandafter{\squarefill}{small}{
+            \dsq{none}{black}{\l}{\ai}
+        }{}
+
+        \expandafter\ifstrequal\expandafter{\squarefill}{middle}{
+            \dsq{\squarecolor}{black}{\l}{\ai}
+        }{}
+
+        \ifdebug
+            \draw[draw=red, line width=\l] (-\a/2,0) -- (\a/2,0);
+            \draw[draw=red, line width=\l] (0,-\a/2) -- (0,\a/2);
+        \fi
     \end{tikzpicture}
 }
 
@@ -56,7 +86,11 @@
     default/.style = {color = {white}, border = {0.0}, fill = {full}},
     color/.store in = \diamcolor,
     border/.store in = \diamborder,
-    fill/.store in = \diamfill
+    fill/.store in = \diamfill, % large, middle, small
+}
+
+\newcommand\ddm[5]{
+    \draw[fill=#1, draw=#2, line width=#3] (-#4/2,0) -- (0,#5/2) -- (#4/2,0) -- (0,-#5/2) -- cycle;
 }
 
 \NewDocumentCommand{\diam}{o}{%
@@ -64,10 +98,40 @@
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{2.5em}
         \def\b{2em}
+        \def\l{0.06em} %line width
 
         \pgfmathparse{\diamborder > 0 ? "black" : "none"}
         \let\bordercolor\pgfmathresult
-        \draw[fill=\diamcolor, draw=\bordercolor, line width=0.1em] (0,\b/2) -- (\a/2,0) -- (\a,\b/2) -- (\a/2,\b) -- cycle;
+
+        % only fill when \diamfill is full or large
+        \def\fillcolor{none}
+        \expandafter\ifstrequal\expandafter{\diamfill}{full}{
+            \def\fillcolor{\diamcolor}
+        }{}
+        \expandafter\ifstrequal\expandafter{\diamfill}{large}{
+            \def\fillcolor{\diamcolor}
+        }{}
+
+        \ddm{\fillcolor}{\bordercolor}{\l}{\a}{\b}
+
+        % inner diamond
+        \def\ai{\a*0.75}
+        \def\bi{\b*0.75}
+        \expandafter\ifstrequal\expandafter{\diamfill}{large}{
+            \ddm{none}{\bordercolor}{\l}{\ai}{\bi}
+        }{}
+        \expandafter\ifstrequal\expandafter{\diamfill}{small}{
+            \ddm{none}{\bordercolor}{\l}{\ai}{\bi}
+        }{}
+        \expandafter\ifstrequal\expandafter{\diamfill}{middle}{
+            \ddm{\diamcolor}{\bordercolor}{\l}{\ai}{\bi}
+        }{}
+
+        \ifdebug
+            \draw[draw=red, line width=\l] (-\a/2,0) -- (\a/2,0);
+            \draw[draw=red, line width=\l] (0,-\b/2) -- (0,\b/2);
+        \fi
+
     \end{tikzpicture}
 }
 
@@ -77,7 +141,14 @@
     default/.style = {color = {white}, border = {0.0}, fill = {full}},
     color/.store in = \olivecolor,
     border/.store in = \oliveborder,
-    fill/.store in = \olivefill
+    fill/.store in = \olivefill, % large, middle, small
+}
+
+\newcommand\dol[6]{
+    % #4 a, #5 x, #6 r
+    \draw[fill=#1, draw=#2, line width=#3]
+    (#4/2,0) arc[start angle=#5, end angle=180-#5, x radius=#6, y radius=#6]
+    (#4/2,0) arc[start angle=-#5, end angle=-180+#5, x radius=#6, y radius=#6];
 }
 
 \NewDocumentCommand{\olive}{o}{%
@@ -85,6 +156,7 @@
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \pgfmathsetmacro{\a}{2/1cm*1em}
         \pgfmathsetmacro{\b}{1.4/1cm*1em}
+        \pgfmathsetmacro{\l}{0.06em}
         \pgfmathparse{(\a*\a + \b*\b)/4/\b}
         \let\r\pgfmathresult
         \pgfmathparse{atan2(2*\r-\b, \a)}
@@ -92,9 +164,39 @@
 
         \pgfmathparse{\oliveborder > 0 ? "black" : "none"}
         \let\bordercolor\pgfmathresult
-        \draw[fill=\olivecolor, draw=\bordercolor, line width=0.1em]
-        (\a/2,\r-\a/2) arc[start angle=\x, end angle=180-\x, x radius=\r, y radius=\r]
-        (\a/2,\r-\a/2) arc[start angle=-\x, end angle=-180+\x, x radius=\r, y radius=\r];
+
+        % only fill when \olivefill is full or large
+        \def\fillcolor{none}
+        \expandafter\ifstrequal\expandafter{\olivefill}{full}{
+            \def\fillcolor{\olivecolor}
+        }{}
+        \expandafter\ifstrequal\expandafter{\olivefill}{large}{
+            \def\fillcolor{\olivecolor}
+        }{}
+
+        \dol{\fillcolor}{\bordercolor}{\l}{\a}{\x}{\r}
+
+        % inner olive
+        \pgfmathsetmacro{\ai}{\a*0.8}
+        \pgfmathsetmacro{\bi}{\b*0.8}
+        \pgfmathparse{(\ai*\ai + \bi*\bi)/4/\bi}
+        \let\ri\pgfmathresult
+
+        \expandafter\ifstrequal\expandafter{\olivefill}{large}{
+            \dol{none}{\bordercolor}{\l}{\ai}{\x}{\ri}
+        }{}
+        \expandafter\ifstrequal\expandafter{\olivefill}{small}{
+            \dol{none}{\bordercolor}{\l}{\ai}{\x}{\ri}
+        }{}
+        \expandafter\ifstrequal\expandafter{\olivefill}{middle}{
+            \dol{\olivecolor}{\bordercolor}{\l}{\ai}{\x}{\ri}
+        }{}
+
+        \ifdebug
+            \draw[draw=red, line width=\l] (-\a/2,0) -- (\a/2, 0);
+            \draw[draw=red, line width=\l] (0,-\b/2) -- (0,\b/2);
+        \fi
+
     \end{tikzpicture}
 }
 
@@ -104,7 +206,12 @@
     default/.style = {color = {white}, border = {0.0}, fill = {full}},
     color/.store in = \tricolor,
     border/.store in = \triborder,
-    fill/.store in = \trifill
+    fill/.store in = \trifill, % large, middle, small
+}
+
+\newcommand\dtr[6]{
+    \draw[fill=#1, draw=#2, line width=#3, shift={(#6,0)}]
+    (-#4/2, 0) -- (#4/2, #5/2) -- (#4/2, -#5/2) -- cycle;
 }
 
 \NewDocumentCommand{\tri}{o}{%
@@ -112,21 +219,49 @@
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{2em}
         \def\b{1.5em}
+        \def\l{0.06em}
 
         \pgfmathparse{\triborder > 0 ? "black" : "none"}
         \let\bordercolor\pgfmathresult
-        \draw[fill=\tricolor, draw=\bordercolor, line width=0.1em]
-        (-\a/2, 0) -- (\a/2, \b/2) -- (\a/2, -\b/2) -- cycle;
+
+        % only fill when \trifill is full or large
+        \def\fillcolor{none}
+        \expandafter\ifstrequal\expandafter{\trifill}{full}{
+            \def\fillcolor{\tricolor}
+        }{}
+        \expandafter\ifstrequal\expandafter{\trifill}{large}{
+            \def\fillcolor{\tricolor}
+        }{}
+
+        \dtr{\fillcolor}{\bordercolor}{\l}{\a}{\b}{0}
+
+        % inner triangle
+        \def\ai{\a*0.7}
+        \def\bi{\b*0.7}
+
+        \expandafter\ifstrequal\expandafter{\trifill}{large}{
+            \dtr{none}{\bordercolor}{\l}{\ai}{\bi}{\a*0.07}
+        }{}
+        \expandafter\ifstrequal\expandafter{\trifill}{small}{
+            \dtr{none}{\bordercolor}{\l}{\ai}{\bi}{\a*0.07}
+        }{}
+        \expandafter\ifstrequal\expandafter{\trifill}{middle}{
+            \dtr{\tricolor}{\bordercolor}{\l}{\ai}{\bi}{\a*0.07}
+        }{}
+
+        \ifdebug
+            \draw[draw=red, line width=\l] (-\a/2,0) -- (\a/2, 0);
+            \draw[draw=red, line width=\l] (0,-\b/2) -- (0,\b/2);
+        \fi
     \end{tikzpicture}
 }
 
 % Pill
 \pgfkeys{
     /pill/.is family, /pill,
-    default/.style = {color = {white}, border = {0.0}, fill = {full}, scale = {1.0}, label = {}},
+    default/.style = {color = {white}, border = {0.0}, scale = {1.0}, label = {}},
     color/.store in = \pillcolor,
     border/.store in = \pillborder,
-    fill/.store in = \pillfill,
     scale/.store in = \pillscale,
     label/.store in = \pilllabel,
 }
@@ -152,8 +287,8 @@
     default/.style = {color = {white}, border = {0.0}, fill = {full}, scale = {1.0}},
     color/.store in = \circolor,
     border/.store in = \cirborder,
-    fill/.store in = \cirfill,
     scale/.store in = \cirscale,
+    pattern/.store in = \cirpattern, % vert, diag
 }
 \NewDocumentCommand{\cir}{o}{%
     \pgfkeys{/cir, default, #1}%
@@ -163,6 +298,11 @@
         \pgfmathparse{\cirborder > 0 ? "black" : "none"}
         \let\bordercolor\pgfmathresult
         \draw[fill=\circolor, draw=\bordercolor, line width=0.1em](0,0) circle (\r);
+
+        \ifdebug
+            \draw[draw=red, line width=\l] (-\r,0) -- (\r, 0);
+            \draw[draw=red, line width=\l] (0,-\r) -- (0,\r);
+        \fi
     \end{tikzpicture}
 }
 
@@ -172,6 +312,7 @@
     default/.style = {color = {white}, scale = {1.0}},
     color/.store in = \flowercolor,
     scale/.store in = \flowerscale,
+    pattern/.store in = \cirpattern, % vert, diag
 }
 
 \NewDocumentCommand{\flower}{o}{%
@@ -186,16 +327,21 @@
         foreach \angle in {0,60,...,300} {
         let
         \p1 = ([shift={(\angle:\r)}]o), %A
-        \p2 = ([shift={({\angle+90}:0.28*\r)}]\p1), %A1
+        \p2 = ([shift={({\angle+90}:0.28*\r)}]\p1), %A1, control point
         \p3 = ([shift={({\angle+30}:{\r-\b})}]o), %B
-        \p4 = ([shift={({\angle+30-90}:{0.12*\r})}]\p3), %B1
-        \p5 = ([shift={({\angle+30+90}:{0.12*\r})}]\p3), %B2
+        \p4 = ([shift={({\angle+30-90}:{0.12*\r})}]\p3), %B1, control point
+        \p5 = ([shift={({\angle+30+90}:{0.12*\r})}]\p3), %B2, control point
         \p6 = ([shift={({\angle+60}:{\r})}]o), %C
         \p7 = ([shift={({\angle-30}:{0.28*\r})}]\p6) %C1
         in
         -- (\p1) .. controls (\p2) and (\p4) ..
         (\p3) .. controls (\p5) and (\p7) .. (\p6)
         } -- cycle;
+
+        \ifdebug
+            \draw[draw=red, line width=0.1em] (-\r,0) -- (\r,0);
+            \draw[draw=red, line width=0.1em] (0,-\r) -- (0,\r);
+        \fi
     \end{tikzpicture}
 }
 

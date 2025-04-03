@@ -38,16 +38,11 @@
 }
 
 \begin{tikzpicture}[]
-    % \node(cir1) at (0, 0){\cir[color=yellow, border=1, scale=2]};
-    \node(flower1) at (0, 1){\flower[color=gray]};
-    \node(flower1) at (0, 2){\square[color=red]};
-    \node(flower1) at (0, 3){\square[color=purple, border=1, fill=half]};
+    \node (card1) at (0, 0) {\card[width=17em,height=10em,label=\hyperref[chap:noun]{noun}]{\nouncontent}};
+    \node (card2) [below=of card1] {\card[width=17em,height=8em,label=\hyperref[chap:noun]{verb}]{\verbcontent}};
+    \node (card3) [right=of card2] {\card[width=17em,height=8em,label=\hyperref[chap:noun]{prep}]{\prepcontent}};
+    \node (card4) [below=of card2] {\card[width=17em,height=8em,label=\hyperref[chap:noun]{syntax}]{\prepcontent}};
 
-    % \node (card1) at (0, 0) {\card[width=17em,height=10em,label=\hyperref[chap:noun]{noun}]{\nouncontent}};
-    % \node (card2) [below=of card1] {\card[width=17em,height=8em,label=\hyperref[chap:noun]{verb}]{\verbcontent}};
-    % \node (card3) [right=of card2] {\card[width=17em,height=8em,label=\hyperref[chap:noun]{prep}]{\prepcontent}};
-    % \node (card4) [below=of card2] {\card[width=17em,height=8em,label=\hyperref[chap:noun]{syntax}]{\prepcontent}};
-
-    % \draw[-latex, shorten >=0, shorten <=0] (card2) -- (card1) node[midway, above] {case};
-    % \draw[-latex, shorten >=0, shorten <=0] (card3) -- (card1) node[midway, above] {case};
+    \draw[-latex, shorten >=0, shorten <=0] (card2) -- (card1) node[midway, right] {case};
+    \draw[-latex, shorten >=0, shorten <=0] (card3) -- (card1) node[midway, left] {case};
 \end{tikzpicture}
