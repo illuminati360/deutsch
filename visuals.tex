@@ -30,8 +30,8 @@
     scale/.store in = \squarescale,
 }
 
-\newcommand\dsq[4]{
-    \draw[fill=#1, draw=#2, line width=#3] (-#4/2,-#4/2) rectangle (#4/2,#4/2);
+\newcommand\dsq[1]{
+    (-#1/2,-#1/2) rectangle (#1/2,#1/2);
 }
 
 % must add `%` to prevent \NewDocumentCommand from adding extra spaces.
@@ -54,7 +54,8 @@
         }{}
 
         % draw the outter square
-        \dsq{\fillcolor}{\bordercolor}{\l}{\a}
+        % \dsq{\fillcolor}{\bordercolor}{\l}{\a}
+        \draw[fill=\fillcolor, draw=\bordercolor, line width=\l] \dsq{\a}
 
         % half fill
         \expandafter\ifstrequal\expandafter{\squarefill}{half}{
@@ -64,14 +65,14 @@
         \def\ai{\a*0.8} % inner square side length
         % inner square if specified
         \expandafter\ifstrequal\expandafter{\squarefill}{large}{
-            \dsq{none}{black}{\l}{\ai}
+            \draw[fill=none, draw=black, line width=\l] \dsq{\ai}
         }{}
         \expandafter\ifstrequal\expandafter{\squarefill}{small}{
-            \dsq{none}{black}{\l}{\ai}
+            \draw[fill=none, draw=black, line width=\l] \dsq{\ai}
         }{}
 
         \expandafter\ifstrequal\expandafter{\squarefill}{middle}{
-            \dsq{\squarecolor}{black}{\l}{\ai}
+            \draw[fill=\squarecolor, draw=black, line width=\l] \dsq{\ai}
         }{}
 
         % patterns
@@ -98,15 +99,15 @@
 % Diamond
 \pgfkeys{
     /diam/.is family, /diam,
-    default/.style = {color = {white}, border = {0.0}, fill = {full}},
+    default/.style = {color = {none}, border = {0.0}, fill = {full}},
     color/.store in = \diamcolor,
     border/.store in = \diamborder,
     fill/.store in = \diamfill, % large, middle, small
     scale/.store in = \diamscale,
 }
 
-\newcommand\ddm[5]{
-    \draw[fill=#1, draw=#2, line width=#3] (-#4/2,0) -- (0,#5/2) -- (#4/2,0) -- (0,-#5/2) -- cycle;
+\newcommand\ddm[2]{
+    (-#1/2,0) -- (0,#2/2) -- (#1/2,0) -- (0,-#2/2) -- cycle;
 }
 
 \NewDocumentCommand{\diam}{o}{%
@@ -128,19 +129,19 @@
             \def\fillcolor{\diamcolor}
         }{}
 
-        \ddm{\fillcolor}{\bordercolor}{\l}{\a}{\b}
+        \draw[fill=\fillcolor, draw=\bordercolor, line width=\l] \ddm{\a}{\b}
 
         % inner diamond
         \def\ai{\a*0.75}
         \def\bi{\b*0.75}
         \expandafter\ifstrequal\expandafter{\diamfill}{large}{
-            \ddm{none}{\bordercolor}{\l}{\ai}{\bi}
+            \draw[fill=none, draw=\bordercolor, line width=\l] \ddm{\ai}{\bi}
         }{}
         \expandafter\ifstrequal\expandafter{\diamfill}{small}{
-            \ddm{none}{\bordercolor}{\l}{\ai}{\bi}
+            \draw[fill=none, draw=\bordercolor, line width=\l] \ddm{\ai}{\bi}
         }{}
         \expandafter\ifstrequal\expandafter{\diamfill}{middle}{
-            \ddm{\diamcolor}{\bordercolor}{\l}{\ai}{\bi}
+            \draw[fill=\diamcolor, draw=\bordercolor, line width=\l] \ddm{\ai}{\bi}
         }{}
 
         \ifdebug
@@ -154,18 +155,20 @@
 % Olive
 \pgfkeys{
     /olive/.is family, /olive,
-    default/.style = {color = {white}, border = {0.0}, fill = {full}},
+    default/.style = {color = {none}, border = {0.0}, fill = {full}},
     color/.store in = \olivecolor,
     border/.store in = \oliveborder,
     fill/.store in = \olivefill, % large, middle, small
     scale/.store in = \olivescale,
 }
 
-\newcommand\dol[6]{
+\newcommand\dol[3]{
     % #4 a, #5 x, #6 r
-    \draw[fill=#1, draw=#2, line width=#3]
-    (#4/2,0) arc[start angle=#5, end angle=180-#5, x radius=#6, y radius=#6]
-    (#4/2,0) arc[start angle=-#5, end angle=-180+#5, x radius=#6, y radius=#6];
+    % \draw[fill=#1, draw=#2, line width=#3]
+    % (#4/2,0) arc[start angle=#5, end angle=180-#5, x radius=#6, y radius=#6]
+    % (#4/2,0) arc[start angle=-#5, end angle=-180+#5, x radius=#6, y radius=#6];
+    (#1/2,0) arc[start angle=#2, end angle=180-#2, x radius=#3, y radius=#3]
+    (#1/2,0) arc[start angle=-#2, end angle=-180+#2, x radius=#3, y radius=#3];
 }
 
 \NewDocumentCommand{\olive}{o}{%
@@ -191,7 +194,7 @@
             \def\fillcolor{\olivecolor}
         }{}
 
-        \dol{\fillcolor}{\bordercolor}{\l}{\a}{\x}{\r}
+        \draw[fill=\fillcolor, draw=\bordercolor, line width=\l] \dol{\a}{\x}{\r}
 
         % inner olive
         \pgfmathsetmacro{\ai}{\a*0.8}
@@ -200,13 +203,13 @@
         \let\ri\pgfmathresult
 
         \expandafter\ifstrequal\expandafter{\olivefill}{large}{
-            \dol{none}{\bordercolor}{\l}{\ai}{\x}{\ri}
+            \draw[fill=none, draw=\bordercolor, line width=\l] \dol{\ai}{\x}{\ri}
         }{}
         \expandafter\ifstrequal\expandafter{\olivefill}{small}{
-            \dol{none}{\bordercolor}{\l}{\ai}{\x}{\ri}
+            \draw[fill=none, draw=\bordercolor, line width=\l] \dol{\ai}{\x}{\ri}
         }{}
         \expandafter\ifstrequal\expandafter{\olivefill}{middle}{
-            \dol{\olivecolor}{\bordercolor}{\l}{\ai}{\x}{\ri}
+            \draw[fill=\olivecolor, draw=\bordercolor, line width=\l] \dol{\ai}{\x}{\ri}
         }{}
 
         \ifdebug
@@ -220,16 +223,15 @@
 % Triangle (left pointing)
 \pgfkeys{
     /tri/.is family, /tri,
-    default/.style = {color = {white}, border = {0.0}, fill = {full}},
+    default/.style = {color = {none}, border = {0.0}, fill = {full}},
     color/.store in = \tricolor,
     border/.store in = \triborder,
     fill/.store in = \trifill, % large, middle, small
     scale/.store in = \triscale,
 }
 
-\newcommand\dtr[6]{
-    \draw[fill=#1, draw=#2, line width=#3, shift={(#6,0)}]
-    (-#4/2, 0) -- (#4/2, #5/2) -- (#4/2, -#5/2) -- cycle;
+\newcommand\dtr[2]{
+    (-#1/2, 0) -- (#1/2, #2/2) -- (#1/2, -#2/2) -- cycle;
 }
 
 \NewDocumentCommand{\tri}{o}{%
@@ -251,20 +253,20 @@
             \def\fillcolor{\tricolor}
         }{}
 
-        \dtr{\fillcolor}{\bordercolor}{\l}{\a}{\b}{0}
+        \draw[fill=\fillcolor, draw=\bordercolor, line width=\l] \dtr{\a}{\b}
 
         % inner triangle
         \def\ai{\a*0.7}
         \def\bi{\b*0.7}
 
         \expandafter\ifstrequal\expandafter{\trifill}{large}{
-            \dtr{none}{\bordercolor}{\l}{\ai}{\bi}{\a*0.07}
+            \draw[fill=none, draw=\bordercolor, line width=\l, shift={(\a*0.07, 0)}] \dtr{\ai}{\bi}
         }{}
         \expandafter\ifstrequal\expandafter{\trifill}{small}{
-            \dtr{none}{\bordercolor}{\l}{\ai}{\bi}{\a*0.07}
+            \draw[fill=none, draw=\bordercolor, line width=\l, shift={(\a*0.07, 0)}] \dtr{\ai}{\bi}
         }{}
         \expandafter\ifstrequal\expandafter{\trifill}{middle}{
-            \dtr{\tricolor}{\bordercolor}{\l}{\ai}{\bi}{\a*0.07}
+            \draw[fill=\tricolor, draw=\bordercolor, line width=\l, shift={(\a*0.07, 0)}] \dtr{\ai}{\bi}
         }{}
 
         \ifdebug
@@ -277,7 +279,7 @@
 % Pill
 \pgfkeys{
     /pill/.is family, /pill,
-    default/.style = {color = {white}, border = {0.0}, scale = {1.0}, label = {}},
+    default/.style = {color = {none}, border = {0.0}, scale = {1.0}, label = {}},
     color/.store in = \pillcolor,
     border/.store in = \pillborder,
     scale/.store in = \pillscale,
@@ -302,10 +304,12 @@
 % Cirle
 \pgfkeys{
     /cir/.is family, /cir,
-    default/.style = {color = {white}, border = {0.0}, pattern = {none}, scale = {1.0}},
+    default/.style = {color = {white}, border = {0.0}, pattern = {none}, clock = {none}, rotate = {0}, scale = {1.0}},
     color/.store in = \circolor,
     border/.store in = \cirborder,
-    pattern/.store in = \cirpattern, % vert, diag
+    pattern/.store in = \cirpattern, % vert
+    clock/.store in = \circlock, % none, simple, hollow, double, dot
+    rotate/.store in = \cirrotate,
     scale/.store in = \cirscale,
 }
 \NewDocumentCommand{\cir}{o}{%
@@ -316,25 +320,43 @@
 
         \pgfmathparse{\cirborder > 0 ? "black" : "none"}
         \let\bordercolor\pgfmathresult
-        \draw[fill=\circolor, draw=\bordercolor, line width=\l](0,0) circle (\r);
 
-        % patterns
-        \pgfmathsetmacro\sa{sin(75)}; \pgfmathsetmacro\ca{cos(75)}
-        \pgfmathsetmacro\sb{sin(60)}; \pgfmathsetmacro\cb{cos(60)}
-        \pgfmathsetmacro\sc{sin(45)}; \pgfmathsetmacro\cc{sin(45)}
-        \pgfmathsetmacro\sd{sin(15)}; \pgfmathsetmacro\cd{cos(15)}
-        \expandafter\ifstrequal\expandafter{\cirpattern}{vert}{
-            \draw[draw=black, line width=\l]
-            (-\r/2, -\r*\sb) -- (-\r/2, \r*\sb)
-            (0, -\r) -- (0, \r)
-            (\r/2, -\r*\sb) -- (\r/2, \r*\sb);
-        }{}
-        \expandafter\ifstrequal\expandafter{\cirpattern}{diag}{
-            \draw[draw=black, line width=\l]
-            (\r*\ca, -\r*\sa) -- (-\r*\cd, \r*\sd)
-            (\r*\sc, -\r*\cc) -- (-\r*\sc, \r*\cc)
-            (\r*\cd, -\r*\sd) -- (-\r*\ca, \r*\sa);
-        }{}
+        \pgfmathparse{\cirrotate > 0 ? 45 : 0}
+        \let\grouprotate\pgfmathresult
+
+        \begin{scope}[rotate=\grouprotate]
+            \draw[fill=\circolor, draw=\bordercolor, line width=\l](0,0) circle (\r);
+
+            % patterns
+            \pgfmathsetmacro\sa{sin(75)}; \pgfmathsetmacro\ca{cos(75)}
+            \pgfmathsetmacro\sb{sin(60)}; \pgfmathsetmacro\cb{cos(60)}
+            \pgfmathsetmacro\sc{sin(45)}; \pgfmathsetmacro\cc{sin(45)}
+            \pgfmathsetmacro\sd{sin(15)}; \pgfmathsetmacro\cd{cos(15)}
+            \expandafter\ifstrequal\expandafter{\cirpattern}{vert}{
+                \draw[draw=black, line width=\l]
+                (-\r/2, -\r*\sb) -- (-\r/2, \r*\sb)
+                (0, -\r) -- (0, \r)
+                (\r/2, -\r*\sb) -- (\r/2, \r*\sb);
+            }{}
+
+            % clock
+            \def\w{0.25*\r}
+            \def\h{0.8*\r}
+            \expandafter\ifstrequal\expandafter{\circlock}{simple}{
+                \draw[draw=black, line width=\l, fill=black, shift={(0, \r*0.3)}] (-\w/2, 0) rectangle (\w/2, \h);
+            }{}
+            \expandafter\ifstrequal\expandafter{\circlock}{hollow}{
+                \draw[draw=black, line width=\l, fill=\circolor, shift={(0, \r*0.3)}] (-\w/2, 0) rectangle (\w/2, \h);
+            }{}
+            \expandafter\ifstrequal\expandafter{\circlock}{double}{
+                \draw[draw=black, line width=\l, fill=\circolor, shift={(-\w*0.85, \r*0.3)}] (-\w/2, 0) rectangle (\w/2, \h);
+                \draw[draw=black, line width=\l, fill=\circolor, shift={(\w*0.85, \r*0.3)}] (-\w/2, 0) rectangle (\w/2, \h);
+            }{}
+            \expandafter\ifstrequal\expandafter{\circlock}{dot}{
+                \draw[draw=black, line width=\l, fill=black, shift={(0, \r*0.3)}] (-\w/2, 0) rectangle (\w/2, \h);
+                \draw[draw=black, line width=\l, fill=black] (0, 0) circle (\w/2);
+            }{}
+        \end{scope}
 
         \ifdebug
             \draw[draw=red, line width=\l] (-\r,0) -- (\r, 0);
@@ -346,14 +368,16 @@
 % Flower
 \pgfkeys{
     /flower/.is family, /flower,
-    default/.style = {color = {white}, pattern = {none}, scale = {1.0}},
+    default/.style = {color = {white}, pattern = {none}, fill = {full}, clock = {none}, rotate = {0}, scale = {1.0}},
     color/.store in = \flowercolor,
-    pattern/.store in = \flowerpattern, % vert, diag
+    pattern/.store in = \flowerpattern, % vert
+    fill/.store in = \flowerfill, % full, thin, thick
+    clock/.store in = \flowerclock, % none, simple, hollow, double, dot
+    rotate/.store in = \flowerrotate,
     scale/.store in = \flowerscale,
 }
 
-\newcommand\dfl[3]{
-%1.r 2.b
+\newcommand\dfl[2]{
 ([shift={(0:#1)}]0,0)
 foreach \angle in {0,60,...,300} {
 let
@@ -372,32 +396,58 @@ in
 
 \NewDocumentCommand{\flower}{o}{%
     \pgfkeys{/flower, default, #1}%
-    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
+    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}, even odd rule]
         \def\r{1em}
         \def\b{0.2em}
         \def\l{0.06em}
 
-        \path[fill=\flowercolor, draw=none] \dfl{\r}{\b}
+        \pgfmathparse{\flowerrotate > 0 ? 45 : 0}
+        \let\grouprotate\pgfmathresult
 
-        \pgfmathsetmacro\sa{sin(75)}; \pgfmathsetmacro\ca{cos(75)}
-        \pgfmathsetmacro\sb{sin(60)}; \pgfmathsetmacro\cb{cos(60)}
-        \pgfmathsetmacro\sc{sin(45)}; \pgfmathsetmacro\cc{sin(45)}
-        \pgfmathsetmacro\sd{sin(15)}; \pgfmathsetmacro\cd{cos(15)}
-        \expandafter\ifstrequal\expandafter{\flowerpattern}{vert}{
-            \draw[draw=black, line width=\l]
-            (-\r/2, -\r*\sb) -- (-\r/2, \r*\sb)
-            (0, -\r+\b) -- (0, \r-\b)
-            (\r/2, -\r*\sb) -- (\r/2, \r*\sb);
-        }{}
-        \expandafter\ifstrequal\expandafter{\flowerpattern}{diag}{
-            \begin{scope}
-                \clip \dfl{\r}{\b};
-                \draw[draw=black, line width=\l]
-                (\r*\ca, -\r*\sa) -- (-\r*\cd, \r*\sd)
-                (\r*\sc, -\r*\cc) -- (-\r*\sc, \r*\cc)
-                (\r*\cd, -\r*\sd) -- (-\r*\ca, \r*\sa);
-            \end{scope}
-        }{}
+        \begin{scope}[rotate=\grouprotate, even odd rule]
+            \expandafter\ifstrequal\expandafter{\flowerfill}{thick}{
+                \clip[overlay,even odd clip,reverseclip]
+                    \dfl{\r*0.55}{\b*0.55};
+            }{}
+            \expandafter\ifstrequal\expandafter{\flowerfill}{thin}{
+                \clip[overlay,even odd clip,reverseclip]
+                    \dfl{\r*0.7}{\b*0.7};
+            }{}
+            \path[fill=\flowercolor, draw=none] \dfl{\r}{\b}
+
+            % pattern
+            \pgfmathsetmacro\sa{sin(75)}; \pgfmathsetmacro\ca{cos(75)}
+            \pgfmathsetmacro\sb{sin(60)}; \pgfmathsetmacro\cb{cos(60)}
+            \pgfmathsetmacro\sc{sin(45)}; \pgfmathsetmacro\cc{sin(45)}
+            \pgfmathsetmacro\sd{sin(15)}; \pgfmathsetmacro\cd{cos(15)}
+            \expandafter\ifstrequal\expandafter{\flowerpattern}{vert}{
+                \begin{scope}
+                    \clip \dfl{\r}{\b}; % use mask so that the line won't exceed the shape
+                    \draw[draw=black, line width=\l]
+                    (-\r/2, -\r*\sb) -- (-\r/2, \r*\sb)
+                    (0, -\r+\b) -- (0, \r-\b)
+                    (\r/2, -\r*\sb) -- (\r/2, \r*\sb);
+                \end{scope}
+            }{}
+
+            % clock
+            \def\w{0.25*\r}
+            \def\h{0.8*\r}
+            \expandafter\ifstrequal\expandafter{\flowerclock}{simple}{
+                \draw[draw=black, line width=\l, fill=black, shift={(0, \r*0.3)}] (-\w/2, 0) rectangle (\w/2, \h);
+            }{}
+            \expandafter\ifstrequal\expandafter{\flowerclock}{hollow}{
+                \draw[draw=black, line width=\l, fill=\flowercolor, shift={(0, \r*0.3)}] (-\w/2, 0) rectangle (\w/2, \h);
+            }{}
+            \expandafter\ifstrequal\expandafter{\flowerclock}{double}{
+                \draw[draw=black, line width=\l, fill=\flowercolor, shift={(-\w*0.85, \r*0.3)}] (-\w/2, 0) rectangle (\w/2, \h);
+                \draw[draw=black, line width=\l, fill=\flowercolor, shift={(\w*0.85, \r*0.3)}] (-\w/2, 0) rectangle (\w/2, \h);
+            }{}
+            \expandafter\ifstrequal\expandafter{\flowerclock}{dot}{
+                \draw[draw=black, line width=\l, fill=black, shift={(0, \r*0.3)}] (-\w/2, 0) rectangle (\w/2, \h);
+                \draw[draw=black, line width=\l, fill=black] (0, 0) circle (\w/2);
+            }{}
+        \end{scope}
 
         \ifdebug
             \draw[draw=red, line width=0.1em] (-\r,0) -- (\r,0);

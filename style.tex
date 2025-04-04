@@ -15,3 +15,6 @@
     urlcolor=blue,         % Set the color of URL links
     citecolor=blue         % Set the color of citation links
 }
+
+\tikzset{even odd clip/.code={\pgfseteorule},
+reverseclip/.style={overlay,insert path={(-16383.99999pt,-16383.99999pt) rectangle (16383.99999pt,16383.99999pt)}}}
