@@ -42,7 +42,7 @@ sudo pacman -S \
     - Learning Curve
 - Why not Markdown/Obsidian?
     - Lack in expressiveness (e.g. stylized table, shapes)
-- Why not WYSIWYG like lyx, or WS word?
+- Why not WYSIWYG like lyx, or MS word?
     - Not programmical (can't generate card deck from csv)
 - Why not html/javsacript?
     - Tremendous waste of time reinventing the wheel 

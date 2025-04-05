@@ -59,7 +59,7 @@
 
         % half fill
         \expandafter\ifstrequal\expandafter{\squarefill}{half}{
-            \draw[fill=\squarecolor, draw=none] (-\a/2+\l/2,-\a/2\l/2) rectangle (-\a/2-\l/2,\l/2);
+            \draw[fill=\squarecolor, draw=none] (-\a/2+\l/2,-\a/2+\l/2) rectangle (\a/2-\l/2,\l/2);
         }{}
 
         \def\ai{\a*0.8} % inner square side length
@@ -162,25 +162,21 @@
     scale/.store in = \olivescale,
 }
 
-\newcommand\dol[3]{
-    % #4 a, #5 x, #6 r
-    % \draw[fill=#1, draw=#2, line width=#3]
-    % (#4/2,0) arc[start angle=#5, end angle=180-#5, x radius=#6, y radius=#6]
-    % (#4/2,0) arc[start angle=-#5, end angle=-180+#5, x radius=#6, y radius=#6];
-    (#1/2,0) arc[start angle=#2, end angle=180-#2, x radius=#3, y radius=#3]
-    (#1/2,0) arc[start angle=-#2, end angle=-180+#2, x radius=#3, y radius=#3];
+\newcommand\dol[2]{
+let
+\n1 = {(#1*#1+#2*#2)/4/(#2)},
+\n2 = {atan2(2*\n1-#2, (#1))} % note that the parameters must be enclosed with parethesis or else \a*0.8 won't work
+in
+(#1/2,0) arc[start angle=\n2, end angle=180-\n2, x radius=\n1, y radius=\n1]
+(#1/2,0) arc[start angle=-\n2, end angle=-180+\n2, x radius=\n1, y radius=\n1];
 }
 
 \NewDocumentCommand{\olive}{o}{%
     \pgfkeys{/olive, default, #1}%
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
-        \pgfmathsetmacro{\a}{2/1cm*1em}
-        \pgfmathsetmacro{\b}{1.4/1cm*1em}
-        \pgfmathsetmacro{\l}{0.06em}
-        \pgfmathparse{(\a*\a + \b*\b)/4/\b}
-        \let\r\pgfmathresult
-        \pgfmathparse{atan2(2*\r-\b, \a)}
-        \let\x\pgfmathresult
+        \def\a{2em}
+        \def\b{1.4em}
+        \def\l{0.06em}
 
         \pgfmathparse{\oliveborder > 0 ? "black" : "none"}
         \let\bordercolor\pgfmathresult
@@ -194,22 +190,19 @@
             \def\fillcolor{\olivecolor}
         }{}
 
-        \draw[fill=\fillcolor, draw=\bordercolor, line width=\l] \dol{\a}{\x}{\r}
+        \draw[fill=\fillcolor, draw=\bordercolor, line width=\l] \dol{\a}{\b}
 
         % inner olive
-        \pgfmathsetmacro{\ai}{\a*0.8}
-        \pgfmathsetmacro{\bi}{\b*0.8}
-        \pgfmathparse{(\ai*\ai + \bi*\bi)/4/\bi}
-        \let\ri\pgfmathresult
-
+        \def\ai{\a*0.8}
+        \def\bi{\b*0.8}
         \expandafter\ifstrequal\expandafter{\olivefill}{large}{
-            \draw[fill=none, draw=\bordercolor, line width=\l] \dol{\ai}{\x}{\ri}
+            \draw[fill=none, draw=\bordercolor, line width=\l] \dol{\ai}{\bi}
         }{}
         \expandafter\ifstrequal\expandafter{\olivefill}{small}{
-            \draw[fill=none, draw=\bordercolor, line width=\l] \dol{\ai}{\x}{\ri}
+            \draw[fill=none, draw=\bordercolor, line width=\l] \dol{\ai}{\bi}
         }{}
         \expandafter\ifstrequal\expandafter{\olivefill}{middle}{
-            \draw[fill=\olivecolor, draw=\bordercolor, line width=\l] \dol{\ai}{\x}{\ri}
+            \draw[fill=\olivecolor, draw=\bordercolor, line width=\l] \dol{\ai}{\bi}
         }{}
 
         \ifdebug
@@ -279,25 +272,62 @@
 % Pill
 \pgfkeys{
     /pill/.is family, /pill,
-    default/.style = {color = {none}, border = {0.0}, scale = {1.0}, label = {}},
+    default/.style = {color = {none}, border = {0.0}, width={1.3em}, radius={0.6em}, shape={type=none, size=small, color=none}, label = {}},
     color/.store in = \pillcolor,
     border/.store in = \pillborder,
-    scale/.store in = \pillscale,
     label/.store in = \pilllabel,
+    width/.store in = \pillwidth,
+    radius/.store in = \pillradius,
+    shape/.code={
+            \pgfkeys{/pill/shape/.cd, #1}
+        },
+    shape/type/.store in=\pillshapetype, % diamond, olive, triangle
+    shape/size/.store in=\pillshapesize,
+    shape/color/.store in=\pillshapecolor,
 }
+
 \NewDocumentCommand{\pill}{o}{%
     \pgfkeys{/pill, default, #1}%
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
-        \def\a{2em*\pillscale}
-        \def\r{0.8em*\pillscale}
+        \def\a{\pillwidth}
+        \def\r{\pillradius}
+        \def\l{0.06em}
 
         \pgfmathparse{\pillborder > 0 ? "black" : "none"}
         \let\bordercolor\pgfmathresult
-        \draw[fill=\pillcolor, draw=\bordercolor, line width=0.1em]
-        (\r, 0) -- (\r+\a, 0) arc[start angle=-90, end angle=90, radius=\r] --
-        (\r+\a, 2*\r) -- (\r, 2*\r) arc[start angle=90, end angle=270, radius=\r] -- cycle;
+        \draw[fill=\pillcolor, draw=\bordercolor, line width=\l]
+        (-\a/2, -\r) -- (\a/2, -\r) arc[start angle=-90, end angle=90, radius=\r] --
+        (\a/2, \r) -- (-\a/2, \r) arc[start angle=90, end angle=270, radius=\r] -- cycle;
 
-        \node[align=center, anchor=center] at (\r+\a/2, \r) {\pilllabel};
+        \node[align=center, anchor=center] at (0, 0) {\pilllabel};
+
+        % extra shapes
+        \expandafter\ifstrequal\expandafter{\pillshapesize}{small}{
+            \expandafter\ifstrequal\expandafter{\pillshapetype}{diamond}{
+                \draw[fill=\pillshapecolor, draw=black, line width=\l, shift={(\a/2-\r*0.1,0)}] \ddm{\r*1.5}{\r*1.5};
+            }{}
+            \expandafter\ifstrequal\expandafter{\pillshapetype}{olive}{
+                \draw[fill=\pillshapecolor, draw=black, line width=\l, shift={(\a/2-\r*0.1,0)}] \dol{\r*1.7}{\r*1.2}
+            }{}
+            \expandafter\ifstrequal\expandafter{\pillshapetype}{triangle}{
+                \draw[fill=\pillshapecolor, draw=black, line width=\l, shift={(\a/2-\r*0.1,0)}] \dtr{\r*1.5}{\r*1.5}
+            }{}
+        }{
+            \expandafter\ifstrequal\expandafter{\pillshapetype}{diamond}{
+                \draw[fill=\pillshapecolor, draw=black, line width=\l, shift={(\a/2+\r*0.4,0)}] \ddm{\r*2.1}{\r*2.1};
+            }{}
+            \expandafter\ifstrequal\expandafter{\pillshapetype}{olive}{
+                \draw[fill=\pillshapecolor, draw=black, line width=\l, shift={(\a/2+\r*0.3,0)}] \dol{\r*2.1}{\r*1.5}
+            }{}
+            \expandafter\ifstrequal\expandafter{\pillshapetype}{triangle}{
+                \draw[fill=\pillshapecolor, draw=black, line width=\l, shift={(\a/2-\r*0.1,0)}] \dtr{\r*2.1}{\r*1.8}
+            }{}
+        }
+
+        \ifdebug
+            \draw[draw=red, line width=\l] (-\a/2-\r,0) -- (\a/2+\r, 0);
+            \draw[draw=red, line width=\l] (0,-\r) -- (0,\r);
+        \fi
     \end{tikzpicture}
 }
 
@@ -396,7 +426,7 @@ in
 
 \NewDocumentCommand{\flower}{o}{%
     \pgfkeys{/flower, default, #1}%
-    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}, even odd rule]
+    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\r{1em}
         \def\b{0.2em}
         \def\l{0.06em}
@@ -404,22 +434,19 @@ in
         \pgfmathparse{\flowerrotate > 0 ? 45 : 0}
         \let\grouprotate\pgfmathresult
 
-        \begin{scope}[rotate=\grouprotate, even odd rule]
+        \begin{scope}[rotate=\grouprotate]
             \expandafter\ifstrequal\expandafter{\flowerfill}{thick}{
                 \clip[overlay,even odd clip,reverseclip]
-                    \dfl{\r*0.55}{\b*0.55};
+                \dfl{\r*0.55}{\b*0.55};
             }{}
             \expandafter\ifstrequal\expandafter{\flowerfill}{thin}{
                 \clip[overlay,even odd clip,reverseclip]
-                    \dfl{\r*0.7}{\b*0.7};
+                \dfl{\r*0.7}{\b*0.7};
             }{}
             \path[fill=\flowercolor, draw=none] \dfl{\r}{\b}
 
             % pattern
-            \pgfmathsetmacro\sa{sin(75)}; \pgfmathsetmacro\ca{cos(75)}
             \pgfmathsetmacro\sb{sin(60)}; \pgfmathsetmacro\cb{cos(60)}
-            \pgfmathsetmacro\sc{sin(45)}; \pgfmathsetmacro\cc{sin(45)}
-            \pgfmathsetmacro\sd{sin(15)}; \pgfmathsetmacro\cd{cos(15)}
             \expandafter\ifstrequal\expandafter{\flowerpattern}{vert}{
                 \begin{scope}
                     \clip \dfl{\r}{\b}; % use mask so that the line won't exceed the shape
@@ -472,10 +499,16 @@ in
     \pgfkeys{/rect, default, #1}%
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{2em}
+        \def\l{0.06em}
         \pgfmathparse{\rectborder > 0 ? "black" : "none"}
         \let\bordercolor\pgfmathresult
-        \draw[fill=\rectcolor, draw=\bordercolor, line width=0.1em] (0,0) rectangle (\rectwidth,\rectheight);
-        \node[align=center, anchor=center] at (\rectwidth/2, \rectheight/2) {\rectlabel};
+        \draw[fill=\rectcolor, draw=\bordercolor, line width=0.1em] (-\rectwidth/2,-\rectheight/2) rectangle (\rectwidth/2,\rectheight/2);
+        \node[align=center, anchor=center] at (0,0) {\rectlabel};
+
+        \ifdebug
+            \draw[draw=red, line width=\l] (-\rectwidth/2,0) -- (\rectwidth/2, 0);
+            \draw[draw=red, line width=\l] (0,-\rectheight/2) -- (0,\rectheight/2);
+        \fi
     \end{tikzpicture}
 }
 

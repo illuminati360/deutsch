@@ -12,15 +12,15 @@
         \node (rect2) [right=of rect1] {\rect[color=gray, width=4em, height=1.8em, label={number}]};%
         \node (rect3) [right=of rect2] {\rect[color=gray, width=4em, height=1.8em, label={case}]};%
 
-        \node (pill1) [below=of rect1] {\pill[color=gray, scale=1.2, label=\hyperref[table:artdef]{art.def.}]};%
-        \node (pill2) [right=of pill1] {\pill[color=gray, scale=1.2, label={pron.3.per}]};%
-        \node (pill3) [right=of pill2] {\pill[color=gray, scale=1.2, label={adj.str.}]};%
+        \node (pill1) [below=of rect1] {\pill[color=gray, width=2em, radius=0.8em, label=\hyperref[table:artdef]{art.def.}]};%
+        \node (pill2) [right=of pill1] {\pill[color=gray, width=2em, radius=0.8em, label={pron.3.per}]};%
+        \node (pill3) [right=of pill2] {\pill[color=gray, width=2em, radius=0.8em, label={adj.str.}]};%
         \draw[-, shorten >=0, shorten <=0] (pill1) -- (pill2) node[midway, above] {};%
         \draw[-, shorten >=0, shorten <=0] (pill2) -- (pill3) node[midway, above] {};%
 
-        \node (pill4) [below=of pill1] {\pill[color=gray, scale=1.2, label={art.indef.}]};%
-        \node (pill5) [right=of pill4] {\pill[color=gray, scale=1.2, label={pron.3.pos.}]};%
-        \node (pill6) [right=of pill5] {\pill[color=gray, scale=1.2, label={adj.wk.}]};%
+        \node (pill4) [below=of pill1] {\pill[color=gray, width=2em, radius=0.8em, label={art.indef.}]};%
+        \node (pill5) [right=of pill4] {\pill[color=gray, width=2em, radius=0.8em, label={pron.3.pos.}]};%
+        \node (pill6) [right=of pill5] {\pill[color=gray, width=2em, radius=0.8em, label={adj.wk.}]};%
         \draw[-, shorten >=0, shorten <=0] (pill4) -- (pill5) node[midway, above] {};%
         \draw[-, shorten >=0, shorten <=0] (pill5) -- (pill6) node[midway, above] {};%
     \end{tikzpicture}
