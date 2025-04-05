@@ -22,7 +22,7 @@
 % Square
 \pgfkeys{
     /square/.is family, /square,
-    default/.style = {color = {none}, border = {0.0}, fill = {full}, pattern = {none}},
+    default/.style = {color = {none}, border = {false}, fill = {full}, pattern = {none}},
     color/.store in = \squarecolor,
     border/.store in = \squareborder,
     fill/.store in = \squarefill, % full, half, none, large, middle, small
@@ -41,8 +41,11 @@
         \def\a{2em} %side length
         \def\l{0.06em} %line width
 
-        \pgfmathparse{\squareborder > 0 ? "black" : "none"}
-        \let\bordercolor\pgfmathresult
+        \expandafter\ifstrequal\expandafter{\squareborder}{true}{
+            \def\bordercolor{black};
+        }{
+            \def\bordercolor{none};
+        }
 
         % only fill when \squarefill is full or large
         \def\fillcolor{none}
@@ -54,7 +57,6 @@
         }{}
 
         % draw the outter square
-        % \dsq{\fillcolor}{\bordercolor}{\l}{\a}
         \draw[fill=\fillcolor, draw=\bordercolor, line width=\l] \dsq{\a}
 
         % half fill
@@ -99,7 +101,7 @@
 % Diamond
 \pgfkeys{
     /diam/.is family, /diam,
-    default/.style = {color = {none}, border = {0.0}, fill = {full}},
+    default/.style = {color = {none}, border = {false}, fill = {full}},
     color/.store in = \diamcolor,
     border/.store in = \diamborder,
     fill/.store in = \diamfill, % large, middle, small
@@ -117,8 +119,11 @@
         \def\b{2em}
         \def\l{0.06em} %line width
 
-        \pgfmathparse{\diamborder > 0 ? "black" : "none"}
-        \let\bordercolor\pgfmathresult
+        \expandafter\ifstrequal\expandafter{\diamborder}{true}{
+            \def\bordercolor{black};
+        }{
+            \def\bordercolor{none};
+        }
 
         % only fill when \diamfill is full or large
         \def\fillcolor{none}
@@ -155,7 +160,7 @@
 % Olive
 \pgfkeys{
     /olive/.is family, /olive,
-    default/.style = {color = {none}, border = {0.0}, fill = {full}},
+    default/.style = {color = {none}, border = {false}, fill = {full}},
     color/.store in = \olivecolor,
     border/.store in = \oliveborder,
     fill/.store in = \olivefill, % large, middle, small
@@ -178,8 +183,11 @@ in
         \def\b{1.4em}
         \def\l{0.06em}
 
-        \pgfmathparse{\oliveborder > 0 ? "black" : "none"}
-        \let\bordercolor\pgfmathresult
+        \expandafter\ifstrequal\expandafter{\oliveborder}{true}{
+            \def\bordercolor{black};
+        }{
+            \def\bordercolor{none};
+        }
 
         % only fill when \olivefill is full or large
         \def\fillcolor{none}
@@ -216,7 +224,7 @@ in
 % Triangle (left pointing)
 \pgfkeys{
     /tri/.is family, /tri,
-    default/.style = {color = {none}, border = {0.0}, fill = {full}},
+    default/.style = {color = {none}, border = {false}, fill = {full}},
     color/.store in = \tricolor,
     border/.store in = \triborder,
     fill/.store in = \trifill, % large, middle, small
@@ -234,8 +242,11 @@ in
         \def\b{1.5em}
         \def\l{0.06em}
 
-        \pgfmathparse{\triborder > 0 ? "black" : "none"}
-        \let\bordercolor\pgfmathresult
+        \expandafter\ifstrequal\expandafter{\triborder}{true}{
+            \def\bordercolor{black};
+        }{
+            \def\bordercolor{none};
+        }
 
         % only fill when \trifill is full or large
         \def\fillcolor{none}
@@ -272,7 +283,7 @@ in
 % Pill
 \pgfkeys{
     /pill/.is family, /pill,
-    default/.style = {color = {none}, border = {0.0}, width={1.3em}, radius={0.6em}, shape={type=none, size=small, color=none}, label = {}},
+    default/.style = {color = {none}, border = {false}, width={1.3em}, radius={0.6em}, shape={type=none, size=small, color=none}, label = {}},
     color/.store in = \pillcolor,
     border/.store in = \pillborder,
     label/.store in = \pilllabel,
@@ -281,7 +292,7 @@ in
     shape/.code={
             \pgfkeys{/pill/shape/.cd, #1}
         },
-    shape/type/.store in=\pillshapetype, % diamond, olive, triangle
+    shape/type/.store in=\pillshapetype, % diamond, olive, triangle, neutral
     shape/size/.store in=\pillshapesize,
     shape/color/.store in=\pillshapecolor,
 }
@@ -293,11 +304,28 @@ in
         \def\r{\pillradius}
         \def\l{0.06em}
 
-        \pgfmathparse{\pillborder > 0 ? "black" : "none"}
-        \let\bordercolor\pgfmathresult
-        \draw[fill=\pillcolor, draw=\bordercolor, line width=\l]
-        (-\a/2, -\r) -- (\a/2, -\r) arc[start angle=-90, end angle=90, radius=\r] --
-        (\a/2, \r) -- (-\a/2, \r) arc[start angle=90, end angle=270, radius=\r] -- cycle;
+        \expandafter\ifstrequal\expandafter{\pillborder}{true}{
+            \def\bordercolor{black};
+        }{
+            \def\bordercolor{none};
+        }
+
+        \begin{scope}
+            \expandafter\ifstrequal\expandafter{\pillshapesize}{big}{
+                \expandafter\ifstrequal\expandafter{\pillshapetype}{diamond}{
+                    \clip[overlay,even odd clip,reverseclip, shift={(\a/2+\r*0.4,0)}] \ddm{\r*2.1}{\r*2.1};
+                }{}
+                \expandafter\ifstrequal\expandafter{\pillshapetype}{olive}{
+                    \clip[overlay,even odd clip,reverseclip, shift={(\a/2+\r*0.3,0)}] \dol{\r*2.1}{\r*1.5}
+                }{}
+                \expandafter\ifstrequal\expandafter{\pillshapetype}{triangle}{
+                    \clip[overlay,even odd clip,reverseclip, shift={(\a/2-\r*0.1,0)}] \dtr{\r*2.1}{\r*1.8}
+                }{}
+            }{}
+            \draw[fill=\pillcolor, draw=\bordercolor, line width=\l]
+            (-\a/2, -\r) -- (\a/2, -\r) arc[start angle=-90, end angle=90, radius=\r] --
+            (\a/2, \r) -- (-\a/2, \r) arc[start angle=90, end angle=270, radius=\r] -- cycle;
+        \end{scope}
 
         \node[align=center, anchor=center] at (0, 0) {\pilllabel};
 
@@ -324,6 +352,17 @@ in
             }{}
         }
 
+        \expandafter\ifstrequal\expandafter{\pillshapetype}{neutral}{
+            \pgfmathsetmacro\sb{sin(60)}; \pgfmathsetmacro\cb{cos(60)}
+            \def\t{\r*0.7}
+            \draw[draw=black, line width=\l, shift={(-\r*0.4, 0)}]
+            (-\a/2, 0) -- (-\a/2+\t*\cb, \t*\sb)
+            (-\a/2, 0) -- (-\a/2+\t*\cb, -\t*\sb);
+            \draw[draw=black, line width=\l, shift={(\r*0.4, 0)}]
+            (\a/2, 0) -- (\a/2-\t*\cb, \t*\sb)
+            (\a/2, 0) -- (\a/2-\t*\cb, -\t*\sb);
+        }{}
+
         \ifdebug
             \draw[draw=red, line width=\l] (-\a/2-\r,0) -- (\a/2+\r, 0);
             \draw[draw=red, line width=\l] (0,-\r) -- (0,\r);
@@ -334,7 +373,7 @@ in
 % Cirle
 \pgfkeys{
     /cir/.is family, /cir,
-    default/.style = {color = {white}, border = {0.0}, pattern = {none}, clock = {none}, rotate = {0}, scale = {1.0}},
+    default/.style = {color = {white}, border = {false}, pattern = {none}, clock = {none}, rotate = {false}, scale = {1.0}},
     color/.store in = \circolor,
     border/.store in = \cirborder,
     pattern/.store in = \cirpattern, % vert
@@ -348,11 +387,17 @@ in
         \def\r{1em*\cirscale}
         \def\l{0.06em}
 
-        \pgfmathparse{\cirborder > 0 ? "black" : "none"}
-        \let\bordercolor\pgfmathresult
+        \expandafter\ifstrequal\expandafter{\cirborder}{true}{
+            \def\bordercolor{black};
+        }{
+            \def\bordercolor{none};
+        }
 
-        \pgfmathparse{\cirrotate > 0 ? 45 : 0}
-        \let\grouprotate\pgfmathresult
+        \expandafter\ifstrequal\expandafter{\cirrotate}{true}{
+            \def\grouprotate{45}
+        }{
+            \def\grouprotate{0}
+        }
 
         \begin{scope}[rotate=\grouprotate]
             \draw[fill=\circolor, draw=\bordercolor, line width=\l](0,0) circle (\r);
@@ -398,7 +443,7 @@ in
 % Flower
 \pgfkeys{
     /flower/.is family, /flower,
-    default/.style = {color = {white}, pattern = {none}, fill = {full}, clock = {none}, rotate = {0}, scale = {1.0}},
+    default/.style = {color = {white}, pattern = {none}, fill = {full}, clock = {none}, rotate = {false}, scale = {1.0}},
     color/.store in = \flowercolor,
     pattern/.store in = \flowerpattern, % vert
     fill/.store in = \flowerfill, % full, thin, thick
@@ -431,8 +476,11 @@ in
         \def\b{0.2em}
         \def\l{0.06em}
 
-        \pgfmathparse{\flowerrotate > 0 ? 45 : 0}
-        \let\grouprotate\pgfmathresult
+        \expandafter\ifstrequal\expandafter{\flowerrotate}{true}{
+            \def\grouprotate{45}
+        }{
+            \def\grouprotate{0}
+        }
 
         \begin{scope}[rotate=\grouprotate]
             \expandafter\ifstrequal\expandafter{\flowerfill}{thick}{
@@ -483,10 +531,49 @@ in
     \end{tikzpicture}
 }
 
+\pgfkeys{
+    /hook/.is family, /hook,
+    default/.style = {type={middle}, scale={1}},
+    type/.store in = \hooktype, % middle, left, right, circle
+    scale/.store in = \hookscale,
+}
+
+\NewDocumentCommand{\hook}{o}{%
+    \pgfkeys{/hook, default, #1}%
+    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
+        \def\a{3em}
+        \def\l{0.06em}
+
+        \expandafter\ifstrequal\expandafter{\hooktype}{middle}{
+            \draw[draw=black, line width=\l]
+            (-\a/2, 0) -- (-\a/6, 0)
+            arc[start angle=-180, end angle=0, x radius=\a/6, y radius=\a/6]
+            (\a/6, 0) -- (\a/2, 0);
+        }
+
+        \expandafter\ifstrequal\expandafter{\hooktype}{left}{
+            \draw[draw=black, line width=\l]
+            (-\a/2, 0) arc[start angle=-180, end angle=0, x radius=\a/6, y radius=\a/6]
+            (-\a/6, 0) -- (\a/2, 0);
+        }
+
+        \expandafter\ifstrequal\expandafter{\hooktype}{right}{
+            \draw[draw=black, line width=\l]
+            (-\a/2, 0) -- (\a/6, 0)
+            arc[start angle=-180, end angle=0, x radius=\a/6, y radius=\a/6];
+        }
+
+        \ifdebug
+            \draw[draw=red, line width=0.1em] (-\a/2,0) -- (\a/2,0);
+            \draw[draw=red, line width=0.1em] (0,-\a/6) -- (0,\a/6);
+        \fi
+    \end{tikzpicture}
+}
+
 % Rectangle
 \pgfkeys{
     /rect/.is family, /rect,
-    default/.style = {color = {white}, border = {0.0}, fill = {full}, label={}, width={1em}, height={1em}},
+    default/.style = {color = {white}, border = {false}, fill = {full}, label={}, width={1em}, height={1em}},
     color/.store in = \rectcolor,
     border/.store in = \rectborder,
     fill/.store in = \rectfill,
@@ -500,9 +587,14 @@ in
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{2em}
         \def\l{0.06em}
-        \pgfmathparse{\rectborder > 0 ? "black" : "none"}
-        \let\bordercolor\pgfmathresult
+
+        \expandafter\ifstrequal\expandafter{\rectborder}{true}{
+            \def\bordercolor{black};
+        }{
+            \def\bordercolor{none};
+        }
         \draw[fill=\rectcolor, draw=\bordercolor, line width=0.1em] (-\rectwidth/2,-\rectheight/2) rectangle (\rectwidth/2,\rectheight/2);
+
         \node[align=center, anchor=center] at (0,0) {\rectlabel};
 
         \ifdebug
