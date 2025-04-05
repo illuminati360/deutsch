@@ -689,3 +689,49 @@ in
         \node[anchor=north, text width=\cardwidth-1em] at (\cardwidth/2, \cardheight-\barh) {#2};
     \end{tikzpicture}
 }
+
+% Flashcard
+\pgfkeys{
+    /flashcard/.is family, /flashcard,
+    default/.style = {},
+}
+
+\NewDocumentCommand{\flashcard}{o m}{%
+    \pgfkeys{/flashcard, default, #1}%
+    \begin{tikzpicture}
+        \def\w{5.715cm}
+        \def\h{\w/3*4}
+        \def\tb{\h*0.06} % top bottom margin
+        \def\lr{\w*0.025}
+
+        \begin{scope}
+            \clip[overlay,even odd clip,reverseclip] (\lr, \tb) rectangle(\w-\lr, \h-\tb);
+            \draw[fill=green, draw=none, rounded corners=\w*0.05] (0, 0) rectangle(\w, \h);
+        \end{scope}
+        \useasboundingbox (0,0) rectangle (\w, \h);
+
+    \end{tikzpicture}
+}
+
+\pgfkeys{
+    /makeflashcard/.is family, /makeflashcard,
+    default/.style = {picture={}, hint={}, tags={}, group={}},
+    part/.store in = \fpart,
+    % sound
+    pronounciation/.store in = \fpronounciation,
+    % form
+    spelling/.store in = \fspelling,
+    inflection/.store in = \inflection,
+    % meaning
+    translation/.store in = \ftranslation,
+    picture/.store in = \fpicture,
+    hint/.store in = \fhint,
+    tags/.store in = \ftags,
+    group/.store in = \fgroups,
+}
+
+\NewDocumentCommand{\makeflashcard}{m}{
+    \noindent
+    \flashcard[]{}
+    \newpage
+}
