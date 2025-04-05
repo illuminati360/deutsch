@@ -370,17 +370,31 @@ in
     \end{tikzpicture}
 }
 
-% Cirle
+% Circle
 \pgfkeys{
     /cir/.is family, /cir,
-    default/.style = {color = {white}, border = {false}, pattern = {none}, clock = {none}, rotate = {false}, scale = {1.0}},
+    default/.style = {color = {white}, border = {false}, pattern = {none}, side = {false}, clock = {none}, rotate = {false}, scale = {1.0}},
     color/.store in = \circolor,
     border/.store in = \cirborder,
     pattern/.store in = \cirpattern, % vert
+    side/.store in = \cirside,
     clock/.store in = \circlock, % none, simple, hollow, double, dot
     rotate/.store in = \cirrotate,
     scale/.store in = \cirscale,
 }
+
+% draw "sidepill"
+\newcommand\dsp[3]{
+% 1. a, 2. r, 3. R
+let
+\n1 = {atan2(#3, (#2/2))} % note that the parameters must be enclosed with parethesis or else \a*0.8 won't work
+in
+(0, -#2) -- (-#1, -#2)
+arc[start angle=270, end angle=90, x radius=#2, y radius=#2]
+(-#1, #2) -- (0, #2)
+arc[start angle=90, end angle=270, x radius=#3, y radius=#2];
+}
+
 \NewDocumentCommand{\cir}{o}{%
     \pgfkeys{/cir, default, #1}%
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
@@ -431,7 +445,13 @@ in
                 \draw[draw=black, line width=\l, fill=black, shift={(0, \r*0.3)}] (-\w/2, 0) rectangle (\w/2, \h);
                 \draw[draw=black, line width=\l, fill=black] (0, 0) circle (\w/2);
             }{}
+
         \end{scope}
+
+        % side
+        \expandafter\ifstrequal\expandafter{\cirside}{true}{
+            \draw[fill=\circolor, draw=\bordercolor, line width=\l, shift={(-\r, 0)}] \dsp{\r*0.5}{\r*0.5}{\r*0.2}
+        }{}
 
         \ifdebug
             \draw[draw=red, line width=\l] (-\r,0) -- (\r, 0);
@@ -443,9 +463,10 @@ in
 % Flower
 \pgfkeys{
     /flower/.is family, /flower,
-    default/.style = {color = {white}, pattern = {none}, fill = {full}, clock = {none}, rotate = {false}, scale = {1.0}},
+    default/.style = {color = {white}, pattern = {none}, side = {false}, fill = {full}, clock = {none}, rotate = {false}, scale = {1.0}},
     color/.store in = \flowercolor,
     pattern/.store in = \flowerpattern, % vert
+    side/.store in = \flowerside,
     fill/.store in = \flowerfill, % full, thin, thick
     clock/.store in = \flowerclock, % none, simple, hollow, double, dot
     rotate/.store in = \flowerrotate,
@@ -524,9 +545,14 @@ in
             }{}
         \end{scope}
 
+        % side
+        \expandafter\ifstrequal\expandafter{\flowerside}{true}{
+            \draw[fill=\flowercolor, draw=none, shift={(-\r*0.8, 0)}] \dsp{\r*0.8}{\r*0.5}{\r*0.4}
+        }{}
+
         \ifdebug
-            \draw[draw=red, line width=0.1em] (-\r,0) -- (\r,0);
-            \draw[draw=red, line width=0.1em] (0,-\r) -- (0,\r);
+            \draw[draw=red, line width=\l] (-\r,0) -- (\r,0);
+            \draw[draw=red, line width=\l] (0,-\r) -- (0,\r);
         \fi
     \end{tikzpicture}
 }
@@ -564,8 +590,38 @@ in
         }
 
         \ifdebug
-            \draw[draw=red, line width=0.1em] (-\a/2,0) -- (\a/2,0);
-            \draw[draw=red, line width=0.1em] (0,-\a/6) -- (0,\a/6);
+            \draw[draw=red, line width=\l] (-\a/2,0) -- (\a/2,0);
+            \draw[draw=red, line width=\l] (0,-\a/6) -- (0,\a/6);
+        \fi
+    \end{tikzpicture}
+}
+
+% Sidepill
+\pgfkeys{
+    /sidepill/.is family, /sidepill,
+    default/.style = {color = {white}, border = {false}, scale = {1.0}},
+    color/.store in = \sidepillcolor,
+    border/.store in = \sidepillborder,
+    scale/.store in = \sidepillscale,
+}
+
+\NewDocumentCommand{\sidepill}{o}{%
+    \pgfkeys{/sidepill, default, #1}%
+    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
+        \def\r{1em*\sidepillscale}
+        \def\l{0.06em}
+
+        \expandafter\ifstrequal\expandafter{\sidepillborder}{true}{
+            \def\bordercolor{black};
+        }{
+            \def\bordercolor{none};
+        }
+
+        \draw[fill=\sidepillcolor, draw=\bordercolor] \dsp{\r*0.5}{\r*0.5}{\r*0.2}
+
+        \ifdebug
+            \draw[draw=red, line width=\l] (-\r,0) -- (\r,0);
+            \draw[draw=red, line width=\l] (0,-\r) -- (0,\r);
         \fi
     \end{tikzpicture}
 }
@@ -593,7 +649,7 @@ in
         }{
             \def\bordercolor{none};
         }
-        \draw[fill=\rectcolor, draw=\bordercolor, line width=0.1em] (-\rectwidth/2,-\rectheight/2) rectangle (\rectwidth/2,\rectheight/2);
+        \draw[fill=\rectcolor, draw=\bordercolor, line width=\l] (-\rectwidth/2,-\rectheight/2) rectangle (\rectwidth/2,\rectheight/2);
 
         \node[align=center, anchor=center] at (0,0) {\rectlabel};
 
