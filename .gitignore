@@ -5,3 +5,4 @@
 *.gz
 svg-inkscape/*
 TODOS.md
+*.synctex*

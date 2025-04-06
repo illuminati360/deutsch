@@ -5,6 +5,8 @@
     default/.style = {},
     color/.store in = \flashcardcolor,
     title/.store in = \flashcardtitle,
+    picture/.store in = \flashcardpicture,
+    hint/.store in = \flashcardhint,
     foot/.store in = \flashcardfoot,
     spelling/.store in = \flashcardspelling,
 }
@@ -12,11 +14,12 @@
 \NewDocumentCommand{\flashcard}{o}{%
     \pgfkeys{/flashcard, default, #1}%
     \begin{tikzpicture}%
-        \pgfmathsetmacro{\w}{(5.715/1pt)}
+        \pgfmathsetmacro{\w}{(5.71/1pt)}
         \pgfmathsetmacro{\h}{(\w/11*19)}
         \pgfmathsetmacro{\tb}{(\h*0.06)} % top bottom margin
         \pgfmathsetmacro{\lr}{(\w*0.025)}
         \pgfmathsetmacro{\ch}{(\h-\tb*2)}
+        \pgfmathsetmacro{\cw}{(\w-\lr*2)}
 
         % frame
         \begin{scope}
@@ -36,28 +39,26 @@
         %% proportions: 10%, 30%, 50%, 10%
         % pronounciation
         \node[align=center, anchor=center, minimum height=\ch*0.1] at (\w/2, \ch*0.95+\tb) {
-            \begin{tikzpicture}
-                \draw[fill=none, draw=black] (0,0) rectangle(\w-\lr*2,\ch*0.1);
-                \node[align=center, anchor=center, text=white, overlay] at (\w/2, \ch*0.1/2) {pronounciation};
-            \end{tikzpicture}%
+            % \begin{tikzpicture}
+            %     \draw[fill=none, draw=black] (0,0) rectangle(\w-\lr*2,\ch*0.1);
+            %     \node[align=center, anchor=center, text=white, overlay] at (\w/2, \ch*0.1/2) {pronounciation};
+            % \end{tikzpicture}%
         };
 
         % spelling
         \node[tight, minimum height=\ch*0.3] at (\w/2, \ch*0.75+\tb) {\flashcardspelling};
 
         % picture
-        \node[minimum height=\ch*0.5] at (\w/2, \ch*0.35+\tb) {
-            \begin{tikzpicture}
-                \draw[fill=none, draw=black] (0,0) rectangle(\w-\lr*2,\ch*0.5);
-                \node[align=center, anchor=center, text=black, overlay] at (\w/2, \ch*0.5/2) {picture};
-            \end{tikzpicture}%
+        \node[minimum height=\ch*0.5, overlay] at (\w/2, \ch*0.35+\tb) {%
+            \pgfmathsetmacro{\ih}{\ch*0.5}%
+            \pgfmathsetmacro{\iw}{\cw*0.95}%
+            \includegraphics[keepaspectratio, height=\ih cm, width=\iw cm]{\flashcardpicture}%
         };
 
         % hint
         \node[align=center, anchor=center, minimum height=\ch*0.1] at (\w/2, \ch*0.05+\tb) {
             \begin{tikzpicture}
-                \draw[fill=none, draw=black] (0,0) rectangle(\w-\lr*2,\ch*0.1);
-                \node[align=center, anchor=center, text=black, overlay] at (\w/2, \ch*0.1/2) {hint};
+                \node[align=center, anchor=center, text=gray] at (0, 0) {\flashcardhint};
             \end{tikzpicture}%
         };
 
@@ -71,7 +72,7 @@
 
 \pgfkeys{
     /makeflashcard/.is family, /makeflashcard,
-    default/.style = {picture={}, translation={}, hint={}, tags={}, group={}},
+    default/.style = {picture={graphics/Blank.png}, translation={}, hint={}, tags={}, group={}},
     part/.store in = \fpart,
     % sound
     pronounciation/.store in = \fpronounciation,
@@ -88,57 +89,62 @@
 
 \NewDocumentCommand{\makeflashcard}{m}{
     \pgfkeys{/makeflashcard, default, #1}%
-    % spelling
-    \StrCount{\fspelling}{, }[\dc]
-    \StrCut{\fspelling}{, }{\pa}{\pb}
-    \StrCut{\pa}{ }{\article}{\stem}
-    \ifnum\dc=1
-        \def\plural{\pb}
-    \else
-        \StrCut{\pb}{, }{\genitive}{\plural}
-    \fi
 
-    \def\nouncolor{gray}
-    \expandafter\ifstrequal\expandafter{\article}{der}{
-        \def\nouncolor{green}
-    }{
-        \expandafter\ifstrequal\expandafter{\article}{das}{
-            \def\nouncolor{purple}
+    % noun
+    \expandafter\ifstrequal\expandafter{\fpart}{n.}{
+        % spelling
+        \StrCount{\fspelling}{, }[\dc]
+        \StrCut{\fspelling}{, }{\pa}{\pb}
+        \StrCut{\pa}{ }{\article}{\stem}
+        \ifnum\dc=1
+            \def\plural{\pb}
+        \else
+            \StrCut{\pb}{, }{\genitive}{\plural}
+        \fi
+
+        \def\nouncolor{gray}
+        \expandafter\ifstrequal\expandafter{\article}{der}{
+            \def\nouncolor{green}
         }{
-            \expandafter\ifstrequal\expandafter{\article}{die}{
-                \def\nouncolor{yellow}
-            }{}
+            \expandafter\ifstrequal\expandafter{\article}{das}{
+                \def\nouncolor{purple}
+            }{
+                \expandafter\ifstrequal\expandafter{\article}{die}{
+                    \def\nouncolor{yellow}
+                }{}
+            }
         }
-    }
 
-    \def\spelling{
-        \begin{tikzpicture}[baseline, every node/.style={spelling}]
-            \node(t1)[text=\nouncolor, anchor=south, font=\sffamily\bfseries, overlay] {\Large\article};
-            \node(t2)[text=\nouncolor, anchor=south, font=\sffamily\bfseries, overlay, right=of t1] {\Large\stem,};
-            \node(n1)[overlay, below=of t1] {\square[color=\nouncolor, border=true, scale=0.6]};
-            \node(n2)[overlay] at ($(t2.center)!(n1.center)!(t2.center)$){\square[color=\nouncolor]};
-            \draw[-, shorten >=0, shorten <=0] (n1) -- (n2);
+        \def\spelling{
+            \begin{tikzpicture}[baseline, every node/.style={spelling}]
+                \node(t1)[text=\nouncolor, anchor=south, font=\sffamily\bfseries, overlay] {\Large\article};
+                \node(t2)[text=\nouncolor, anchor=south, font=\sffamily\bfseries, overlay, right=of t1] {\Large\stem,};
+                \node(n1)[overlay, below=of t1] {\square[color=\nouncolor, border=true, scale=0.6]};
+                \node(n2)[overlay] at ($(t2.center)!(n1.center)!(t2.center)$){\square[color=\nouncolor]};
+                \draw[-, shorten >=0, shorten <=0] (n1) -- (n2);
 
-            \ifthenelse{\isundefined{\genitive}}
-            {
-                \node(t3)[text=red, anchor=south, font=\sffamily\bfseries, overlay, right=of t2] {\Large\plural};
-                \node(n3)[overlay] at ($(t3.center)!(n1.center)!(t3.center)$){\square[color=red]};
-                % use fit to automatically center the content
-                \node[fit=(t1) (t2) (t3) (n1) (n2) (n3), draw=none] (fitbox) {};
-            }
-            {
-                \node(t3)[text=red, anchor=south, font=\sffamily\bfseries, overlay, right=of t2] {\Large\genitive};
-                \node(t4)[text=red, font=\sffamily\bfseries, overlay, right=of t3] {\Large\plural};
+                \ifthenelse{\isundefined{\genitive}}
+                {
+                    \node(t3)[text=red, anchor=south, font=\sffamily\bfseries, overlay, right=of t2] {\Large\plural};
+                    \node(n3)[overlay] at ($(t3.center)!(n1.center)!(t3.center)$){\square[color=red]};
+                    % use fit to automatically center the content
+                    \node[fit=(t1) (t2) (t3) (n1) (n2) (n3), draw=none] (fitbox) {};
+                }
+                {
+                    \node(t3)[text=red, anchor=south, font=\sffamily\bfseries, overlay, right=of t2] {\Large\genitive};
+                    \node(t4)[text=red, font=\sffamily\bfseries, overlay, right=of t3] {\Large\plural};
 
-                \node(n3)[overlay] at ($(t3.center)!(n1.center)!(t3.center)$){\olive[color=\nouncolor]};
-                \node(n4)[overlay] at ($(t4.center)!(n1.center)!(t4.center)$){\square[color=red]};
-                % use fit to automatically center the content
-                \node[fit=(t1) (t2) (t3) (t4) (n1) (n2) (n3) (n4), draw=none] (fitbox) {};
-            }
+                    \node(n3)[overlay] at ($(t3.center)!(n1.center)!(t3.center)$){\olive[color=\nouncolor]};
+                    \node(n4)[overlay] at ($(t4.center)!(n1.center)!(t4.center)$){\square[color=red]};
+                    % use fit to automatically center the content
+                    \node[fit=(t1) (t2) (t3) (t4) (n1) (n2) (n3) (n4), draw=none] (fitbox) {};
+                }
 
-        \end{tikzpicture}%
-    }
+            \end{tikzpicture}%
+        }
+    }{}
+
     \noindent
-    \flashcard[color=\nouncolor, title=\stem, foot=\ftranslation, spelling=\spelling]
+    \flashcard[color=\nouncolor, title=\stem, foot=\ftranslation, spelling=\spelling, picture=\fpicture, hint=\fhint]
     \newpage
 }
