@@ -1,9 +1,6 @@
 \usepackage{tikz}
 \usepackage{xcolor}
-\usepackage{xparse}
-\usepackage{ifthen}
 \usepackage{pgfkeys}
-\usepackage{xstring}
 \usetikzlibrary{calc}
 \usetikzlibrary{positioning} % Required for 'of' positioning
 \usetikzlibrary{arrows.meta} % For arrows
@@ -19,10 +16,12 @@
 \definecolor{red}{HTML}{e06262}
 \definecolor{gray}{HTML}{c7c1bc}
 
+\def\shapelinewidth{0.08em}
+
 % Square
 \pgfkeys{
     /square/.is family, /square,
-    default/.style = {color = {none}, border = {false}, fill = {full}, pattern = {none}},
+    default/.style = {color = {none}, border = {false}, fill = {full}, pattern = {none}, scale = {1.0}},
     color/.store in = \squarecolor,
     border/.store in = \squareborder,
     fill/.store in = \squarefill, % full, half, none, large, middle, small
@@ -38,8 +37,8 @@
 \NewDocumentCommand{\square}{o}{%
     \pgfkeys{/square, default, #1}%
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
-        \def\a{2em} %side length
-        \def\l{0.06em} %line width
+        \def\a{2em*\squarescale} %side length
+        \def\l{\shapelinewidth*\squarescale} %line width
 
         \expandafter\ifstrequal\expandafter{\squareborder}{true}{
             \def\bordercolor{black};
@@ -90,12 +89,15 @@
             (\a/2, \a) -- (\a, \a/2);
         }{}
 
+        \useasboundingbox \dsq{\a}
+
         \ifdebug
             \draw[draw=red, line width=\l] (-\a/2,0) -- (\a/2,0);
             \draw[draw=red, line width=\l] (0,-\a/2) -- (0,\a/2);
+            \draw[draw=blue, dotted, line width=0.1em] (current bounding box.south west) rectangle(current bounding box.north east);
         \fi
 
-    \end{tikzpicture}
+    \end{tikzpicture}%
 }
 
 % Diamond
@@ -117,7 +119,7 @@
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{2.5em}
         \def\b{2em}
-        \def\l{0.06em} %line width
+        \def\l{\shapelinewidth} %line width
 
         \expandafter\ifstrequal\expandafter{\diamborder}{true}{
             \def\bordercolor{black};
@@ -154,7 +156,7 @@
             \draw[draw=red, line width=\l] (0,-\b/2) -- (0,\b/2);
         \fi
 
-    \end{tikzpicture}
+    \end{tikzpicture}%
 }
 
 % Olive
@@ -181,7 +183,7 @@ in
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{2em}
         \def\b{1.4em}
-        \def\l{0.06em}
+        \def\l{\shapelinewidth}
 
         \expandafter\ifstrequal\expandafter{\oliveborder}{true}{
             \def\bordercolor{black};
@@ -218,7 +220,7 @@ in
             \draw[draw=red, line width=\l] (0,-\b/2) -- (0,\b/2);
         \fi
 
-    \end{tikzpicture}
+    \end{tikzpicture}%
 }
 
 % Triangle (left pointing)
@@ -240,7 +242,7 @@ in
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{2em}
         \def\b{1.5em}
-        \def\l{0.06em}
+        \def\l{\shapelinewidth}
 
         \expandafter\ifstrequal\expandafter{\triborder}{true}{
             \def\bordercolor{black};
@@ -277,7 +279,7 @@ in
             \draw[draw=red, line width=\l] (-\a/2,0) -- (\a/2, 0);
             \draw[draw=red, line width=\l] (0,-\b/2) -- (0,\b/2);
         \fi
-    \end{tikzpicture}
+    \end{tikzpicture}%
 }
 
 % Pill
@@ -302,7 +304,7 @@ in
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{\pillwidth}
         \def\r{\pillradius}
-        \def\l{0.06em}
+        \def\l{\shapelinewidth}
 
         \expandafter\ifstrequal\expandafter{\pillborder}{true}{
             \def\bordercolor{black};
@@ -367,7 +369,7 @@ in
             \draw[draw=red, line width=\l] (-\a/2-\r,0) -- (\a/2+\r, 0);
             \draw[draw=red, line width=\l] (0,-\r) -- (0,\r);
         \fi
-    \end{tikzpicture}
+    \end{tikzpicture}%
 }
 
 % Circle
@@ -399,7 +401,7 @@ arc[start angle=90, end angle=270, x radius=#3, y radius=#2];
     \pgfkeys{/cir, default, #1}%
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\r{1em*\cirscale}
-        \def\l{0.06em}
+        \def\l{\shapelinewidth}
 
         \expandafter\ifstrequal\expandafter{\cirborder}{true}{
             \def\bordercolor{black};
@@ -457,7 +459,7 @@ arc[start angle=90, end angle=270, x radius=#3, y radius=#2];
             \draw[draw=red, line width=\l] (-\r,0) -- (\r, 0);
             \draw[draw=red, line width=\l] (0,-\r) -- (0,\r);
         \fi
-    \end{tikzpicture}
+    \end{tikzpicture}%
 }
 
 % Flower
@@ -495,7 +497,7 @@ in
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\r{1em}
         \def\b{0.2em}
-        \def\l{0.06em}
+        \def\l{\shapelinewidth}
 
         \expandafter\ifstrequal\expandafter{\flowerrotate}{true}{
             \def\grouprotate{45}
@@ -554,7 +556,7 @@ in
             \draw[draw=red, line width=\l] (-\r,0) -- (\r,0);
             \draw[draw=red, line width=\l] (0,-\r) -- (0,\r);
         \fi
-    \end{tikzpicture}
+    \end{tikzpicture}%
 }
 
 \pgfkeys{
@@ -568,7 +570,7 @@ in
     \pgfkeys{/hook, default, #1}%
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{3em}
-        \def\l{0.06em}
+        \def\l{\shapelinewidth}
 
         \expandafter\ifstrequal\expandafter{\hooktype}{middle}{
             \draw[draw=black, line width=\l]
@@ -593,7 +595,7 @@ in
             \draw[draw=red, line width=\l] (-\a/2,0) -- (\a/2,0);
             \draw[draw=red, line width=\l] (0,-\a/6) -- (0,\a/6);
         \fi
-    \end{tikzpicture}
+    \end{tikzpicture}%
 }
 
 % Sidepill
@@ -609,7 +611,7 @@ in
     \pgfkeys{/sidepill, default, #1}%
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\r{1em*\sidepillscale}
-        \def\l{0.06em}
+        \def\l{\shapelinewidth}
 
         \expandafter\ifstrequal\expandafter{\sidepillborder}{true}{
             \def\bordercolor{black};
@@ -623,7 +625,7 @@ in
             \draw[draw=red, line width=\l] (-\r,0) -- (\r,0);
             \draw[draw=red, line width=\l] (0,-\r) -- (0,\r);
         \fi
-    \end{tikzpicture}
+    \end{tikzpicture}%
 }
 
 % Rectangle
@@ -642,7 +644,7 @@ in
     \pgfkeys{/rect, default, #1}%
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
         \def\a{2em}
-        \def\l{0.06em}
+        \def\l{\shapelinewidth}
 
         \expandafter\ifstrequal\expandafter{\rectborder}{true}{
             \def\bordercolor{black};
@@ -657,7 +659,7 @@ in
             \draw[draw=red, line width=\l] (-\rectwidth/2,0) -- (\rectwidth/2, 0);
             \draw[draw=red, line width=\l] (0,-\rectheight/2) -- (0,\rectheight/2);
         \fi
-    \end{tikzpicture}
+    \end{tikzpicture}%
 }
 
 
@@ -687,51 +689,5 @@ in
         \node[anchor=west, font=\bfseries, xshift=0.5em, yshift=-0.2em] at (0, \cardheight-\barh/2) {\cardlabel};
 
         \node[anchor=north, text width=\cardwidth-1em] at (\cardwidth/2, \cardheight-\barh) {#2};
-    \end{tikzpicture}
-}
-
-% Flashcard
-\pgfkeys{
-    /flashcard/.is family, /flashcard,
-    default/.style = {},
-}
-
-\NewDocumentCommand{\flashcard}{o m}{%
-    \pgfkeys{/flashcard, default, #1}%
-    \begin{tikzpicture}
-        \def\w{5.715cm}
-        \def\h{\w/3*4}
-        \def\tb{\h*0.06} % top bottom margin
-        \def\lr{\w*0.025}
-
-        \begin{scope}
-            \clip[overlay,even odd clip,reverseclip] (\lr, \tb) rectangle(\w-\lr, \h-\tb);
-            \draw[fill=green, draw=none, rounded corners=\w*0.05] (0, 0) rectangle(\w, \h);
-        \end{scope}
-        \useasboundingbox (0,0) rectangle (\w, \h);
-
-    \end{tikzpicture}
-}
-
-\pgfkeys{
-    /makeflashcard/.is family, /makeflashcard,
-    default/.style = {picture={}, hint={}, tags={}, group={}},
-    part/.store in = \fpart,
-    % sound
-    pronounciation/.store in = \fpronounciation,
-    % form
-    spelling/.store in = \fspelling,
-    inflection/.store in = \inflection,
-    % meaning
-    translation/.store in = \ftranslation,
-    picture/.store in = \fpicture,
-    hint/.store in = \fhint,
-    tags/.store in = \ftags,
-    group/.store in = \fgroups,
-}
-
-\NewDocumentCommand{\makeflashcard}{m}{
-    \noindent
-    \flashcard[]{}
-    \newpage
+    \end{tikzpicture}%
 }

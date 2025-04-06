@@ -19,4 +19,11 @@
 
 % reverseclip
 \tikzset{even odd clip/.code={\pgfseteorule},
-reverseclip/.style={overlay,insert path={(-16383.99999pt,-16383.99999pt) rectangle (16383.99999pt,16383.99999pt)}}}
+    reverseclip/.style={overlay,insert path={(-16383.99999pt,-16383.99999pt) rectangle (16383.99999pt,16383.99999pt)}}}
+
+% tight nodes
+\tikzset{tight/.style={
+    inner sep=0pt, 
+    outer sep=0pt,
+    node distance=1em
+}}

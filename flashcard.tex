@@ -1,0 +1,100 @@
+
+% Flashcard
+\pgfkeys{
+    /flashcard/.is family, /flashcard,
+    default/.style = {},
+    color/.store in = \flashcardcolor,
+    title/.store in = \flashcardtitle,
+    foot/.store in = \flashcardfoot,
+}
+
+\NewDocumentCommand{\flashcard}{o}{%
+    \pgfkeys{/flashcard, default, #1}%
+    \begin{tikzpicture}%
+        \pgfmathsetmacro{\w}{(5.715/1pt)}
+        \pgfmathsetmacro{\h}{(\w/3*4)}
+        \pgfmathsetmacro{\tb}{(\h*0.06)} % top bottom margin
+        \pgfmathsetmacro{\lr}{(\w*0.025)}
+        \pgfmathsetmacro{\ch}{(\h-\tb*2)}
+
+        % frame
+        \begin{scope}
+            \clip[overlay,even odd clip,reverseclip] (\lr, \tb) rectangle(\w-\lr, \h-\tb);
+            \draw[fill=\flashcardcolor, draw=none, rounded corners=\w*0.04*1cm] (0, 0) rectangle(\w, \h);
+        \end{scope}
+
+        % title
+        \expandafter\ifstrequal\expandafter{\flashcardcolor}{gray}{
+            \def\titlecolor{black}
+        }{
+            \def\titlecolor{white}
+        }
+        %% use overlay so that it doesn't affect the bounding box
+        \node[align=center, anchor=center, text=\titlecolor, font=\bfseries\sffamily, overlay] at (\w/2, \h - \tb/2) {\flashcardtitle};
+
+        %% proportions: 10%, 30%, 50%, 10%
+        % pronounciation
+        \node[align=center, anchor=center, minimum height=\ch*0.1] at (\w/2, \ch*0.95+\tb) {
+            \begin{tikzpicture}
+                \draw[fill=none, draw=black] (0,0) rectangle(\w-\lr*2,\ch*0.1);
+                \node[align=center, anchor=center, text=white, overlay] at (\w/2, \ch*0.1/2) {pronounciation};
+            \end{tikzpicture}%
+        };
+
+        % spelling
+        \node[align=center, anchor=center, minimum height=\ch*0.3] at (\w/2, \ch*0.75+\tb) {
+            \begin{tikzpicture}
+                \draw[fill=none, draw=black] (0,0) rectangle(\w-\lr*2,\ch*0.3);
+                % \node[align=center, anchor=center, text=white, overlay] at (\w/2, \ch*0.3/2) {spelling};
+                \node(n1)[overlay, tight] at (1, \ch*0.3/2) {\square[color=purple, border=true, scale=0.6]};
+                \node(n2)[overlay, tight] at (3, \ch*0.3/2) {\square[color=purple]};
+                \draw[-, shorten >=0, shorten <=0] (n1) -- (n2);%
+            \end{tikzpicture}%
+        };
+
+        % picture
+        \node[align=center, anchor=center, minimum height=\ch*0.5] at (\w/2, \ch*0.35+\tb) {
+            \begin{tikzpicture}
+                \draw[fill=none, draw=black] (0,0) rectangle(\w-\lr*2,\ch*0.5);
+                \node[align=center, anchor=center, text=white, overlay] at (\w/2, \ch*0.5/2) {picture};
+            \end{tikzpicture}%
+        };
+
+        % hint
+        \node[align=center, anchor=center, minimum height=\ch*0.1] at (\w/2, \ch*0.05+\tb) {
+            \begin{tikzpicture}
+                \draw[fill=none, draw=black] (0,0) rectangle(\w-\lr*2,\ch*0.1);
+                \node[align=center, anchor=center, text=white, overlay] at (\w/2, \ch*0.1/2) {hint};
+            \end{tikzpicture}%
+        };
+
+        % footnote
+        \node[align=center, anchor=center, text=\titlecolor, overlay] at (\w/2, \tb/2) {\flashcardfoot};
+
+        \useasboundingbox (0,0) rectangle (\w, \h);
+
+    \end{tikzpicture}%
+}
+
+\pgfkeys{
+    /makeflashcard/.is family, /makeflashcard,
+    default/.style = {picture={}, hint={}, tags={}, group={}},
+    part/.store in = \fpart,
+    % sound
+    pronounciation/.store in = \fpronounciation,
+    % form
+    spelling/.store in = \fspelling,
+    inflection/.store in = \inflection,
+    % meaning
+    translation/.store in = \ftranslation,
+    picture/.store in = \fpicture,
+    hint/.store in = \fhint,
+    tags/.store in = \ftags,
+    group/.store in = \fgroups,
+}
+
+\NewDocumentCommand{\makeflashcard}{m}{
+    \noindent
+    \flashcard[color=purple, title=Auge, foot=eye]
+    \newpage
+}
