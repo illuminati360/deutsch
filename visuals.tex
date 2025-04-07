@@ -505,15 +505,17 @@ in
         }
 
         \begin{scope}[rotate=\grouprotate]
-            \expandafter\ifstrequal\expandafter{\flowerfill}{thick}{
-                \clip[overlay,even odd clip,reverseclip]
-                \dfl{\r*0.55}{\b*0.55};
-            }{}
-            \expandafter\ifstrequal\expandafter{\flowerfill}{thin}{
-                \clip[overlay,even odd clip,reverseclip]
-                \dfl{\r*0.7}{\b*0.7};
-            }{}
-            \path[fill=\flowercolor, draw=none] \dfl{\r}{\b}
+            \begin{scope}
+                \expandafter\ifstrequal\expandafter{\flowerfill}{thick}{
+                    \clip[overlay, even odd clip,reverseclip]
+                    \dfl{\r*0.55}{\b*0.55};
+                }{}
+                \expandafter\ifstrequal\expandafter{\flowerfill}{thin}{
+                    \clip[overlay, even odd clip,reverseclip]
+                    \dfl{\r*0.7}{\b*0.7};
+                }{}
+                \path[fill=\flowercolor, draw=none] \dfl{\r}{\b}
+            \end{scope}
 
             % pattern
             \pgfmathsetmacro\sb{sin(60)}; \pgfmathsetmacro\cb{cos(60)}
@@ -551,9 +553,12 @@ in
             \draw[fill=\flowercolor, draw=none, shift={(-\r*0.8, 0)}] \dsp{\r*0.8}{\r*0.5}{\r*0.4}
         }{}
 
+        \useasboundingbox \dfl{\r}{\b}
+
         \ifdebug
             \draw[draw=red, line width=\l] (-\r,0) -- (\r,0);
             \draw[draw=red, line width=\l] (0,-\r) -- (0,\r);
+            \draw[draw=blue, dotted, line width=0.1em] (current bounding box.south west) rectangle(current bounding box.north east);
         \fi
     \end{tikzpicture}%
 }

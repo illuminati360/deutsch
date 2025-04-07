@@ -23,16 +23,23 @@
 
 % tight nodes
 \tikzset{tight/.style={
-    inner sep=0pt, 
-    outer sep=0pt,
-    node distance=1em
-}}
+            inner sep=0pt,
+            outer sep=0pt,
+        }}
 
 % spelling
 \tikzset{spelling/.style={
-    inner sep=0pt, 
-    outer sep=0pt,
-    minimum width=0.5cm,
-}}
+            inner sep=0pt,
+            outer sep=0pt,
+            node distance=0.4cm,
+            anchor=center,
+            font=\sffamily\bfseries,
+        }}
+
+% verb
+\tikzset{verb/.style={
+            node distance=0.2cm,
+            minimum width=0.6cm,
+        }}
 
 \graphicspath{{./graphics/}}

@@ -22,9 +22,9 @@
         \pgfmathsetmacro{\cw}{(\w-\lr*2)}
 
         % frame
-        \begin{scope}
-            \clip[overlay,even odd clip,reverseclip] (\lr, \tb) rectangle(\w-\lr, \h-\tb);
-            \draw[fill=\flashcardcolor, draw=none, rounded corners=\w*0.04*1cm] (0, 0) rectangle(\w, \h);
+        \begin{scope}%
+            \clip[overlay,even odd clip,reverseclip] (\lr, \tb) rectangle(\w-\lr, \h-\tb);%
+            \draw[fill=\flashcardcolor, draw=none, rounded corners=\w*0.04*1cm] (0, 0) rectangle(\w, \h);%
         \end{scope}
 
         % title
@@ -46,7 +46,7 @@
         };
 
         % spelling
-        \node[tight, minimum height=\ch*0.3] at (\w/2, \ch*0.75+\tb) {\flashcardspelling};
+        \node[spelling, minimum height=\ch*0.3] at (\w/2, \ch*0.75+\tb) {\flashcardspelling};
 
         % picture
         \node[minimum height=\ch*0.5, overlay] at (\w/2, \ch*0.35+\tb) {%
@@ -118,35 +118,34 @@
 
         \def\spellingcontent{
             \begin{tikzpicture}[baseline, every node/.style={spelling}]
-                \node(t1)[text=\cardcolor, anchor=south, font=\sffamily\bfseries, overlay] {\Large\article};
-                \node(t2)[text=\cardcolor, anchor=south, font=\sffamily\bfseries, overlay, right=of t1] {\Large\cardtitle,};
+                \node(t1)[text=\cardcolor, overlay] {\Large\article};
+                \node(t2)[text=\cardcolor, overlay, right=of t1] {\Large\cardtitle,};
                 \node(n1)[overlay, below=of t1] {\square[color=\cardcolor, border=true, scale=0.6]};
                 \node(n2)[overlay] at ($(t2.center)!(n1.center)!(t2.center)$){\square[color=\cardcolor]};
-                \draw[-, shorten >=0, shorten <=0] (n1) -- (n2);
 
-                \ifthenelse{\isundefined{\genitive}}
-                {
-                    \node(t3)[text=red, anchor=south, font=\sffamily\bfseries, overlay, right=of t2] {\Large\plural};
-                    \node(n3)[overlay] at ($(t3.center)!(n1.center)!(t3.center)$){\square[color=red]};
-                    % use fit to automatically center the content
-                    \node[fit=(t1) (t2) (t3) (n1) (n2) (n3), draw=none] (fitbox) {};
-                }
-                {
-                    \node(t3)[text=red, anchor=south, font=\sffamily\bfseries, overlay, right=of t2] {\Large\genitive};
-                    \node(t4)[text=red, font=\sffamily\bfseries, overlay, right=of t3] {\Large\plural};
-
+                \expandafter\ifstrequal\expandafter{\genitive}{}{
+                    \node(t3)[overlay, right=-0.5em of t2] {};
+                    \node(n3)[overlay] at ($(t3.center)!(n1.center)!(t3.center)$){};
+                }{
+                    \node(t3)[text=red, overlay, minimum width=0.5cm, right=of t2] {\Large\genitive};
                     \node(n3)[overlay] at ($(t3.center)!(n1.center)!(t3.center)$){\olive[color=\cardcolor]};
-                    \node(n4)[overlay] at ($(t4.center)!(n1.center)!(t4.center)$){\square[color=red]};
-                    % use fit to automatically center the content
-                    \node[fit=(t1) (t2) (t3) (t4) (n1) (n2) (n3) (n4), draw=none] (fitbox) {};
                 }
+
+                \node(t4)[text=red, overlay, minimum width=0.5cm, right=of t3] {\Large\plural};
+                \node(n4)[overlay] at ($(t4.center)!(n1.center)!(t4.center)$){\square[color=red]};
+                % use fit to automatically center the content
+                \node[fit=(t1) (t2) (t3) (t4) (n1) (n2) (n3) (n4), draw=none] (fitbox) {};
+
+                \draw[-, shorten >=0, shorten <=0] (n1) -- (n2);
 
             \end{tikzpicture}%
         }
     }{}
 
+    % verb
     \expandafter\ifstrequal\expandafter{\p}{v.}{
         % spelling
+        \StrCount{\fspelling}{,}[\dc]
         \StrCut{\fspelling}{,}{\infinitive}{\pb}
         \def\cardtitle{\infinitive}
         \StrCut{\pb}{,}{\present}{\pc}
@@ -154,10 +153,46 @@
         \StrCut{\pd}{ }{\auxilary}{\pastparticle}
 
         \def\spellingcontent{
-            \begin{tikzpicture}[baseline, every node/.style={spelling}]
-                \node(t1)[text=black, anchor=south, font=\sffamily\bfseries, overlay] {\Large\infinitive};
-                \node(n1)[overlay, below=of t1] {\cir[color=gray, scale=1]};
-                \node[fit=(t1) (n1), draw=none] (fitbox) {};
+            \begin{tikzpicture}[baseline, every node/.style={spelling, verb}]
+                \edef\conjugation{\present\past\auxilary}
+                \expandafter\ifstrequal\expandafter{\conjugation}{}{
+                    \node(t1)[text=black, font=\sffamily\bfseries, overlay] {\small\infinitive};
+                    \node(n1)[overlay, below=1em of t1] {\cir[color=gray, scale=1]};
+                }{
+                    \node(t1)[text=black, font=\sffamily\bfseries, overlay] {\small\infinitive,};
+                    \node(n1)[overlay, below=1em of t1] {\flower[color=gray, scale=1]};
+                }
+
+                \expandafter\ifstrequal\expandafter{\present}{}{
+                    \node(t2)[overlay, right=-0.6cm of t1] {};
+                    \node(n2)[overlay] at ($(t2.center)!(n1.center)!(t2.center)$){};
+                }{
+                    \node(t2)[text=black, overlay, right=of t1] {\small\present,};
+                    \node(n2)[overlay] at ($(t2.center)!(n1.center)!(t2.center)$){\flower[color=gray, clock=simple]};
+                }
+                \expandafter\ifstrequal\expandafter{\past}{}{
+                    \node(t3)[overlay, right=-0.6cm of t2] {};
+                    \node(n3)[overlay] at ($(t3.center)!(n1.center)!(t3.center)$){};
+                }{
+                    \node(t3)[text=black, overlay, right=of t2] {\small\past,};
+                    \node(n3)[overlay] at ($(t3.center)!(n1.center)!(t3.center)$){\flower[color=gray, clock=simple, rotate=true]};
+                }
+                \expandafter\ifstrequal\expandafter{\auxilary}{}{
+                    \node(t4)[overlay, right=-0.6cm of t3] {};
+                    \node(n4)[overlay] at ($(t4.center)!(n1.center)!(t4.center)$){};
+                }{
+                    \node(t4)[text=black, overlay, right=of t3] {\small\auxilary};
+                    \node(n4)[overlay] at ($(t4.center)!(n1.center)!(t4.center)$){\flower[color=gray, fill=thin, clock=simple]};
+                }
+                \expandafter\ifstrequal\expandafter{\pastparticle}{}{
+                    \node(t5)[overlay, right=-0.6cm of t4] {};
+                    \node(n5)[overlay] at ($(t5.center)!(n1.center)!(t5.center)$){};
+                }{
+                    \node(t5)[text=black, overlay, right=of t4] {\small\pastparticle};
+                    \node(n5)[overlay] at ($(t5.center)!(n1.center)!(t5.center)$){\flower[color=gray, pattern=vert, rotate=true]};
+                }
+
+                \node[fit=(t1) (t2) (t3) (t4) (t5) (n1) (n2) (n3) (n4), draw=none] (fitbox) {};
             \end{tikzpicture}%
         }
     }{}
