@@ -1,7 +1,7 @@
 \chapter*{Diagram}
 
 \def\nouncontent{%
-    \begin{tikzpicture}[every node/.style={tight}]
+    \begin{tikzpicture}[every node/.style={tight, diagram}]
         \node (rect1)  at (0,0) {\rect[color=gray, width=4em, height=1.8em, label={gender}]};%
         \node (rect2) [right=of rect1] {\rect[color=gray, width=4em, height=1.8em, label={number}]};%
         \node (rect3) [right=of rect2] {\rect[color=gray, width=4em, height=1.8em, label={case}]};%

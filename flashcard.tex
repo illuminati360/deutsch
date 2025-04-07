@@ -89,7 +89,7 @@
 \NewDocumentCommand{\makeflashcard}{m}{
     \pgfkeys{/makeflashcard, default, #1}%
 
-    \def\cardcolor{gray}
+    \def\cardcolor{darkgray}
 
     \edef\p{\fpart}
     % noun
@@ -127,7 +127,7 @@
                     \node(t3)[overlay, right=-0.5em of t2] {};
                     \node(n3)[overlay] at ($(t3.center)!(n1.center)!(t3.center)$){};
                 }{
-                    \node(t3)[text=red, overlay, minimum width=0.5cm, right=of t2] {\Large\genitive};
+                    \node(t3)[text=\cardcolor, overlay, minimum width=0.5cm, right=of t2] {\Large\genitive,};
                     \node(n3)[overlay] at ($(t3.center)!(n1.center)!(t3.center)$){\olive[color=\cardcolor]};
                 }
 
