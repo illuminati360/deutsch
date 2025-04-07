@@ -1,24 +1,27 @@
 \chapter*{Flashcard}
 \label{chap:flashcard}
+This section only serves as "info cards". Use anki to memorize new words.
 
 \newpage
 \newgeometry{left=0cm, right=0cm, top=0cm, bottom=0cm}
 \pdfpagewidth=5.758cm
 \pdfpageheight=9.92cm
 
-\makeflashcard{%
-    part={n.},
-    spelling={das Auge, -s},%
-    translation=eye,%
-    picture={graphics/Auge.png},%
-    hint={奥哥有眼力见}%
-}
-\makeflashcard{%
-    part={n.},
-    spelling={die Freiheit, -, -s},%
-    translation=freedom,%
-    picture={graphics/Freiheit.jpeg},%
-    hint={Free-dom, Frei-heit}%
+\csvreader[
+    head to column names, % Make the first row define the column names
+    separator=semicolon
+]{data/test.tsv}{}%
+{%
+    \makeflashcard{%
+        part={n.},%
+        pronounciation={},%
+        spelling=\spelling,%
+        translation=\translation,%
+        picture=\picture,%
+        hint=\hint,%
+        tags=\tags,%
+        group=\group,%
+    }%
 }
 
 \restoregeometry

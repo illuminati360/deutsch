@@ -72,13 +72,12 @@
 
 \pgfkeys{
     /makeflashcard/.is family, /makeflashcard,
-    default/.style = {picture={graphics/Blank.png}, translation={}, hint={}, tags={}, group={}},
+    default/.style = {translation={}, hint={}, tags={}, group={}},
     part/.store in = \fpart,
     % sound
     pronounciation/.store in = \fpronounciation,
     % form
     spelling/.store in = \fspelling,
-    inflection/.store in = \inflection,
     % meaning
     translation/.store in = \ftranslation,
     picture/.store in = \fpicture,
@@ -115,7 +114,7 @@
             }
         }
 
-        \def\spelling{
+        \def\spellingcontent{
             \begin{tikzpicture}[baseline, every node/.style={spelling}]
                 \node(t1)[text=\nouncolor, anchor=south, font=\sffamily\bfseries, overlay] {\Large\article};
                 \node(t2)[text=\nouncolor, anchor=south, font=\sffamily\bfseries, overlay, right=of t1] {\Large\stem,};
@@ -144,7 +143,14 @@
         }
     }{}
 
+    \IfFileExists{\fpicture}{
+        \def\picturepath{Blank.png}
+    }
+    {
+        \def\picturepath{\fpicture}
+    }
+
     \noindent
-    \flashcard[color=\nouncolor, title=\stem, foot=\ftranslation, spelling=\spelling, picture=\fpicture, hint=\fhint]
+    \flashcard[color=\nouncolor, title=\stem, foot=\ftranslation, spelling=\spellingcontent, picture=\picturepath, hint=\fhint]
     \newpage
 }
