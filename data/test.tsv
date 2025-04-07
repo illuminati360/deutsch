@@ -1,4 +1,5 @@
-part;pronounciation;spelling;translation;picture;hint;tags;group
-n.;;das Auge, -s;eye;Auge.png;奥哥有眼力见;;
-n.;;die Freiheit, -, -s;freedom;Freiheit.jpeg;Free-dom, Frei-heit;;
-n.;;der Früling, -e;spring;Früling.jpg;腐儒灵;;
+partofspeech;pronounciation;spelling;translation;picture;hint;tags;group
+n.;;das Auge,-s;eye;Auge.png;奥哥有眼力见;;
+n.;;die Freiheit,-,-s;freedom;Freiheit.jpeg;Free-dom, Frei-heit;;
+n.;;der Früling,-e;spring;Früling.jpg;腐儒灵;;
+v.;;kommen,,kam,;to come;;EN: come DE: komm;;

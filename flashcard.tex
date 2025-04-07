@@ -73,7 +73,7 @@
 \pgfkeys{
     /makeflashcard/.is family, /makeflashcard,
     default/.style = {translation={}, hint={}, tags={}, group={}},
-    part/.store in = \fpart,
+    partofspeech/.store in = \fpart,
     % sound
     pronounciation/.store in = \fpronounciation,
     % form
@@ -89,37 +89,39 @@
 \NewDocumentCommand{\makeflashcard}{m}{
     \pgfkeys{/makeflashcard, default, #1}%
 
+    \def\cardcolor{gray}
+
+    \edef\p{\fpart}
     % noun
-    \expandafter\ifstrequal\expandafter{\fpart}{n.}{
+    \expandafter\ifstrequal\expandafter{\p}{n.}{
         % spelling
-        \StrCount{\fspelling}{, }[\dc]
-        \StrCut{\fspelling}{, }{\pa}{\pb}
-        \StrCut{\pa}{ }{\article}{\stem}
+        \StrCount{\fspelling}{,}[\dc]
+        \StrCut{\fspelling}{,}{\pa}{\pb}
+        \StrCut{\pa}{ }{\article}{\cardtitle}
         \ifnum\dc=1
             \def\plural{\pb}
         \else
-            \StrCut{\pb}{, }{\genitive}{\plural}
+            \StrCut{\pb}{,}{\genitive}{\plural}
         \fi
 
-        \def\nouncolor{gray}
         \expandafter\ifstrequal\expandafter{\article}{der}{
-            \def\nouncolor{green}
+            \def\cardcolor{green}
         }{
             \expandafter\ifstrequal\expandafter{\article}{das}{
-                \def\nouncolor{purple}
+                \def\cardcolor{purple}
             }{
                 \expandafter\ifstrequal\expandafter{\article}{die}{
-                    \def\nouncolor{yellow}
+                    \def\cardcolor{yellow}
                 }{}
             }
         }
 
         \def\spellingcontent{
             \begin{tikzpicture}[baseline, every node/.style={spelling}]
-                \node(t1)[text=\nouncolor, anchor=south, font=\sffamily\bfseries, overlay] {\Large\article};
-                \node(t2)[text=\nouncolor, anchor=south, font=\sffamily\bfseries, overlay, right=of t1] {\Large\stem,};
-                \node(n1)[overlay, below=of t1] {\square[color=\nouncolor, border=true, scale=0.6]};
-                \node(n2)[overlay] at ($(t2.center)!(n1.center)!(t2.center)$){\square[color=\nouncolor]};
+                \node(t1)[text=\cardcolor, anchor=south, font=\sffamily\bfseries, overlay] {\Large\article};
+                \node(t2)[text=\cardcolor, anchor=south, font=\sffamily\bfseries, overlay, right=of t1] {\Large\cardtitle,};
+                \node(n1)[overlay, below=of t1] {\square[color=\cardcolor, border=true, scale=0.6]};
+                \node(n2)[overlay] at ($(t2.center)!(n1.center)!(t2.center)$){\square[color=\cardcolor]};
                 \draw[-, shorten >=0, shorten <=0] (n1) -- (n2);
 
                 \ifthenelse{\isundefined{\genitive}}
@@ -133,12 +135,30 @@
                     \node(t3)[text=red, anchor=south, font=\sffamily\bfseries, overlay, right=of t2] {\Large\genitive};
                     \node(t4)[text=red, font=\sffamily\bfseries, overlay, right=of t3] {\Large\plural};
 
-                    \node(n3)[overlay] at ($(t3.center)!(n1.center)!(t3.center)$){\olive[color=\nouncolor]};
+                    \node(n3)[overlay] at ($(t3.center)!(n1.center)!(t3.center)$){\olive[color=\cardcolor]};
                     \node(n4)[overlay] at ($(t4.center)!(n1.center)!(t4.center)$){\square[color=red]};
                     % use fit to automatically center the content
                     \node[fit=(t1) (t2) (t3) (t4) (n1) (n2) (n3) (n4), draw=none] (fitbox) {};
                 }
 
+            \end{tikzpicture}%
+        }
+    }{}
+
+    \expandafter\ifstrequal\expandafter{\p}{v.}{
+        \typeout{nigger}
+        % spelling
+        \StrCut{\fspelling}{,}{\infinitive}{\pb}
+        \def\cardtitle{\infinitive}
+        \StrCut{\pb}{,}{\present}{\pc}
+        \StrCut{\pc}{,}{\past}{\pd}
+        \StrCut{\pd}{ }{\auxilary}{\pastparticle}
+
+        \def\spellingcontent{
+            \begin{tikzpicture}[baseline, every node/.style={spelling}]
+                \node(t1)[text=black, anchor=south, font=\sffamily\bfseries, overlay] {\Large\infinitive};
+                \node(n1)[overlay, below=of t1] {\cir[color=gray, scale=1]};
+                \node[fit=(t1) (n1), draw=none] (fitbox) {};
             \end{tikzpicture}%
         }
     }{}
@@ -151,6 +171,6 @@
     }
 
     \noindent
-    \flashcard[color=\nouncolor, title=\stem, foot=\ftranslation, spelling=\spellingcontent, picture=\picturepath, hint=\fhint]
+    \flashcard[color=\cardcolor, title=\cardtitle, foot=\ftranslation, spelling=\spellingcontent, picture=\picturepath, hint=\fhint]
     \newpage
 }
