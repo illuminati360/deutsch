@@ -1,125 +1,105 @@
 \chapter{名词组：冠形名代}
 \section{强限定：定冠词，强形容词，人称代词，名词性物主代词}
-\begin{tabular}{|M{2em}|M{2em}|M{2em}|M{2em}|M{2em}|}
-    \hline
-      & M   & N   & F  & P  \\
-    \hline
-    N & -r  & -s  & -e & -e \\
-    \hline
-    A & -n  & -s  & -e & -e \\
-    \hline
-    D & -m  & -m  & -r & -n \\
-    \hline
-    G & -es & -es & -r & -r \\
-    \hline
-\end{tabular} \\
+\begin{tikzpicture}
+  \matrix (m1) [matrixtable]{
+    \hspace{1em} & M   & N   & F  & P  \\
+    N            & -r  & -s  & -e & -e \\
+    A            & -n  & -s  & -e & -e \\
+    D            & -m  & -m  & -r & -n \\
+    G            & -es & -es & -r & -r \\
+  };
+  \node(l1) [above=0.03cm of m1] {\small{Table 1-1 母表}};
 
-\begin{tabular}{|M{2em}|M{2em}|M{2em}|M{2em}|M{2em}|}
-    \hline
-      & M   & N   & F   & P   \\
-    \hline
-    N & der & das & die & die \\
-    \hline
-    A & den & das & die & die \\
-    \hline
-    D & dem & dem & der & den \\
-    \hline
-    G & des & des & der & der \\
-    \hline
-\end{tabular}
-\label{table:artdef}
-\begin{tabular}{|M{2em}|M{2em}|M{2em}|M{2em}|M{2em}|}
-    \hline
-      & M   & N   & F   & P     \\
-    \hline
-    N & er  & es  & sie & sie   \\
-    \hline
-    A & ihn & es  & sie & sie   \\
-    \hline
-    D & ihm & ihm & ihr & ihnen \\
-    \hline
-    G &     &     &     &       \\
-    \hline
-\end{tabular} \\
+  \matrix (m2) [matrixtable, below=1cm of m1]{
+    \hspace{1em} & M   & N   & F   & P   \\
+    N            & der & das & die & die \\
+    A            & den & das & die & die \\
+    D            & dem & dem & der & den \\
+    G            & des & des & der & der \\
+  };
+  \node(l2) [above=0.03cm of m2] {\small{Table 1-2 定冠}};
 
-\begin{tabular}{|M{2em}|M{2em}|M{2em}|M{2em}|M{2em}|}
-    \hline
-      & M   & N   & F   & P   \\
-    \hline
-    N & -er & -es & -e  & -en \\
-    \hline
-    A & -en & -es & -e  & -en \\
-    \hline
-    D & -en & -en & -en & -en \\
-    \hline
-    G & -en & -en & -en & -en \\
-    \hline
-\end{tabular}
-\begin{tabular}{|M{2em}|M{2em}|M{2em}|M{2em}|M{2em}|}
-    \hline
-      & M   & N     & F   & P   \\
-    \hline
-    N & -er & -(e)s & -e  & -e  \\
-    \hline
-    A & -en & -(e)s & -e  & -e  \\
-    \hline
-    D & -em & -em   & -er & -en \\
-    \hline
-    G & -es & -es   & -er & -er \\
-    \hline
-\end{tabular}
+  \matrix (m3) [matrixtable, right=0.5cm of m2]{
+    \hspace{1em} & M            & N            & F            & P            \\
+    N            & er           & es           & sie          & sie          \\
+    A            & ihn          & es           & sie          & sie          \\
+    D            & ihm          & ihm          & ihr          & \tiny{ihnen} \\
+    G            & \hspace{1em} & \hspace{1em} & \hspace{1em} & \hspace{1em} \\
+  };
+  \node(l3) [above=0.03cm of m3] {\small{Table 1-3 单三}};
+
+  \matrix (m4) [matrixtable, below=1cm of m2]{
+    \hspace{1em} & M   & N   & F   & P   \\
+    N            & -er & -es & -e  & -en \\
+    A            & -en & -es & -e  & -en \\
+    D            & -en & -en & -en & -en \\
+    G            & -en & -en & -en & -en \\
+  };
+  \node(l4) [above=0.03cm of m4] {\small{Table 1-4 强形}};
+
+  \matrix (m5) [matrixtable, right=0.5cm of m4]{
+    \hspace{1em} & M   & N     & F   & P   \\
+    N            & -er & -(e)s & -e  & -e  \\
+    A            & -en & -(e)s & -e  & -e  \\
+    D            & -em & -em   & -er & -en \\
+    G            & -es & -es   & -er & -er \\
+  };
+  \node(l5) [above=0.03cm of m5] {\small{Table 1-5 名物}};
+\end{tikzpicture}
 \section{弱限定：不定冠词，弱形容词，形容词性物主代词}
 \begin{tabular}{|M{2em}|M{2em}|M{2em}|M{2em}|M{2em}|}
-    \hline
-      & M   & N   & F  & P  \\
-    \hline
-    N & -   & -   & -e & -e \\
-    \hline
-    A & -n  & -   & -e & -e \\
-    \hline
-    D & -m  & -m  & -r & -n \\
-    \hline
-    G & -es & -es & -r & -r \\
-    \hline
+  \hline
+    & M   & N   & F  & P  \\
+  \hline
+  N & -   & -   & -e & -e \\
+  \hline
+  A & -n  & -   & -e & -e \\
+  \hline
+  D & -m  & -m  & -r & -n \\
+  \hline
+  G & -es & -es & -r & -r \\
+  \hline
 \end{tabular} \\
 
 \begin{tabular}{|M{2em}|M{2em}|M{2em}|M{2em}|M{2em}|}
-    \hline
-      & M     & N     & F     & P \\
-    \hline
-    N & ein   & ein   & eine  &   \\
-    \hline
-    A & einen & ein   & eine  &   \\
-    \hline
-    D & einem & einem & einer &   \\
-    \hline
-    G & eines & eines & einer &   \\
-    \hline
+  \hline
+    & M     & N     & F     & P \\
+  \hline
+  N & ein   & ein   & eine  &   \\
+  \hline
+  A & einen & ein   & eine  &   \\
+  \hline
+  D & einem & einem & einer &   \\
+  \hline
+  G & eines & eines & einer &   \\
+  \hline
 \end{tabular} \\
 
 \begin{tabular}{|M{2em}|M{2em}|M{2em}|M{2em}|M{2em}|}
-    \hline
-      & M   & N   & F   & P   \\
-    \hline
-    N & -e  & -e  & -e  & -en \\
-    \hline
-    A & -en & -e  & -e  & -en \\
-    \hline
-    D & -en & -en & -en & -en \\
-    \hline
-    G & -en & -en & -en & -en \\
-    \hline
+  \hline
+    & M   & N   & F   & P   \\
+  \hline
+  N & -e  & -e  & -e  & -en \\
+  \hline
+  A & -en & -e  & -e  & -en \\
+  \hline
+  D & -en & -en & -en & -en \\
+  \hline
+  G & -en & -en & -en & -en \\
+  \hline
 \end{tabular}
 \begin{tabular}{|M{2em}|M{2em}|M{2em}|M{2em}|M{2em}|}
-    \hline
-      & M   & N   & F   & P   \\
-    \hline
-    N & -   & -   & -e  & -e  \\
-    \hline
-    A & -en & -   & -e  & -e  \\
-    \hline
-    D & -em & -em & -er & -en \\
-    \hline
-    G & -es & -es & -er & -er \\
-    \hline
+  \hline
+    & M   & N   & F   & P   \\
+  \hline
+  N & -   & -   & -e  & -e  \\
+  \hline
+  A & -en & -   & -e  & -e  \\
+  \hline
+  D & -em & -em & -er & -en \\
+  \hline
+  G & -es & -es & -er & -er \\
+  \hline
 \end{tabular}
+
+\section{Tikz Table}

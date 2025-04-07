@@ -1,5 +1,6 @@
 \usepackage{array}
-\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+\graphicspath{{./graphics/}}
 
 % quote block
 \usepackage[most]{tcolorbox}
@@ -47,4 +48,21 @@
             minimum width=0.6cm,
         }}
 
-\graphicspath{{./graphics/}}
+% table
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+\tikzset{
+    matrixtable/.style={
+            matrix of nodes,
+            nodes={
+                    anchor=center,
+                    minimum width=2em,
+                    minimum height=2em,
+                    draw,
+                },
+            draw,
+            inner sep=0,
+            outer sep=0,
+            node distance=0,
+        }
+}
