@@ -5,11 +5,11 @@
 \renewcommand{\arraystretch}{1.5}{
     \begin{tabular}{|M{2.5em}|M{3em}|M{2.5em}|M{3em}|}
         \hline
-        格 & 形                              & 性 & 色                     \\
+        格 & 形                    & 性 & 色                     \\
         \hline
         N & \square[border=true] & M & \square[color=green]  \\
         \hline
-        A & \diam[border=true]   & N & \square[color=purple]  \\
+        A & \diam[border=true]   & N & \square[color=purple] \\
         \hline
         D & \olive[border=true]  & F & \square[color=yellow] \\
         \hline
@@ -24,10 +24,6 @@
 \begin{myquote}
     背名词，必带冠。
 \end{myquote}
-名词的性的规律
-
-\section{数}
-名词复数变化规律
 
 \section{格}
 格的顺序
@@ -42,3 +38,172 @@
 \begin{myquote}
     复与-n，阳弱-(e)n，单阳中属-(e)s。
 \end{myquote}
+
+\newgeometry{left=1cm, right=1cm, top=1cm, bottom=1cm}
+\section{名词性、数规律}
+使用方法：由上到下看图。先看词形，若匹配后缀，可确定（彩色的）或者猜出（灰色的）对应的性（绿，紫，黄）、数（红，有5个能直接确定）。若无匹配，再看所属词族，若匹配，则可猜出性。根据性和音节数，便可以猜出复数形式。总之：\\
+\begin{myquote}
+    形义推性，性音推数，否则特殊。
+\end{myquote}
+\tikzset{
+    glossary/.style={
+            nodes={
+                    minimum height=0.5cm,
+                    minimum width=4cm,
+                    text width=4cm,
+                    font=\linespread{0.9}\bfseries,
+                    inner sep=0,
+                    outer sep=0,
+                    thick
+                },
+            node distance=0.1cm,
+            align=center,
+        },
+    label/.style={
+            anchor=center,
+        },
+    masculine/.style={
+            draw=green,
+            text=green,
+        },
+    neuter/.style={
+            draw=purple,
+            text=purple,
+        },
+    feminine/.style={
+            draw=yellow,
+            text=yellow,
+        },
+    plural/.style={
+            text=red,
+            align=left,
+            minimum width=1cm,
+            text width=1cm,
+        },
+    note/.style={
+            text=gray,
+            align=left,
+            minimum width=1.5cm,
+            text width=1.5cm,
+        },
+    ambiguous/.style={
+            draw=darkgray,
+            text=darkgray,
+        },
+    fitbox/.style={
+            inner sep=0.1cm,
+            outer sep=0.1cm,
+            rounded corners=0.1cm,
+        },
+    proportionarrow/.style={
+            -latex,
+            shorten >=0,
+            shorten <=0
+        },
+    arrowtext/.style={
+            font=\sffamily,
+            text=gray,
+        },
+}
+\begin{tikzpicture}[glossary]
+    % prefixes with >99% certainty
+    \node(m1) [masculine] {-ant};
+    \node(m2) [masculine, below=of m1] {-ast, -ling, -ich, -g};
+    \node(m3) [masculine, below=of m2] {-or, -us, -ist, -ismus};
+    \node(p1) [plural, right=0.3cm of m1] {$\text{-en}^*$};
+    \node(p2) [plural, right=0.3cm of m2] {-e};
+    \node(t1) [masculine, fitbox, fit=(m1) (m2) (m3) (p1) (p2)] {};
+    \node(l1) [label, text=green, above=1cm of t1] {\Large{M}};
+
+    \node(n1) [neuter, right=0.6cm of p1] {-chen, -lein};
+    \node(n2) [neuter, below=of n1] {-il};
+    \node(n3) [neuter, below=of n2] {-icht, -it, -ma, -ment,\\-tum, -tel, -um};
+    \node(n4) [neuter, below=of n3] {Ge-};
+    \node(p3) [plural, right=0.3cm of n1] {$\text{-}^*$};
+    \node(p4) [plural, right=0.3cm of n2] {-e};
+    \node(t2) [neuter, fitbox, fit=(n1) (n2) (n3) (n4) (p3) (p4)] {};
+    \node(l2) [label, text=purple] at ($(t2.center)!(l1.center)!(t2.center)$) {\Large{N}};
+
+    \node(f1) [feminine, right=0.6cm of p3] {-ei, -heit, -keit,\\-ung, -schaft};
+    \node(f2) [feminine, below=of f1] {-a -ik, -ur,\\-sion, -tion,\\-anz, -enz,\\-tät, -sis, -ie};
+    \node(f3) [note, right=0.3cm of f2] {Foreign};
+    \node(t3) [feminine, fitbox, fit=(f1) (f2) (f3)] {};
+    \node(l3) [label, text=yellow] at ($(t3.center)!(l1.center)!(t3.center)$) {\Large{F}};
+
+    \node(tt) [draw=none, fit=(t1) (t2) (t3)] {};
+
+    % % ambiguous prefixes
+    \node(r1) [draw=none] at ([yshift=-0.9cm]$(l1.center)!(tt.south)!(l1.center)$) {};
+    \node(a1) [ambiguous] at ([xshift=-0.7cm]r1.south) {-en, -el, -r};
+    \draw[proportionarrow, masculine] (a1) -- (t1) node[arrowtext, midway] {\small{60\%}};
+
+    \node(r2) [draw=none] at ([yshift=-0.9cm]$(l2.center)!(tt.south)!(l2.center)$){};
+    \node(a2) [ambiguous] at ([xshift=2cm]r2.south) {-nis, -sal};
+    \node(p5) [plural, right=0.3cm of a2] {-e};
+    \draw[proportionarrow, neuter] (a2) -- (t2) node[arrowtext, midway] {\small{70\%}};
+    \draw[proportionarrow, feminine] (a2) -- (t3) node[arrowtext, midway] {\small{30\%}};
+
+    \node(r3) [draw=none] at ([yshift=-2.4cm]$(l2.center)!(tt.south)!(l2.center)$) {};
+    \node(a3) [ambiguous] at ([xshift=-0.5cm]r3.south) {-al, -an, -ar, -är, -at,\\-ent, -ett,\\-ier, -iv, -o, -on};
+    \draw[proportionarrow, masculine] (a3) -- (t1) node[arrowtext, midway] {\small{10\%}};
+    \draw[proportionarrow, neuter] (a3) -- (t2) node[arrowtext, midway] {\small{90\%}};
+
+    \node(r4) [draw=none] at ([yshift=-0.9cm]$(l3.center)!(tt.south)!(l3.center)$) {};
+    \node(a4) [ambiguous] at ([xshift=1cm]r4.south) {-e};
+    \draw[proportionarrow, feminine] (a4) -- (t3) node[arrowtext, midway] {\small{90\%}};
+
+    \node(t4) [draw=darkgray, densely dashed, fitbox, fit=(a1) (a2) (a3) (a4)] {};
+
+    \node(bt1) [draw=darkgray, fitbox, fit=(t1) (t2) (t3) (t4)]{}; % big fit box 1
+
+    % meaning groups
+    \node(mg1) [masculine] at ([yshift=-1cm]$(r1.center)!(t4.south)!(r1.center)$) {Cars};
+    \node(mg2) [masculine, below=of mg1] {Currency};
+    \node(mg3) [masculine, below=of mg2] {Days, Months,\\Seasons};
+    \node(mg4) [masculine, below=of mg3] {Drinks};
+    \node(mg5) [masculine, below=of mg4] {Weather};
+    \node(mg6) [masculine, below=of mg5] {Mountains};
+    \node(mg7) [masculine, below=of mg6] {Space};
+    \node(mg8) [masculine, below=of mg7] {Minerals};
+    \node(t5) [masculine, fitbox, fit=(mg1) (mg2) (mg3) (mg4) (mg5) (mg6) (mg7) (mg8)] {};
+
+    \node(ng1) [neuter] at ($(r2.center)!(mg1.center)!(r2.center)$) {Cars};
+    \node(ng2) [neuter, below=of ng1] {Countries};
+    \node(ng3) [neuter, below=of ng2] {Continents, Cities,\\Provinces};
+    \node(ng4) [neuter, below=of ng3] {Hotel, Cafe};
+    \node(ng5) [neuter, below=of ng4] {Restaurant, Theatres};
+    \node(ng6) [neuter, below=of ng5] {Languages};
+    \node(ng7) [neuter, below=of ng6] {Notations};
+    \node(ng8) [neuter, below=of ng7] {Colors};
+    \node(ng9) [neuter, below=of ng8] {Elements};
+    \node(ng10) [neuter, below=of ng9] {Units};
+    \node(t6) [neuter, fitbox, fit=(ng1) (ng2) (ng3) (ng4) (ng5) (ng6) (ng7) (ng8) (ng9) (ng10)] {};
+
+    \node(fg1) [feminine] at ($(r4.center)!(mg1.center)!(r4.center)$) {Numerals};
+    \node(fg2) [feminine, below=of fg1] {Tree, Fruits,\\Flowers};
+    \node(fg3) [feminine, below=of fg2] {Airplane, Motorcycle,\\Ships};
+    \node(t7) [feminine, fitbox, fit=(fg1) (fg2) (fg3)] {};
+
+    \node(a5) [ambiguous] at ([xshift=1cm, yshift=-2cm]t5.south) {Persons, Rivers, ...};
+    \node(a6) [ambiguous, right=1cm of a5] {Animals, ...};
+    \node(a7) [ambiguous, right=1cm of a6] {...};
+    \node(t7) [draw=darkgray, densely dashed, fitbox, fit={($(a5.south)!(t5.west)!(a6.south)$) ($(a5.north)!(t7.east)!(a6.north)$)}] {};
+
+    \node(bt2) [draw=darkgray, fitbox, fit={($(t4.west)!(t7.south)!(t4.west)$) ($(t4.east)!(t5.north)!(t4.east)$)}]{}; % big fit box 2
+
+    % syllables
+    \node(pp1) [draw=red, text=red] at ([yshift=-1.3cm]$(r1.center)!(t7.south)!(r1.center)$) {\textcolor{gray}{monosyllabic:} {\freesans{\char"2E1A}}e};
+    \node(pp2) [draw=red, text=red] at ($(r2.center)!(pp1.center)!(r2.center)$) {{\textcolor{gray}{monosyllabic:} \freesans{\char"2E1A}}er};
+    \node(tt1) [draw=none, below=0.3cm of pp1] {};
+    \node(tt2) [draw=none, below=0.3cm of pp2] {};
+    \node(pp3) [draw=red, text=red, fit=(tt1) (tt2)] {\textcolor{gray}{polysylabic:}-e};
+
+    \node(tt3) [draw=none] at ($(r4.center)!(pp1.center)!(r4.center)$) {};
+    \node(tt4) [draw=none, below=0.3cm of tt3] {};
+    \node(pp4) [draw=red, text=red, fit=(tt3) (tt4)] {-n\textcolor{gray}{ (weak nouns)}};
+
+    \node(bt3) [draw=darkgray, minimum height=2.5cm, fitbox, fit={($(t4.west)!(pp4.south)!(t4.west)$) ($(t4.east)!(pp1.north)!(t4.east)$)}]{}; % big fit box 3
+\end{tikzpicture}
+\restoregeometry
+\newpage
+特殊情况包括弱名词，特殊复数。

@@ -1,7 +1,11 @@
 \chapter{名词组：冠形名代}
 \section{强限定：定冠词，强形容词，人称代词，名词性物主代词}
+\section{弱限定：不定冠词，弱形容词，形容词性物主代词}
+\newgeometry{left=1cm, right=1cm, top=1cm, bottom=1cm}
+\def\ca{green}
+\def\cb{red}
 \begin{tikzpicture}
-  \matrix (m1) [matrixtable]{
+  \matrix (m1) [matrixtable, matrixtable/green]{
     \hspace{1em} & M   & N   & F  & P  \\
     N            & -r  & -s  & -e & -e \\
     A            & -n  & -s  & -e & -e \\
@@ -10,7 +14,7 @@
   };
   \node(l1) [above=0.03cm of m1] {\small{Table 1-1 母表}};
 
-  \matrix (m2) [matrixtable, below=1cm of m1]{
+  \matrix (m2) [matrixtable, matrixtable/green, below=1cm of m1]{
     \hspace{1em} & M   & N   & F   & P   \\
     N            & der & das & die & die \\
     A            & den & das & die & die \\
@@ -19,7 +23,7 @@
   };
   \node(l2) [above=0.03cm of m2] {\small{Table 1-2 定冠}};
 
-  \matrix (m3) [matrixtable, right=0.5cm of m2]{
+  \matrix (m3) [matrixtable, matrixtable/green, right=0.5cm of m2]{
     \hspace{1em} & M            & N            & F            & P            \\
     N            & er           & es           & sie          & sie          \\
     A            & ihn          & es           & sie          & sie          \\
@@ -28,16 +32,16 @@
   };
   \node(l3) [above=0.03cm of m3] {\small{Table 1-3 单三}};
 
-  \matrix (m4) [matrixtable, below=1cm of m2]{
-    \hspace{1em} & M   & N   & F   & P   \\
-    N            & -er & -es & -e  & -en \\
-    A            & -en & -es & -e  & -en \\
-    D            & -en & -en & -en & -en \\
-    G            & -en & -en & -en & -en \\
+  \matrix (m4) [matrixtable, matrixtable/green, below=1cm of m2]{
+    \hspace{1em} & M   & N   & F   & P \\
+    N            & -er & -es & -e  &   \\
+    A            & -en & -es & -e  &   \\
+    D            & -en & -en & -en &   \\
+    G            & -en & -en & -en &   \\
   };
   \node(l4) [above=0.03cm of m4] {\small{Table 1-4 强形}};
 
-  \matrix (m5) [matrixtable, right=0.5cm of m4]{
+  \matrix (m5) [matrixtable, matrixtable/green, right=0.5cm of m4]{
     \hspace{1em} & M   & N     & F   & P   \\
     N            & -er & -(e)s & -e  & -e  \\
     A            & -en & -(e)s & -e  & -e  \\
@@ -45,61 +49,61 @@
     G            & -es & -es   & -er & -er \\
   };
   \node(l5) [above=0.03cm of m5] {\small{Table 1-5 名物}};
+  \node[fit=(m1) (m2) (m3) (m4) (m5) (l1) (l2) (l3) (l4) (l5), draw=\ca, densely dashed, rounded corners=0.2cm, inner sep=0.3cm] (f1){};
+
+  \matrix (m6) [matrixtable, matrixtable/red, right=5cm of m1,
+    row 2 column 2/.style={nodes={shade}},
+    row 2 column 3/.style={nodes={shade}},
+    row 3 column 3/.style={nodes={shade}},
+  ]{
+    \hspace{1em} & M   & N   & F  & P  \\
+    N            & -   & -   & -e & -e \\
+    A            & -n  & -   & -e & -e \\
+    D            & -m  & -m  & -r & -n \\
+    G            & -es & -es & -r & -r \\
+  };
+  \node(l6) [above=0.03cm of m6] {\small{Table 1-6 母表}};
+
+  \matrix (m7) [matrixtable, matrixtable/red, below=1cm of m6,
+    row 2 column 2/.style={nodes={shade}},
+    row 2 column 3/.style={nodes={shade}},
+    row 3 column 3/.style={nodes={shade}},
+  ]{
+    \hspace{1em} & M            & N            & F            & P \\
+    N            & ein          & ein          & eine         &   \\
+    A            & \tiny{einen} & ein          & eine         &   \\
+    D            & \tiny{einem} & \tiny{einem} & \tiny{einer} &   \\
+    G            & \tiny{eines} & \tiny{eines} & \tiny{einer} &   \\
+  };
+  \node(l7) [above=0.03cm of m7] {\small{Table 1-7 不定}};
+
+  \matrix (m8) [matrixtable, matrixtable/red, below=1cm of m7,
+    row 2 column 2/.style={nodes={shade}},
+    row 2 column 3/.style={nodes={shade}},
+    row 2 column 4/.style={nodes={shade}},
+    row 3 column 3/.style={nodes={shade}},
+    row 3 column 4/.style={nodes={shade}},
+  ]{
+    \hspace{1em} & M   & N   & F   & P   \\
+    N            & -e  & -e  & -e  & -en \\
+    A            & -en & -e  & -e  & -en \\
+    D            & -en & -en & -en & -en \\
+    G            & -en & -en & -en & -en \\
+  };
+  \node(l8) [above=0.03cm of m8] {\small{Table 1-8 弱形}};
+
+  \matrix (m9) [matrixtable, matrixtable/red, right=0.5cm of m8,
+    row 2 column 2/.style={nodes={shade}},
+    row 2 column 3/.style={nodes={shade}},
+    row 3 column 3/.style={nodes={shade}},
+  ]{
+    \hspace{1em} & M   & N   & F   & P   \\
+    N            & -   & -   & -e  & -e  \\
+    A            & -en & -   & -e  & -e  \\
+    D            & -em & -em & -er & -en \\
+    G            & -es & -es & -er & -er \\
+  };
+  \node(l9) [above=0.03cm of m9] {\small{Table 1-9 形物}};
+  \node[fit=(m6) (m7) (m8) (m9) (l6) (l7) (l8) (l9), draw=\cb, densely dashed, rounded corners=0.2cm, inner sep=0.3cm] (f2){};
 \end{tikzpicture}
-\section{弱限定：不定冠词，弱形容词，形容词性物主代词}
-\begin{tabular}{|M{2em}|M{2em}|M{2em}|M{2em}|M{2em}|}
-  \hline
-    & M   & N   & F  & P  \\
-  \hline
-  N & -   & -   & -e & -e \\
-  \hline
-  A & -n  & -   & -e & -e \\
-  \hline
-  D & -m  & -m  & -r & -n \\
-  \hline
-  G & -es & -es & -r & -r \\
-  \hline
-\end{tabular} \\
-
-\begin{tabular}{|M{2em}|M{2em}|M{2em}|M{2em}|M{2em}|}
-  \hline
-    & M     & N     & F     & P \\
-  \hline
-  N & ein   & ein   & eine  &   \\
-  \hline
-  A & einen & ein   & eine  &   \\
-  \hline
-  D & einem & einem & einer &   \\
-  \hline
-  G & eines & eines & einer &   \\
-  \hline
-\end{tabular} \\
-
-\begin{tabular}{|M{2em}|M{2em}|M{2em}|M{2em}|M{2em}|}
-  \hline
-    & M   & N   & F   & P   \\
-  \hline
-  N & -e  & -e  & -e  & -en \\
-  \hline
-  A & -en & -e  & -e  & -en \\
-  \hline
-  D & -en & -en & -en & -en \\
-  \hline
-  G & -en & -en & -en & -en \\
-  \hline
-\end{tabular}
-\begin{tabular}{|M{2em}|M{2em}|M{2em}|M{2em}|M{2em}|}
-  \hline
-    & M   & N   & F   & P   \\
-  \hline
-  N & -   & -   & -e  & -e  \\
-  \hline
-  A & -en & -   & -e  & -e  \\
-  \hline
-  D & -em & -em & -er & -en \\
-  \hline
-  G & -es & -es & -er & -er \\
-  \hline
-\end{tabular}
-
-\section{Tikz Table}
+\restoregeometry

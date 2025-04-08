@@ -21,9 +21,11 @@ sudo pacman -S texlive-binextra
 ```
 - Dependencies:
 ```
+# gnu-free-fonts: to render hyphen with diaeresis
 sudo pacman -S \
     inkscape \
     texlive-lang \
+    gnu-free-fonts \
     perl-yaml-tiny  \
     perl-app-cpanminus \
     perl-file-homedir

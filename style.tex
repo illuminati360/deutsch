@@ -50,7 +50,12 @@
 
 % table
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
-
+\tikzset{
+    shade/.style={
+            pattern=north east lines,
+            pattern color=black!70,
+        }
+}
 \tikzset{
     matrixtable/.style={
             matrix of nodes,
@@ -58,11 +63,23 @@
                     anchor=center,
                     minimum width=2em,
                     minimum height=2em,
-                    draw,
+                    draw=black,
                 },
-            draw,
+            draw=black,
             inner sep=0,
             outer sep=0,
             node distance=0,
+        },
+    matrixtable/green/.style={
+            nodes={
+                    draw=green,
+                },
+            draw=green,
+        },
+    matrixtable/red/.style={
+            nodes={
+                    draw=red,
+                },
+            draw=red,
         }
 }
