@@ -1,5 +1,16 @@
 \chapter*{Diagram}
 
+% tight nodes
+\tikzset{tight/.style={
+            inner sep=0pt,
+            outer sep=0pt,
+        }}
+
+% diagram
+\tikzset{diagram/.style={
+            node distance=0.4cm,
+        }}
+
 \def\nouncontent{%
     \begin{tikzpicture}[every node/.style={tight, diagram}]
         \node (rect1)  at (0,0) {\rect[color=gray, width=4em, height=1.8em, label={gender}]};%

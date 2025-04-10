@@ -1,6 +1,5 @@
 \documentclass{book}
 \usepackage{ctex}
-\usepackage{svg}
 \usepackage{hyperref}
 \usepackage{xparse}
 \usepackage{ifthen}
@@ -10,6 +9,10 @@
 \newfontfamily\freesans{FreeSans}
 \usepackage[a4paper]{geometry}
 % \usepackage[a4paper,showframe]{geometry}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix,positioning,fit,calc}
+\usetikzlibrary{arrows.meta, patterns}
 
 \input{visuals.tex}
 \input{flashcard.tex}
@@ -24,6 +27,7 @@
 \input{chapters/pronounciation.tex}
 \input{chapters/noun.tex}
 \input{chapters/pron.tex}
+\input{chapters/verb.tex}
 
 \input{chapters/flashcards.tex}
 

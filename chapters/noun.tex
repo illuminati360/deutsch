@@ -1,37 +1,19 @@
-\chapter{名词变格}
+\chapter{名词变格：\\\Large\itshape\textcolor{gray}{三性四格二数}}
 \label{chap:noun}
-\textcolor{gray}{三性四格二数}
-\textcolor{gray}{（用颜色形状表示性、格，数算一种特殊性）} \\
-\renewcommand{\arraystretch}{1.5}{
-    \begin{tabular}{|M{2.5em}|M{3em}|M{2.5em}|M{3em}|}
-        \hline
-        格 & 形                    & 性 & 色                     \\
-        \hline
-        N & \square[border=true] & M & \square[color=green]  \\
-        \hline
-        A & \diam[border=true]   & N & \square[color=purple] \\
-        \hline
-        D & \olive[border=true]  & F & \square[color=yellow] \\
-        \hline
-        G & \tri[border=true]    & P & \square[color=red]    \\
-        \hline
-    \end{tabular}
-}
-
 \section{性}
 德语与英语最主要区别之一在于，不仅人有性，物也有性。\textcolor{gray}{（英语物也有性的例外是：对船、车的称呼用she）}
-要明白性是德语名词不可分割的一部分
+要明白性是德语名词不可分割的一部分。要注意的一点是，语法性与天然性别可能不同，如(das Mädchen)。
 \begin{myquote}
     背名词，必带冠。
 \end{myquote}
 
 \section{格}
-格的顺序
+\subsection{格的顺序}
 \begin{itemize}
     \item 数字顺序：主属与宾，NGDA\textcolor{gray}{（语法书常用到第几格的说法）}
     \item 课本顺序：主宾与属，NADG
 \end{itemize}
-名词变格规律 \\
+\subsection{变格规律}
 名词的变格相对简单，黄书第一章就是它。
 单数名词只有阳中的属格加-(e)s（多音节-s,单音节-es）。复数名词与格加-n。阳性名词中有部分“弱名词”，除单数主格外一律加-(e)n。
 \textcolor{gray}{（复与n,这个在冠词、人称代词还会见到！所以说德语有规可循！）}
@@ -39,11 +21,71 @@
     复与-n，阳弱-(e)n，单阳中属-(e)s。
 \end{myquote}
 
+\tikzset{
+    nountable/.style={
+            matrix of nodes,
+            nodes={
+                    anchor=center,
+                    minimum width=3em,
+                    minimum height=2.5em,
+                    draw=black,
+                },
+            draw=black,
+            inner sep=0,
+            outer sep=0,
+            node distance=0,
+        },
+}
+\subsection{格与疑问代词}
+依赖句中角色，由动/介决定，
+\begin{center}
+    \begin{tikzpicture}
+        \matrix (m1) [nountable,
+            row 1/.style={nodes={minimum height=1.5em, fill=gray!50}},
+            column 2/.style={nodes={minimum width=6em,}},
+            column 3/.style={nodes={minimum width=4.5em,}},
+        ]{
+            格 & 定义 & 疑       \\
+            N & 主语 & Wer/Was \\
+            A & 直宾 & Wen/Was \\
+            D & 间宾 & Wem     \\
+            G & 所属 & Wessen  \\
+        };
+        \node(l1) [above=0.03cm of m1] {\small{Table 1-1 可视化}};
+    \end{tikzpicture}
+\end{center}
+关于双宾：顺序是，名与前，代宾前。区别是，人间物直，静三动四。
+\subsection{可视化格、性}
+用颜色形状表示性、格，数算一种特殊性。
+\begin{center}
+    \begin{tikzpicture}
+        \matrix (m1) [nountable,
+            row 1/.style={nodes={minimum height=1.5em, fill=gray!50}},
+        ]{
+            格 & 形                    & 性 & 色                     \\
+            N & \square[border=true] & M & \square[color=green]  \\
+            A & \diam[border=true]   & N & \square[color=purple] \\
+            D & \olive[border=true]  & F & \square[color=yellow] \\
+            G & \tri[border=true]    & P & \square[color=red]    \\
+        };
+        \node(l1) [above=0.03cm of m1] {\small{Table 1-1 可视化}};
+    \end{tikzpicture}
+\end{center}
+
+
 \newgeometry{left=1cm, right=1cm, top=1cm, bottom=1cm}
 \section{名词性、数规律}
-使用方法：由上到下看图。先看词形，若匹配后缀，可确定（彩色的）或者猜出（灰色的）对应的性（绿，紫，黄）、数（红，有5个能直接确定）。若无匹配，再看所属词族，若匹配，则可猜出性。根据性和音节数，便可以猜出复数形式。总之：\\
+使用方法：由上到下看图。
+\begin{itemize}
+    \item 先看词形，若匹配后缀，可推断对应的性、数（有5个能直接确定）
+    \item 若无匹配，再看所属词族，若匹配，则可猜出性
+    \item 根据性和音节数，便可以猜出复数形式
+    \item 此外合成词的性取决于尾词
+    \item 变音有四：a\textrightarrow{ä},o\textrightarrow{ö},u\textrightarrow{ü},au\textrightarrow{äu}
+    \item 小结论：-(e)n和-s从无变音，单阴-e总是变音，-er从无阴性，-
+\end{itemize}
 \begin{myquote}
-    形义推性，性音推数，否则特殊。
+    形义推性，性音推数，否则特殊，合成看尾。
 \end{myquote}
 \tikzset{
     glossary/.style={
@@ -107,7 +149,7 @@
 }
 \begin{tikzpicture}[glossary]
     % prefixes with >99% certainty
-    \node(m1) [masculine] {-ant};
+    \node(m1) [masculine] {-ant, -and};
     \node(m2) [masculine, below=of m1] {-ast, -ling, -ich, -g};
     \node(m3) [masculine, below=of m2] {-or, -us, -ist, -ismus};
     \node(p1) [plural, right=0.3cm of m1] {$\text{-en}^*$};
@@ -124,7 +166,7 @@
     \node(t2) [neuter, fitbox, fit=(n1) (n2) (n3) (n4) (p3) (p4)] {};
     \node(l2) [label, text=purple] at ($(t2.center)!(l1.center)!(t2.center)$) {\Large{N}};
 
-    \node(f1) [feminine, right=0.6cm of p3] {-ei, -heit, -keit,\\-ung, -schaft};
+    \node(f1) [feminine, right=0.6cm of p3] {-ei, -heit, -keit,\\-ung, -schaft,\\-in, -frau};
     \node(f2) [feminine, below=of f1] {-a -ik, -ur,\\-sion, -tion,\\-anz, -enz,\\-tät, -sis, -ie};
     \node(f3) [note, right=0.3cm of f2] {Foreign};
     \node(t3) [feminine, fitbox, fit=(f1) (f2) (f3)] {};
@@ -196,11 +238,15 @@
     \node(pp2) [draw=red, text=red] at ($(r2.center)!(pp1.center)!(r2.center)$) {{\textcolor{gray}{monosyllabic:} \freesans{\char"2E1A}}er};
     \node(tt1) [draw=none, below=0.3cm of pp1] {};
     \node(tt2) [draw=none, below=0.3cm of pp2] {};
-    \node(pp3) [draw=red, text=red, fit=(tt1) (tt2)] {\textcolor{gray}{polysylabic:}-e};
+    \node(pp3) [draw=red, text=red, fit=(tt1) (tt2)] {\raisebox{-1ex}{\textcolor{gray}{polysylabic:}-e}};
 
-    \node(tt3) [draw=none] at ($(r4.center)!(pp1.center)!(r4.center)$) {};
-    \node(tt4) [draw=none, below=0.3cm of tt3] {};
-    \node(pp4) [draw=red, text=red, fit=(tt3) (tt4)] {-n\textcolor{gray}{ (weak nouns)}};
+    \node(tt3) [draw=none, below=0.3cm of tt1] {};
+    \node(tt4) [draw=none, below=0.3cm of tt2] {};
+    \node(pp4) [draw=red, text=red, fit=(tt3) (tt4)] {\raisebox{-1ex}{\textcolor{gray}{-a, -e, -i, -o, -u, -y}-s}};
+
+    \node(tt5) [draw=none] at ($(r4.center)!(pp1.center)!(r4.center)$) {};
+    \node(tt6) [draw=none, below=0.3cm of tt5] {};
+    \node(pp5) [draw=red, text=red, fit=(tt5) (tt6)] {\raisebox{-1ex}{-n\textcolor{gray}{ (weak nouns)}}};
 
     \node(bt3) [draw=darkgray, minimum height=2.5cm, fitbox, fit={($(t4.west)!(pp4.south)!(t4.west)$) ($(t4.east)!(pp1.north)!(t4.east)$)}]{}; % big fit box 3
 \end{tikzpicture}
