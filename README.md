@@ -16,19 +16,24 @@
 - Environment: VSCode and the [Tex Workshop Extension](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 - Formating:
 ```
-sudo pacman -S texlive-binextra
+sudo pacman -S texlive-binextra \
+    perl-yaml-tiny  \
+    perl-app-cpanminus \
+    perl-file-homedir
 # change formatter to latex-indent in plugin settings.
 ```
 - Dependencies:
 ```
 # gnu-free-fonts: to render hyphen with diaeresis
 sudo pacman -S \
+    texlive \
     inkscape \
-    texlive-lang \
-    gnu-free-fonts \
-    perl-yaml-tiny  \
-    perl-app-cpanminus \
-    perl-file-homedir
+    gnu-free-fonts
+
+# windows fonts
+<!-- yay -S ttf-ms-win10-zh_cn -->
+https://wiki.archlinux.org/title/Microsoft_fonts#Extracting_fonts_from_a_Windows_ISO
+
 ```
 - Build: using Tex Workshop
 
