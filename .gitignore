@@ -3,6 +3,9 @@
 *.log
 *.pdf
 *.gz
+*.fdb_latexmk
+*.fls
+*.xdv
 svg-inkscape/*
 TODOS.md
 *.synctex*
