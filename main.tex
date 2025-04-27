@@ -15,6 +15,12 @@
 \usetikzlibrary{arrows.meta, patterns}
 
 \usepackage{marginnote}
+\usepackage{colortbl}
+
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{references.bib}
+
+\usepackage{longtable}
 
 \input{visuals.tex}
 \input{flashcard.tex}
@@ -27,6 +33,7 @@
 \input{chapters/preface.tex}
 \input{chapters/diagram.tex}
 \input{chapters/pronounciation.tex}
+\input{chapters/grammar.tex}
 \input{chapters/noun.tex}
 \input{chapters/pron.tex}
 \input{chapters/verb.tex}
@@ -34,6 +41,6 @@
 \input{chapters/words.tex}
 \input{chapters/sentences.tex}
 
-% \input{chapters/flashcards.tex}
+\input{chapters/flashcards.tex}
 
 \end{document}
