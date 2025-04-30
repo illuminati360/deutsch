@@ -1,7 +1,7 @@
 \chapter{名词组：冠形名代}
 \begin{itemize}
     \item 定冠：定冠，单三，强形，名物，疑问，指示，分配
-    \item 不定：不定，弱形，形物，疑问
+    \item 不定：不定，否定，弱形，形物，疑问
 \end{itemize}
 \newgeometry{left=1cm, right=1cm, top=1cm, bottom=1cm}
 \begin{center}
@@ -145,7 +145,20 @@
         };
         \node(r2) [above=0.03cm of n2] {\small{Table 2-2 不定}};
 
-        \matrix (n3) [pronountable, pronountable/red, below=1cm of n2,
+        \matrix (n3) [pronountable, pronountable/red, right=0.3cm of n2,
+            row 2 column 2/.style={nodes={shade}},
+            row 2 column 3/.style={nodes={shade}},
+            row 3 column 3/.style={nodes={shade}},
+        ]{
+            \hspace{1em} & M             & N             & F             & P             \\
+            N            & \tiny{kein}   & \tiny{kein}   & \tiny{keine}  & \tiny{keine}  \\
+            A            & \tiny{keinen} & \tiny{kein}   & \tiny{keine}  & \tiny{keine}  \\
+            D            & \tiny{keinem} & \tiny{keinem} & \tiny{keiner} & \tiny{keinen} \\
+            G            & \tiny{keines} & \tiny{keines} & \tiny{keiner} & \tiny{keiner} \\
+        };
+        \node(r3) [above=0.03cm of n3] {\small{Table 2-3 否定}};
+
+        \matrix (n4) [pronountable, pronountable/red, below=1cm of n2,
             row 2 column 2/.style={nodes={shade}},
             row 2 column 3/.style={nodes={shade}},
             row 2 column 4/.style={nodes={shade}},
@@ -158,9 +171,9 @@
             D            & -en & -en & -en & -en \\
             G            & -en & -en & -en & -en \\
         };
-        \node(r3) [above=0.03cm of n3] {\small{Table 2-3 弱形}};
+        \node(r4) [above=0.03cm of n4] {\small{Table 2-4 弱形}};
 
-        \matrix (n4) [pronountable, pronountable/red, right=0.3cm of n3,
+        \matrix (n5) [pronountable, pronountable/red, right=0.3cm of n4,
             row 2 column 2/.style={nodes={shade}},
             row 2 column 3/.style={nodes={shade}},
             row 3 column 3/.style={nodes={shade}},
@@ -171,22 +184,38 @@
             D            & -em & -em & -er & -en \\
             G            & -es & -es & -er & -er \\
         };
-        \node(r4) [above=0.03cm of n4] {\small{Table 2-4 形物}};
+        \node(r5) [above=0.03cm of n5] {\small{Table 2-5 形物}};
 
-        \matrix (n5) [pronountable, pronountable/red, below=1cm of n3,
+        \matrix (n6) [pronountable, pronountable/red, below=1cm of n4,
             text width=2.4em,
             font=\linespread{0.9},
             row 2 column 2/.style={nodes={shade}},
             row 2 column 3/.style={nodes={shade}},
             row 3 column 3/.style={nodes={shade}},
         ]{
-            \hspace{1em} & M                                       & N                                       & F                    & P                    \\
+            \hspace{1em} & M                                       & N                                        & F                    & P                    \\
             N            & \tiny{was für\hspace{2em}ein} & \tiny{was für\hspace{2em}ein} & \tiny{was für eine}  & \tiny{was für eine}  \\
             A            & \tiny{was für einen}                    & \tiny{was für\hspace{2em}ein} & \tiny{was für eine}  & \tiny{was für eine}  \\
-            D            & \tiny{was für einem}                    & \tiny{was für einem}                    & \tiny{was für einer} & \tiny{was für einen} \\
-            G            & \tiny{was für eines}                    & \tiny{was für eines}                    & \tiny{was für einer} & \tiny{was für einer} \\
+            D            & \tiny{was für einem}                    & \tiny{was für einem}                     & \tiny{was für einer} & \tiny{was für einen} \\
+            G            & \tiny{was für eines}                    & \tiny{was für eines}                     & \tiny{was für einer} & \tiny{was für einer} \\
         };
-        \node(r4) [above=0.03cm of n5] {\small{Table 2-5 疑问}};
+        \node(r6) [above=0.03cm of n6] {\small{Table 2-6 疑问}};
     \end{tikzpicture}
 \end{center}
+\restoregeometry
+
+\newgeometry{left=3cm,right=8cm,marginparwidth=6cm}
+\setlength{\parindent}{0pt}
+\section{零冠词}
+
+\section{否定冠词：kein}
+Q: Sprechen Sie Deutsch? \marginpar{Deutsch这里是零冠词} \\
+A: Nein, Ich spreche kein Deutsch. \marginpar{das Deutsch \square[color=purple]} \\
+A: Nein, Ich spreche Deutsch nicht. (不地道) \\
+
+辨析：kein与nicht
+\begin{itemize}
+    \item kein 非特指否定（否定零冠词、不定冠词修饰的名词）
+    \item nict 特指否定
+\end{itemize}
 \restoregeometry

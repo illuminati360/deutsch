@@ -6,6 +6,10 @@
 *.fdb_latexmk
 *.fls
 *.xdv
+*.bcf
+*.synctex.gz
+*.bbl*
+*.run.xml
 svg-inkscape/*
 TODOS.md
 *.synctex*
