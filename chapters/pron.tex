@@ -27,6 +27,9 @@
                 inner sep=0,
                 outer sep=0,
                 node distance=0,
+                cells={
+                        draw=black,
+                    },
             },
         pronountable/green/.style={
                 nodes={
@@ -204,10 +207,91 @@
 \end{center}
 \restoregeometry
 
+\section{人称代词}
+人称代词可以用来指代物\textsuperscript{\hyperref[sec:noun:gender]{见名词性}}。也就是说，指物的代词不都是it，还可以是he,she。
+\section{物主代词}
+物主词根，其实就是人称属格（人称属格古语才用）去掉-er（复1,复2除外，属于活标本）。 \\
+注意歧义：
+\begin{itemize}
+    \item ihr 阴三，复三
+\end{itemize}
+注意特殊： \\
+euer + e \textrightarrow{eure}
+
+\begin{center}
+    \captionof{table}{一二、复三、物主}
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+                 & 单1   & 单2   & 复1    & 复2   & 单3            & 复3    \\
+        \hline
+        N        & ich  & du   & wir   & ihr  &               & sie   \\
+        \hline
+        A        & mich & dich & uns   & euch &               & sie   \\
+        \hline
+        D        & mir  & dir  & uns   & euch &               & ihnen \\
+        \hline
+        pos.pron & mein & dein & unser & euer & sein/sein/ihr & ihr   \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\section{定冠、不定冠}
+\begin{center}
+    \captionof{table}{定冠、不定冠}
+    \begin{tabular}{|c|c|}
+        \hline
+        定  & 不定 \\
+        \hline
+        首次 & 再次 \\
+        \hline
+        特指 & 泛指 \\
+        \hline
+        不明 & 明确 \\
+        \hline
+        没数 & 一个 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\section{零冠词}
+零冠词两种情况
+\begin{itemize}
+    \item 不定冠词复数情况
+    \item 名词不带冠
+          \begin{itemize}
+              \item 职业（带形容词限定带冠词） \\
+                    Er ist Arzt. \\
+                    Er ist ein guter Arzt. \\
+                    Er ist Student. \\
+              \item 国籍（带形容词限定带冠词） \\
+                    Er ist Deutscher. \\
+                    Er ist Chinese. \\
+              \item 国家（中性，全称是阴性 \\
+                    Deutschland ist ein Land. Die BRD ist ein Land. \\
+                    Die VR China ist ein Land. \\
+              \item 科目 studieren
+              \item 语言 sprechen
+              \item 乐器、运动 spielen
+              \item 不可数
+                    \begin{itemize}
+                        \item 物质名词（有量词限定带冠词）\\
+                              Ich kaufer Bier. \\
+                              Ich kaufer ein Flasche Bier.\\
+                              特：Ich trinke einen Kaffee.\\
+                        \item 抽象名词
+                    \end{itemize}
+              \item 惯用
+                    \begin{itemize}
+                        \item xxx heißen.
+                        \item Spaß machen. (有乐趣)
+                        \item Urlaub machen.
+                        \item Unterricht haben.
+                    \end{itemize}
+          \end{itemize}
+\end{itemize}
+
 \newgeometry{left=3cm,right=8cm,marginparwidth=6cm}
 \setlength{\parindent}{0pt}
-\section{零冠词}
-
 \section{否定冠词：kein}
 Q: Sprechen Sie Deutsch? \marginpar{Deutsch这里是零冠词} \\
 A: Nein, Ich spreche kein Deutsch. \marginpar{das Deutsch \square[color=purple]} \\
@@ -215,6 +299,7 @@ A: Nein, Ich spreche Deutsch nicht. (不地道) \\
 
 辨析：kein与nicht
 \begin{itemize}
+    \label{sec:pron:kein}
     \item kein 非特指否定（否定零冠词、不定冠词修饰的名词）
     \item nict 特指否定
 \end{itemize}

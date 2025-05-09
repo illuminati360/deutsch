@@ -99,7 +99,7 @@
 % Diamond
 \pgfkeys{
     /diam/.is family, /diam,
-    default/.style = {color = {none}, border = {false}, fill = {full}},
+    default/.style = {color = {none}, border = {false}, fill = {full}, scale={1.0}},
     color/.store in = \diamcolor,
     border/.store in = \diamborder,
     fill/.store in = \diamfill, % large, middle, small
@@ -113,9 +113,9 @@
 \NewDocumentCommand{\diam}{o}{%
     \pgfkeys{/diam, default, #1}%
     \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
-        \def\a{2.5em}
-        \def\b{2em}
-        \def\l{\shapelinewidth} %line width
+        \def\a{2.5em*\diamscale}
+        \def\b{2em*\diamscale}
+        \def\l{\shapelinewidth*\diamscale} %line width
 
         \expandafter\ifstrequal\expandafter{\diamborder}{true}{
             \def\bordercolor{black};
