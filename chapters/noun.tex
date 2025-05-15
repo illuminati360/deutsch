@@ -41,20 +41,20 @@
 \label{subsec:noun:inqpron}
 依赖句中角色，由动/介决定，
 \begin{center}
-    \begin{tikzpicture}
-        \matrix (m1) [nountable,
-            row 1/.style={nodes={minimum height=1.5em, fill=gray!50}},
-            column 2/.style={nodes={minimum width=6em,}},
-            column 3/.style={nodes={minimum width=4.5em,}},
-        ]{
-            格 & 定义 & 疑       \\
-            N & 主语 & Wer/Was \\
-            A & 直宾 & Wen/Was \\
-            D & 间宾 & Wem     \\
-            G & 所属 & Wessen  \\
-        };
-        \node(l1) [above=0.03cm of m1] {\small{Table 1-1 可视化}};
-    \end{tikzpicture}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \rowcolor{gray}
+        格 & 定义 & 疑       \\
+        \hline
+        N & 主语 & wer/was \\
+        \hline
+        A & 直宾 & wen/was \\
+        \hline
+        D & 间宾 & wem     \\
+        \hline
+        G & 所属 & wessen  \\
+        \hline
+    \end{tabular}
 \end{center}
 格区分名词性成分所属句子成分。因此德语句子顺序相对灵活。e.g.:
 \begin{itemize}
@@ -64,6 +64,23 @@
 \noindent
 大部分但宾语动词是第四格。 \\
 关于双宾：顺序是，名与前，代宾前。区别是，人间物直，静三动四。
+\subsection{名词数，疑问代词}
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \rowcolor{gray}
+        数词         & 疑问词       \\
+        \hline
+        uncoutable & wie viel  \\
+        \hline
+        countable  & wie viele \\
+        \hline
+    \end{tabular}
+\end{center}
+z.B.:\\
+Wie viele Übungen machen Sie heute? \\
+注意Wie Viele/Viel \square[border=true] 算作一个句子成分。
+
 \subsection{可视化格、性}
 用颜色形状表示性、格，数算一种特殊性。
 \begin{center}
@@ -84,6 +101,7 @@
 
 \newgeometry{left=1cm, right=1cm, top=1cm, bottom=1cm}
 \section{名词性、数规律}
+\label{subsec:noun:gender:number}
 使用方法：由上到下看图。
 \begin{itemize}
     \item 先看词形，若匹配后缀，可推断对应的性、数（有5个能直接确定）

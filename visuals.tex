@@ -17,8 +17,9 @@
 % Square
 \pgfkeys{
     /square/.is family, /square,
-    default/.style = {color = {none}, border = {false}, fill = {full}, pattern = {none}, scale = {1.0}},
+    default/.style = {color = {none}, thickness = {normal}, border = {false}, fill = {full}, pattern = {none}, scale = {1.0}},
     color/.store in = \squarecolor,
+    thickness/.store in = \squarethickness,
     border/.store in = \squareborder,
     fill/.store in = \squarefill, % full, half, none, large, middle, small
     pattern/.store in = \squarepattern, % vert, diag
@@ -32,9 +33,16 @@
 % must add `%` to prevent \NewDocumentCommand from adding extra spaces.
 \NewDocumentCommand{\square}{o}{%
     \pgfkeys{/square, default, #1}%
-    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
+    \begin{tikzpicture}[baseline={([yshift=-0.5ex]current bounding box.center)}]
         \def\a{2em*\squarescale} %side length
         \def\l{\shapelinewidth*\squarescale} %line width
+
+        \expandafter\ifstrequal\expandafter{\squarethickness}{medium}{
+            \def\l{\shapelinewidth*1.5}
+        }{}
+        \expandafter\ifstrequal\expandafter{\squarethickness}{high}{
+            \def\l{\shapelinewidth*3}
+        }{}
 
         \expandafter\ifstrequal\expandafter{\squareborder}{true}{
             \def\bordercolor{black};
@@ -112,7 +120,7 @@
 
 \NewDocumentCommand{\diam}{o}{%
     \pgfkeys{/diam, default, #1}%
-    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
+    \begin{tikzpicture}[baseline={([yshift=-0.5ex]current bounding box.center)}]
         \def\a{2.5em*\diamscale}
         \def\b{2em*\diamscale}
         \def\l{\shapelinewidth*\diamscale} %line width
@@ -176,7 +184,7 @@ in
 
 \NewDocumentCommand{\olive}{o}{%
     \pgfkeys{/olive, default, #1}%
-    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
+    \begin{tikzpicture}[baseline={([yshift=-0.5ex]current bounding box.center)}]
         \def\a{2em}
         \def\b{1.4em}
         \def\l{\shapelinewidth}
@@ -235,7 +243,7 @@ in
 
 \NewDocumentCommand{\tri}{o}{%
     \pgfkeys{/tri, default, #1}%
-    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
+    \begin{tikzpicture}[baseline={([yshift=-0.5ex]current bounding box.center)}]
         \def\a{2em}
         \def\b{1.5em}
         \def\l{\shapelinewidth}
@@ -295,9 +303,14 @@ in
     shape/color/.store in=\pillshapecolor,
 }
 
+\newcommand\dpi[2]{
+    (-#1/2, -#2) -- (#1/2, -#2) arc[start angle=-90, end angle=90, radius=#2] --
+    (#1/2, #2) -- (-#1/2, #2) arc[start angle=90, end angle=270, radius=#2] -- cycle;
+}
+
 \NewDocumentCommand{\pill}{o}{%
     \pgfkeys{/pill, default, #1}%
-    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
+    \begin{tikzpicture}[baseline={([yshift=-0.5ex]current bounding box.center)}]
         \def\a{\pillwidth}
         \def\r{\pillradius}
         \def\l{\shapelinewidth}
@@ -320,9 +333,7 @@ in
                     \clip[overlay,even odd clip,reverseclip, shift={(\a/2-\r*0.1,0)}] \dtr{\r*2.1}{\r*1.8}
                 }{}
             }{}
-            \draw[fill=\pillcolor, draw=\bordercolor, line width=\l]
-            (-\a/2, -\r) -- (\a/2, -\r) arc[start angle=-90, end angle=90, radius=\r] --
-            (\a/2, \r) -- (-\a/2, \r) arc[start angle=90, end angle=270, radius=\r] -- cycle;
+            \draw[fill=\pillcolor, draw=\bordercolor, line width=\l] \dpi{\a}{\r}
         \end{scope}
 
         \node[align=center, anchor=center] at (0, 0) {\pilllabel};
@@ -361,6 +372,8 @@ in
             (\a/2, 0) -- (\a/2-\t*\cb, -\t*\sb);
         }{}
 
+        \useasboundingbox \dpi{\a}{\r}
+
         \ifdebug
             \draw[draw=red, line width=\l] (-\a/2-\r,0) -- (\a/2+\r, 0);
             \draw[draw=red, line width=\l] (0,-\r) -- (0,\r);
@@ -371,9 +384,10 @@ in
 % Circle
 \pgfkeys{
     /cir/.is family, /cir,
-    default/.style = {color = {white}, border = {false}, pattern = {none}, side = {false}, clock = {none}, rotate = {false}, scale = {1.0}},
+    default/.style = {color = {white}, thickness = {normal}, border = {false}, pattern = {none}, side = {false}, clock = {none}, rotate = {false}, scale = {1.0}},
     color/.store in = \circolor,
     border/.store in = \cirborder,
+    thickness/.store in = \cirthickness,
     pattern/.store in = \cirpattern, % vert
     side/.store in = \cirside,
     clock/.store in = \circlock, % none, simple, hollow, double, dot
@@ -395,9 +409,15 @@ arc[start angle=90, end angle=270, x radius=#3, y radius=#2];
 
 \NewDocumentCommand{\cir}{o}{%
     \pgfkeys{/cir, default, #1}%
-    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
+    \begin{tikzpicture}[baseline={([yshift=-0.5ex]current bounding box.center)}]
         \def\r{1em*\cirscale}
         \def\l{\shapelinewidth}
+        \expandafter\ifstrequal\expandafter{\cirthickness}{medium}{
+            \def\l{\shapelinewidth*1.5}
+        }{}
+        \expandafter\ifstrequal\expandafter{\cirthickness}{high}{
+            \def\l{\shapelinewidth*3}
+        }{}
 
         \expandafter\ifstrequal\expandafter{\cirborder}{true}{
             \def\bordercolor{black};
@@ -490,7 +510,7 @@ in
 
 \NewDocumentCommand{\flower}{o}{%
     \pgfkeys{/flower, default, #1}%
-    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
+    \begin{tikzpicture}[baseline={([yshift=-0.5ex]current bounding box.center)}]
         \def\r{1em}
         \def\b{0.2em}
         \def\l{\shapelinewidth}
@@ -569,7 +589,7 @@ in
 
 \NewDocumentCommand{\hook}{o}{%
     \pgfkeys{/hook, default, #1}%
-    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
+    \begin{tikzpicture}[baseline={([yshift=-0.5ex]current bounding box.center)}]
         \def\a{3em}
         \def\l{\shapelinewidth}
 
@@ -610,7 +630,7 @@ in
 
 \NewDocumentCommand{\sidepill}{o}{%
     \pgfkeys{/sidepill, default, #1}%
-    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
+    \begin{tikzpicture}[baseline={([yshift=-0.5ex]current bounding box.center)}]
         \def\r{1em*\sidepillscale}
         \def\l{\shapelinewidth}
 
@@ -643,7 +663,7 @@ in
 
 \NewDocumentCommand{\rect}{o}{%
     \pgfkeys{/rect, default, #1}%
-    \begin{tikzpicture}[baseline={([yshift=-0.5em]current bounding box.center)}]
+    \begin{tikzpicture}[baseline={([yshift=-0.5ex]current bounding box.center)}]
         \def\a{2em}
         \def\l{\shapelinewidth}
 

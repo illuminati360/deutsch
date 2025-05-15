@@ -1,0 +1,224 @@
+\chapter{数词: \textcolor{yellow}{die} Zahl}
+\section{基数}
+\subsection{基本词}
+\tikzset{
+    label/.style={
+            anchor=center,
+        },
+}
+\begin{center}
+    \begin{tikzpicture}
+        \node[tight, draw=none, align=center] (t1){
+            \begin{tabular}{|c|c|}
+                \rowcolor{green}
+                \hline
+                \# & numeral \\
+                \hline
+                0  & null    \\
+                1  & ein     \\
+                2  & zwei    \\
+                3  & drei    \\
+                4  & vier    \\
+                5  & fünf    \\
+                6  & sechs   \\
+                7  & sieben  \\
+                8  & acht    \\
+                9  & neun    \\
+                10 & zehn    \\
+                11 & elf     \\
+                12 & zwölf   \\
+                \hline
+            \end{tabular}
+        };
+
+        \node[tight, draw=none, align=center, right=1em of t1.north east, anchor=north west] (t2){
+            \begin{tabular}{|c|c|}
+                \rowcolor{gray}
+                \hline
+                \# & numeral  \\
+                \hline
+                16 & sechzehn \\
+                17 & siebzehn \\
+                18 & achtzehn \\
+                \hline
+            \end{tabular}
+        };
+
+        \node[tight, draw=none, align=center, below=1em of t2] (t3){
+            \begin{tabular}{|c|c|}
+                \rowcolor{yellow}
+                \hline
+                \# & numeral \\
+                \hline
+                20 & zwanzig \\
+                30 & dreißig \\
+                60 & sechzig \\
+                70 & siebzig \\
+                80 & achtzig \\
+                \hline
+            \end{tabular}
+        };
+
+        \node[tight, draw=none, align=center, below=1em of t3] (t4){
+            \begin{tabular}{|c|c|}
+                \rowcolor{green}
+                \hline
+                \#  & numeral             \\
+                \hline
+                100 & hund\underline{ert} \\
+                1K  & tausend             \\
+                \hline
+            \end{tabular}
+        };
+
+        \node[tight, draw=none, align=center, right=1em of t2.north east, anchor=north west] (t5){
+            \begin{tabular}{|c|c|}
+                \rowcolor{green}
+                \hline
+                \#  & numeral    \\
+                \hline
+                1M  & Million    \\
+                1B  & Millliarde \\
+                1KB & Billion    \\
+                1MB & Billiarde  \\
+                \hline
+            \end{tabular}
+        };
+    \end{tikzpicture}
+\end{center}
+
+\subsection{规则}
+德语数词通过\textcolor{green}{简单}，\textcolor{yellow}{派生}，\textcolor{gray}{复合}产生。
+\begin{center}
+    \begin{tabular}{|l|l|l|}
+        \rowcolor{gray}
+        \hline
+        range       & rule                     & exception          \\
+        \hline
+        1\char`\~12 & 固定                       &                    \\
+        \hline
+        十几          & 个+zehn                   & 16, 17, 18         \\
+        \hline
+        整十          & 十+zig                    & 20, 30, 60, 70 ,80 \\
+        \hline
+        几十几         & 个+und+十+zig              &                    \\
+        \hline
+        百至百万        & \#hundert/tausend+und+\# &                    \\
+        \hline
+        百万以上        & 不再复合, 单位当作名词             &                    \\
+        \hline
+        ...1        & eins\textrightarrow{ein} &                    \\
+        \hline
+        一百/千开头      & ein可省                    &                    \\
+        \hline
+    \end{tabular}
+\end{center}
+
+注：
+\begin{itemize}
+    \item 注意hundert发音\freesans{hʊndɐt}
+    \item 小于百万，都是复合词（不分开，无复数
+    \item 大于百万，当作名词看（首大写，加量词）
+    \item 只有十几用und连接
+    \item 百千的6,7,8无特殊
+\end{itemize}
+
+\subsection{大数、小数}
+\begin{itemize}
+    \item 四位以上加千分号 der Punkt: . \\
+          e.g.: 123.456.789 = hundertdreiundzwanzig \textcolor{red}{Millionen} \\
+          viewhundertsechsundfünfzigtausendsiebenhundertneunundachtzig
+    \item 小数点 das Komma: , \\
+          e.g.: 1,5 = eins Komma fünf （注意这里是eins，只有在xxx1时候eins变成ein）
+\end{itemize}
+\begin{myquote}
+    大数千分号，小数小数点，英德正相反。
+\end{myquote}
+
+\section{量词}
+辨析：数量单位，就是物理量单位，计量单位就是量词。 \\
+用法：量词+名词，单复看量词。e.g.: 100 Gramm Käse kosten 99 Cent. \\
+\subsection{数量单位 \textcolor{yellow}{die} Mengeneinheit}
+\begin{center}
+    \begin{tabular} {|c|c|c|c|c|}
+        \hline
+        \rowcolor{gray}
+        word       & gender                  & genitive & plural & meaning    \\
+        \hline
+        Gramm      & \textcolor{purple}{das} &          &        & gram       \\
+        Kilo       & \textcolor{purple}{das} &          &        & kilogram   \\
+        Kilogramm  & \textcolor{purple}{das} &          &        & kilogram   \\
+        Pfund      & \textcolor{purple}{das} &          &        & pound      \\
+        \hline
+        Liter      & \textcolor{green}{der}  &          &        & liter      \\
+        Milliliter & \textcolor{green}{der}  &          &        & milliliter \\
+        \hline
+    \end{tabular}
+\end{center}
+注：
+\begin{itemize}
+    \item 数量单位不用复数。
+    \item 换算：Ein Kilo hat zwei Pfund.
+\end{itemize}
+
+\subsection{计量单位 \textcolor{yellow}{die} Mengenangabe}
+\begin{center}
+    \begin{tabular} {|c|c|c|c|c|}
+        \hline
+        \rowcolor{gray}
+        word    & gender                  & genitive & plural & meaning \\
+        \hline
+        Tasse   & \textcolor{yellow}{die} &          &        & cup     \\
+        Flasche & \textcolor{yellow}{die} &          &        & bottle  \\
+        Dose    & \textcolor{yellow}{die} &          &        & can     \\
+        Kanne   & \textcolor{yellow}{die} &          &        & pot     \\
+        Packung & \textcolor{yellow}{die} &          &        & pack    \\
+        Tafel   & \textcolor{yellow}{die} &          &        & bar     \\
+        \hline
+        Stück   & \textcolor{purple}{das} &          &        & block   \\
+        Glas    & \textcolor{purple}{das} &          &        & glass   \\
+        \hline
+        Kasten  & \textcolor{green}{der}  &          &        & case    \\
+        Beutel  & \textcolor{green}{der}  &          &        & bag     \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\label{sec:num:unit}
+注：
+\begin{itemize}
+    \item 冠词限定量词（而不是量词后的名词）
+    \item 阴性量词需变复数，阳中量词一般不需。
+    \item 物质名词不可数必须要量词，而可数名词可不用量词。
+\end{itemize}
+
+\section{电话号码}
+两位数两位数读
+
+\section{货币}
+读法规则:
+\begin{itemize}
+    \item 货币单位不变复数
+    \item 先整后小，可全可省。如：4,30 Euro
+          \begin{itemize}
+              \item vier Euro (und) dreißig Cent
+              \item vier Euro dreißig (可看作把小数点读作Euro)
+          \end{itemize}
+    \item 零整读分。如：0,70 Euro = siebzig Cent
+\end{itemize}
+
+\section{计算： \textcolor{purple}{das} Rechnen}
+\begin{center}
+    \begin{tabular}{|c|l|}
+        \rowcolor{gray}
+        \hline
+        operation  & spelling     \\
+        \hline
+        +          & plus         \\
+        -          & minus        \\
+        \texttimes & mal          \\
+        \textdiv   & durch        \\
+        =          & ist (gliech) \\
+        \hline
+    \end{tabular}
+\end{center}
