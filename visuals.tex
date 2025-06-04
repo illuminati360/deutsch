@@ -712,3 +712,40 @@ in
         \node[anchor=north, text width=\cardwidth-1em] at (\cardwidth/2, \cardheight-\barh) {#2};
     \end{tikzpicture}%
 }
+
+% Clock
+\pgfkeys{
+    /clock/.is family, /clock,
+    default/.style = {hand = {false}},
+    hand/.store in = \clockhand,
+}
+\NewDocumentCommand{\clock}{o}{%
+    \pgfkeys{/clock, default, #1}%
+    \begin{tikzpicture}
+        % Draw clock face
+        \draw[thick] (0,0) circle (9em);
+
+        % Draw clock ticks
+        \foreach \angle in {0,90,...,360} {
+                \draw[thick] (\angle:8em) -- (\angle:9em);
+            }
+
+        % Add 4 ticks
+        \node[font=\large] at (90:10em) {\#};
+        \node[font=\large] at (270:10em) {halb \#+1};
+        \node[font=\large] at (0:11.5em) {vier.};
+        \node[font=\large] at (180:11.5em) {vier.};
+
+        % Add clockwise direction arrow
+        \draw[->, thick]
+        (150:11em)
+        arc (150:120:11em)
+        node[midway, left] {vor};
+
+        % Add counterclockwise direction arrow
+        \draw[->, thick]
+        (30:11em)
+        arc (30:60:11em)
+        node[midway, right] {nach};
+    \end{tikzpicture}%
+}
