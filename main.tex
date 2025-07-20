@@ -1,6 +1,10 @@
 \documentclass[fontset=windows]{book}
+
 \usepackage{ctex}
-\usepackage{hyperref}
+\ctexset{
+  contentsname = {Table of Contents}
+}
+\usepackage[hidelinks]{hyperref}
 \usepackage{xparse}
 \usepackage{ifthen}
 \usepackage{xstring}
@@ -17,6 +21,7 @@
 \usepackage{marginnote}
 \usepackage{colortbl}
 \usepackage{multirow}
+\usepackage{makecell}
 
 \usepackage[backend=biber, style=numeric]{biblatex}
 \addbibresource{references.bib}
@@ -29,7 +34,7 @@
 \input{style.tex}
 
 \begin{document}
-
+\tableofcontents
 \input{title.tex}
 
 \input{chapters/preface.tex}
@@ -39,6 +44,7 @@
 \input{chapters/noun.tex}
 \input{chapters/pron.tex}
 \input{chapters/verb.tex}
+\input{chapters/prep.tex}
 \input{chapters/numeral.tex}
 \input{chapters/syntax.tex}
 \input{chapters/words.tex}
