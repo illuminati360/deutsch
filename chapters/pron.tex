@@ -1,7 +1,7 @@
 \chapter{名词组：冠形名代}
 \begin{itemize}
-    \item 定冠：定冠，单三，强形，名物，疑问，指示，分配
-    \item 不定：不定，否定，弱形，形物，疑问
+    \item 定冠：定冠，单三，强形，名物，疑问，指示，分配，不定(代词)
+    \item 不定：不定(冠词)，否定，弱形，形物，疑问
 \end{itemize}
 \newgeometry{left=1cm, right=1cm, top=1cm, bottom=1cm}
 \begin{center}
@@ -112,12 +112,21 @@
 
         \matrix (m8) [pronountable, pronountable/green, below=1cm of m6]{
             \hspace{1em} & M            & N            & F            & P \\
-            N            & jede         & jede         & jede         &   \\
-            A            & \tiny{jeden} & \tiny{jede}  & jede         &   \\
+            N            & \tiny{jeder} & \tiny{jedes} & jede         &   \\
+            A            & \tiny{jeden} & \tiny{jedes} & jede         &   \\
             D            & \tiny{jedem} & \tiny{jedem} & \tiny{jeder} &   \\
             G            & \tiny{jedes} & \tiny{jedes} & \tiny{jeder} &   \\
         };
         \node(l8) [above=0.03cm of m8] {\small{Table 1-8 分配}};
+
+        \matrix (m9) [pronountable, pronountable/green, right=0.3cm of m8]{
+            \hspace{1em} & M            & N            & F            & P            \\
+            N            & \tiny{aller} & \tiny{alles} & alle         & alle         \\
+            A            & \tiny{allen} & \tiny{alles} & alle         & alle         \\
+            D            & \tiny{allem} & \tiny{allem} & \tiny{aller} & \tiny{allen} \\
+            G            & \tiny{alles} & \tiny{alles} & \tiny{aller} & \tiny{aller} \\
+        };
+        \node(l9) [above=0.03cm of m9] {\small{Table 1-9 不定}};
 
 
         % indefinite
@@ -196,11 +205,11 @@
             row 2 column 3/.style={nodes={shade}},
             row 3 column 3/.style={nodes={shade}},
         ]{
-            \hspace{1em} & M                                       & N                                        & F                    & P                    \\
+            \hspace{1em} & M                                        & N                                        & F                    & P                    \\
             N            & \tiny{was für\hspace{2em}ein} & \tiny{was für\hspace{2em}ein} & \tiny{was für eine}  & \tiny{was für eine}  \\
-            A            & \tiny{was für einen}                    & \tiny{was für\hspace{2em}ein} & \tiny{was für eine}  & \tiny{was für eine}  \\
-            D            & \tiny{was für einem}                    & \tiny{was für einem}                     & \tiny{was für einer} & \tiny{was für einen} \\
-            G            & \tiny{was für eines}                    & \tiny{was für eines}                     & \tiny{was für einer} & \tiny{was für einer} \\
+            A            & \tiny{was für einen}                     & \tiny{was für\hspace{2em}ein} & \tiny{was für eine}  & \tiny{was für eine}  \\
+            D            & \tiny{was für einem}                     & \tiny{was für einem}                     & \tiny{was für einer} & \tiny{was für einen} \\
+            G            & \tiny{was für eines}                     & \tiny{was für eines}                     & \tiny{was für einer} & \tiny{was für einer} \\
         };
         \node(r6) [above=0.03cm of n6] {\small{Table 2-6 疑问}};
     \end{tikzpicture}
@@ -213,7 +222,7 @@
 物主词根，其实就是人称属格（人称属格古语才用）去掉-er（复1,复2除外，属于活标本）。 \\
 注意歧义：
 \begin{itemize}
-    \item ihr 物主：阴三、复三，人称：复二
+    \item ihr 物主：阴三、复三，人称：复二、阴三与
 \end{itemize}
 注意特殊： \\
 euer + e \textrightarrow{eure}
