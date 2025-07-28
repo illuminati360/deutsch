@@ -22,6 +22,77 @@
     复与-n，阳弱-(e)n，单阳中属-(e)s。
 \end{myquote}
 
+\subsubsection{阳性弱变化名词}
+阳弱三类
+\begin{itemize}
+    \item -e 结尾
+          \begin{center}
+              \begin{tabular}{|c|c|}
+                  \hline
+                  \rowcolor{gray}
+                  word       & meaning      \\
+                  \hline
+                  Junge      & boy          \\
+                  Kollege    & colleague    \\
+                  Kunde      & customer     \\
+                  Neffe      & nephew       \\
+                  Zeuge      & witness      \\
+                  \hline
+                  Chinese    & chinese      \\
+                  Franzose   & french       \\
+                  Russe      & russian      \\
+                  \hline
+                  Affe       & ape          \\
+                  Hase       & hare         \\
+                  Löwe       & lion         \\
+                  \hline
+                  Biologe    & biologist    \\
+                  Psychologe & psychologist \\
+                  \hline
+              \end{tabular}
+          \end{center}
+    \item -ant, -ent, -ist, -at 结尾
+          \begin{center}
+              \begin{tabular}{|c|c|}
+                  \hline
+                  \rowcolor{gray}
+                  word                   & meaning              \\
+                  \hline
+                  Elefant                & elephant             \\
+                  \hline
+                  Assistent              & assistant            \\
+                  Student                & (university) student \\
+                  Präsident              & president            \\
+                  Dozent                 & lecturer             \\
+                  \hline
+                  \underline{Jour}nalist & journalist           \\
+                  Polizist               & police               \\
+                  Optimist               & optimist             \\
+                  Pessimist              & pessimist            \\
+                  \hline
+                  Diplomat               & diplomat             \\
+                  \hline
+              \end{tabular}
+          \end{center}
+    \item 部分人或生物
+          \begin{center}
+              \begin{tabular}{|c|c|}
+                  \hline
+                  \rowcolor{gray}
+                  word    & meaning   \\
+                  \hline
+                  Bär     & bear      \\
+                  \hline
+                  Bauer   & farmer    \\
+                  Herr    & Mister    \\
+                  Mensch  & person    \\
+                  Nachbar & neighbour \\
+                  \hline
+              \end{tabular}
+          \end{center}
+\end{itemize}
+
+
 \tikzset{
     nountable/.style={
             matrix of nodes,
@@ -101,7 +172,7 @@
 \end{center}
 z.B.:\\
 Wie viele Übungen machen Sie heute? \\
-注意Wie Viele/Viel \square[border=true] 算作一个句子成分。
+注意Wie Viele/Viel \sqr[border=true] 算作一个句子成分。
 
 \subsection{可视化格、性}
 用颜色形状表示性、格，数算一种特殊性。
@@ -111,10 +182,10 @@ Wie viele Übungen machen Sie heute? \\
             row 1/.style={nodes={minimum height=1.5em, fill=gray!50}},
         ]{
             格 & 形                    & 性 & 色                     \\
-            N & \square[border=true] & M & \square[color=green]  \\
-            A & \diam[border=true]   & N & \square[color=purple] \\
-            D & \olive[border=true]  & F & \square[color=yellow] \\
-            G & \tri[border=true]    & P & \square[color=red]    \\
+            N & \sqr[border=true] & M & \sqr[color=green]  \\
+            A & \diam[border=true]   & N & \sqr[color=purple] \\
+            D & \olive[border=true]  & F & \sqr[color=yellow] \\
+            G & \tri[border=true]    & P & \sqr[color=red]    \\
         };
         \node(l1) [above=0.03cm of m1] {\small{Table 1-1 可视化}};
     \end{tikzpicture}

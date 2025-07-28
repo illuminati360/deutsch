@@ -133,8 +133,8 @@
             \begin{tikzpicture}[baseline, every node/.style={spelling}]
                 \node(t1)[text=\cardcolor, overlay] {\Large\article};
                 \node(t2)[text=\cardcolor, overlay, right=of t1] {\Large\cardtitle,};
-                \node(n1)[overlay, below=of t1] {\square[color=\cardcolor, border=true, scale=0.6]};
-                \node(n2)[overlay] at ($(t2.center)!(n1.center)!(t2.center)$){\square[color=\cardcolor]};
+                \node(n1)[overlay, below=of t1] {\sqr[color=\cardcolor, border=true, scale=0.6]};
+                \node(n2)[overlay] at ($(t2.center)!(n1.center)!(t2.center)$){\sqr[color=\cardcolor]};
 
                 \expandafter\ifstrequal\expandafter{\genitive}{}{
                     \node(t3)[overlay, right=-0.5em of t2] {};
@@ -145,7 +145,7 @@
                 }
 
                 \node(t4)[text=red, overlay, minimum width=0.5cm, right=of t3] {\Large\plural};
-                \node(n4)[overlay] at ($(t4.center)!(n1.center)!(t4.center)$){\square[color=red]};
+                \node(n4)[overlay] at ($(t4.center)!(n1.center)!(t4.center)$){\sqr[color=red]};
                 % use fit to automatically center the content
                 \node[fit=(t1) (t2) (t3) (t4) (n1) (n2) (n3) (n4), draw=none] (fitbox) {};
 
@@ -223,21 +223,21 @@
                 }{
                     \node(t1)[text=black, font=\sffamily\bfseries, overlay] {\Large\positive,};
                 }
-                \node(n1)[overlay, below=1em of t1] {\square[border=true, scale=0.8]};
+                \node(n1)[overlay, below=1em of t1] {\sqr[border=true, scale=0.8]};
 
                 \expandafter\ifstrequal\expandafter{\comparative}{}{
                     \node(t2)[overlay, right=-0.6cm of t1] {};
                     \node(n2)[overlay] at ($(t2.center)!(n1.center)!(t2.center)$){};
                 }{
                     \node(t2)[text=black, overlay, right=of t1] {\Large\comparative,};
-                    \node(n2)[overlay] at ($(t2.center)!(n1.center)!(t2.center)$){\square[border=true, scale=0.8]};
+                    \node(n2)[overlay] at ($(t2.center)!(n1.center)!(t2.center)$){\sqr[border=true, scale=0.8]};
                 }
                 \expandafter\ifstrequal\expandafter{\superlative}{}{
                     \node(t3)[overlay, right=-0.6cm of t2] {};
                     \node(n3)[overlay] at ($(t3.center)!(n1.center)!(t3.center)$){};
                 }{
                     \node(t3)[text=black, overlay, right=of t2] {\Large\superalative,};
-                    \node(n3)[overlay] at ($(t3.center)!(n1.center)!(t3.center)$){\square[border=true, scale=0.8]};
+                    \node(n3)[overlay] at ($(t3.center)!(n1.center)!(t3.center)$){\sqr[border=true, scale=0.8]};
                 }
 
                 \node[fit=(t1) (t2) (t3) (n1) (n2) (n3), draw=none] (fitbox) {};

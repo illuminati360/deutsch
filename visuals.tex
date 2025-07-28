@@ -14,16 +14,16 @@
 
 \def\shapelinewidth{0.08em}
 
-% Square
+% sqr
 \pgfkeys{
-    /square/.is family, /square,
+    /sqr/.is family, /sqr,
     default/.style = {color = {none}, thickness = {normal}, border = {false}, fill = {full}, pattern = {none}, scale = {1.0}},
-    color/.store in = \squarecolor,
-    thickness/.store in = \squarethickness,
-    border/.store in = \squareborder,
-    fill/.store in = \squarefill, % full, half, none, large, middle, small
-    pattern/.store in = \squarepattern, % vert, diag
-    scale/.store in = \squarescale,
+    color/.store in = \sqrcolor,
+    thickness/.store in = \sqrthickness,
+    border/.store in = \sqrborder,
+    fill/.store in = \sqrfill, % full, half, none, large, middle, small
+    pattern/.store in = \sqrpattern, % vert, diag
+    scale/.store in = \sqrscale,
 }
 
 \newcommand\dsq[1]{
@@ -31,62 +31,62 @@
 }
 
 % must add `%` to prevent \NewDocumentCommand from adding extra spaces.
-\NewDocumentCommand{\square}{o}{%
-    \pgfkeys{/square, default, #1}%
+\NewDocumentCommand{\sqr}{o}{%
+    \pgfkeys{/sqr, default, #1}%
     \begin{tikzpicture}[baseline={([yshift=-0.5ex]current bounding box.center)}]
-        \def\a{2em*\squarescale} %side length
-        \def\l{\shapelinewidth*\squarescale} %line width
+        \def\a{2em*\sqrscale} %side length
+        \def\l{\shapelinewidth*\sqrscale} %line width
 
-        \expandafter\ifstrequal\expandafter{\squarethickness}{medium}{
+        \expandafter\ifstrequal\expandafter{\sqrthickness}{medium}{
             \def\l{\shapelinewidth*1.5}
         }{}
-        \expandafter\ifstrequal\expandafter{\squarethickness}{high}{
+        \expandafter\ifstrequal\expandafter{\sqrthickness}{high}{
             \def\l{\shapelinewidth*3}
         }{}
 
-        \expandafter\ifstrequal\expandafter{\squareborder}{true}{
+        \expandafter\ifstrequal\expandafter{\sqrborder}{true}{
             \def\bordercolor{black};
         }{
             \def\bordercolor{none};
         }
 
-        % only fill when \squarefill is full or large
+        % only fill when \sqrfill is full or large
         \def\fillcolor{none}
-        \expandafter\ifstrequal\expandafter{\squarefill}{full}{
-            \def\fillcolor{\squarecolor}
+        \expandafter\ifstrequal\expandafter{\sqrfill}{full}{
+            \def\fillcolor{\sqrcolor}
         }{}
-        \expandafter\ifstrequal\expandafter{\squarefill}{large}{
-            \def\fillcolor{\squarecolor}
+        \expandafter\ifstrequal\expandafter{\sqrfill}{large}{
+            \def\fillcolor{\sqrcolor}
         }{}
 
-        % draw the outter square
+        % draw the outter sqr
         \draw[fill=\fillcolor, draw=\bordercolor, line width=\l] \dsq{\a}
 
         % half fill
-        \expandafter\ifstrequal\expandafter{\squarefill}{half}{
-            \draw[fill=\squarecolor, draw=none] (-\a/2+\l/2,-\a/2+\l/2) rectangle (\a/2-\l/2,\l/2);
+        \expandafter\ifstrequal\expandafter{\sqrfill}{half}{
+            \draw[fill=\sqrcolor, draw=none] (-\a/2+\l/2,-\a/2+\l/2) rectangle (\a/2-\l/2,\l/2);
         }{}
 
-        \def\ai{\a*0.8} % inner square side length
-        % inner square if specified
-        \expandafter\ifstrequal\expandafter{\squarefill}{large}{
+        \def\ai{\a*0.8} % inner sqr side length
+        % inner sqr if specified
+        \expandafter\ifstrequal\expandafter{\sqrfill}{large}{
             \draw[fill=none, draw=black, line width=\l] \dsq{\ai}
         }{}
-        \expandafter\ifstrequal\expandafter{\squarefill}{small}{
+        \expandafter\ifstrequal\expandafter{\sqrfill}{small}{
             \draw[fill=none, draw=black, line width=\l] \dsq{\ai}
         }{}
 
-        \expandafter\ifstrequal\expandafter{\squarefill}{middle}{
-            \draw[fill=\squarecolor, draw=black, line width=\l] \dsq{\ai}
+        \expandafter\ifstrequal\expandafter{\sqrfill}{middle}{
+            \draw[fill=\sqrcolor, draw=black, line width=\l] \dsq{\ai}
         }{}
 
         % patterns
-        \expandafter\ifstrequal\expandafter{\squarepattern}{vert}{
+        \expandafter\ifstrequal\expandafter{\sqrpattern}{vert}{
             \draw[draw=black, line width=\l, shift={(-\a/2, -\a/2)}]
             (\a/3, 0) -- (\a/3, \a)
             (\a/3*2, 0) -- (\a/3*2, \a);
         }{}
-        \expandafter\ifstrequal\expandafter{\squarepattern}{diag}{
+        \expandafter\ifstrequal\expandafter{\sqrpattern}{diag}{
             \draw[draw=black, line width=\l, shift={(-\a/2, -\a/2)}]
             (0, \a/2) -- (\a/2, 0)
             (0, \a) -- (\a, 0)
