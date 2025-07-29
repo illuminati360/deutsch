@@ -18,6 +18,14 @@
     \item 过去，多用于情系助(haben, sein, modal) \flower[color=gray]
 \end{itemize}
 
+常见时间状语：
+\begin{itemize}
+    \item gestern, vorgestern
+    \item im Jahr xxxx
+    \item letzt- xxx (letzte Woche, letztes Wochenende, letztes Jahr, letzten Monat)
+    \item früher, damals 从前
+\end{itemize}
+
 \subsection{过去时变位}
 不规则动词变位，一、三人称相同。 \\
 多用情系助的过去时。\\
@@ -60,13 +68,111 @@
         \hline
     \end{tabular}
 \end{center}
-常见时间状语：
+
+\section{现在完成时}
+现完仍是句框结构，难点有二
 \begin{itemize}
-    \item gestern, vorgestern
-    \item im Jahr xxxx
-    \item letzt- xxx (letzte Woche, letztes Wochenende, letztes Jahr, letzten Monat)
-    \item früher, damals 从前
+    \item 助：用哪个助动词
+    \item 分：不规则动词分词形式
 \end{itemize}
+\subsection{现完用法}
+\begin{itemize}
+    \item 口语中表过去
+    \item 表完成
+\end{itemize}
+\subsection{现完构成}
+助动词(haben/sein) + 第二分词(Partizip II) 组成句框。\\
+仅助动词变位，宾语变格看实义动词。
+\begin{center}
+    \begin{tikzpicture}
+        \node (s) {\pill[color=gray, width=2em, radius=0.8em, label={主}]};%
+        \node (m) [right=of s] {\pill[color=gray, width=2em, radius=0.8em, label={助}]};%
+        \node (o) [right=of m] {\pill[color=gray, width=2em, radius=0.8em, label={宾}]};%
+        \node (v) [right=of o] {\pill[color=gray, width=2em, radius=0.8em, label={分}]};%
+        \draw[->, shorten >=0, shorten <=0] (s) -- (m) node[midway, above] {};%
+        \draw[->, shorten >=0, shorten <=0] (v) -- (o) node[midway, above] {};%
+        \draw (m.south) -- ++(0,-0.5em) -- ($(v.south) + (0,-0.5em)$) -- ++(0,0.5em);
+    \end{tikzpicture}
+\end{center}
+
+\subsection{现完助动词区分}
+同时满足以下用sein：
+\begin{itemize}
+    \item 不及物动词
+    \item 表示运动、移动及状态变化
+\end{itemize}
+其余动词用haben
+\begin{itemize}
+    \item 及物动词都用haben
+    \item 不及物但不表示运动、移动及状态变化的
+\end{itemize}
+
+常见现完用sein的动词：
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \rowcolor{gray}
+        word    & meaning  & perfect      \\
+        \hline
+        bleiben & to stay  &              \\
+        \hline
+        gehen   & to go    & ist gegangen \\
+        \hline
+        kommen  & to come  &              \\
+        \hline
+        fahren  & to drive &              \\
+        \hline
+        fliegen & to fly   & ist geflogen \\
+        \hline
+        fallen  & to fall  &              \\
+        \hline
+        laufen  & to run   &              \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection{第二过分变化规律}
+(前缀)-词干-(后缀)
+
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \rowcolor{gray}
+        part                & conjugation  & case          \\
+        \hline
+        \multirow{3}{*}{前缀} & -            & \makecell{不可分 \\ -ieren结尾}  \\
+        \cline{2-3}
+                            & -ge-         & 可分            \\
+        \cline{2-3}
+                            & ge-          & 其他            \\
+        \hline
+        \multirow{4}{*}{后缀} & -t (弱)       & 大多数规则动词       \\
+        \cline{2-3}
+                            & -et (特殊弱)    & -t,-d结尾规则动词   \\
+        \cline{2-3}
+                            & -en (强)      & 不规则动词         \\
+        \cline{2-3}
+                            & (词干变音)-t (混) & 少量不规则动词       \\
+        \hline
+    \end{tabular}
+\end{center}
+
+-ieren结尾动词：
+\begin{itemize}
+    \item studieren
+    \item funktionieren
+    \item diskutieren
+\end{itemize}
+
+混合变化动词:
+\begin{itemize}
+    \item denken \textrightarrow{gedacht}
+    \item bringen \textrightarrow{gebracht}
+    \item wissen \textrightarrow{gewusst}
+\end{itemize}
+
+注：\\
+词干变音无规则，需强记。
 
 \section{语态}
 \subsection{命令式}
@@ -265,60 +371,62 @@ Trennbare Verben: 前缀与基础动词可分。\\
     \begin{longtable} {|c|c|c|}
         \hline
         \rowcolor{gray}
-        word           & gender         & annotation           \\
+        word           & gender           & annotation           \\
         \hline
         \endfirsthead
-        \multicolumn{3}{r}{...}                                \\
+        \multicolumn{3}{r}{...}                                  \\
         \hline
         \endhead
         \hline
-        \multicolumn{3}{r}{...}                                \\
+        \multicolumn{3}{r}{...}                                  \\
         \endfoot
         \hline
         \endlastfoot
         \hline
-        \multicolumn{3}{|c|}{be-}                              \\
+        \multicolumn{3}{|c|}{be-}                                \\
         \hline
-        bekommen       & to obtain      &                      \\
-        beenden        & to stop (vt.)  & enden: to end, vi.   \\
-        bestellen      & to order       &                      \\
-        besprechen     & to discuss     &                      \\
+        bekommen       & to obtain        &                      \\
+        beenden        & to stop (vt.)    & enden: to end, vi.   \\
+        bestellen      & to order         &                      \\
+        besprechen     & to discuss       &                      \\
         \hline
-        \multicolumn{3}{|c|}{ge-}                              \\
+        \multicolumn{3}{|c|}{ge-}                                \\
         \hline
-        gehören        & to belong (to) & \textasciitilde (zu) \\
+        gehören        & to belong (to)   & \textasciitilde (zu) \\
         \hline
-        \multicolumn{3}{|c|}{emp-}                             \\
+        \multicolumn{3}{|c|}{emp-}                               \\
         \hline
-        empfehlen      & to recommend   &                      \\
-        empfangen      & to receive     &                      \\
+        empfehlen      & to recommend     &                      \\
+        empfangen      & to receive       &                      \\
         \hline
-        \multicolumn{3}{|c|}{ent-}                             \\
+        \multicolumn{3}{|c|}{ent-}                               \\
         \hline
-        entschuldigen  & to excuse      &                      \\
+        entschuldigen  & to excuse        &                      \\
         \hline
-        \multicolumn{3}{|c|}{er-}                              \\
+        \multicolumn{3}{|c|}{er-}                                \\
         \hline
-        erklären       & to explain     &                      \\
-        erfahren       & to learn of    &                      \\
-        erziehen       & to educate     &                      \\
+        erklären       & to explain       &                      \\
+        erfahren       & to learn of      &                      \\
+        erziehen       & to educate       &                      \\
+        erreichen      & to reach         &                      \\
         \hline
-        \multicolumn{3}{|c|}{ver-}                             \\
+        \multicolumn{3}{|c|}{ver-}                               \\
         \hline
-        verstehen      & to understand  &                      \\
-        versuchen      & to try         &                      \\
+        verstehen      & to understand    &                      \\
+        versuchen      & to try           &                      \\
+        verlassen      & to leave/abandon &                      \\
         \hline
-        \multicolumn{3}{|c|}{zer-}                             \\
+        \multicolumn{3}{|c|}{zer-}                               \\
         \hline
-        zerstören      & to destroy     &                      \\
+        zerstören      & to destroy       &                      \\
         \hline
-        \multicolumn{3}{|c|}{unter-}                           \\
+        \multicolumn{3}{|c|}{unter-}                             \\
         \hline
-        unterschreiben & to sign        &                      \\
+        unterschreiben & to sign          &                      \\
         \hline
-        \multicolumn{3}{|c|}{unter-}                           \\
+        \multicolumn{3}{|c|}{unter-}                             \\
         \hline
-        wiederholen    & to review      &                      \\
+        wiederholen    & to review        &                      \\
         \hline
     \end{longtable}
 \end{center}
@@ -358,6 +466,7 @@ Trennbare Verben: 前缀与基础动词可分。\\
         an/fangen       & to begin with             & =beginnen                                   \\
         an/kommen       & to arrive at              & die Ankunft: arrival                        \\
         an/sprechen     & to speak to               & \textasciitilde jmdm                        \\
+        an/nehmen       & to accept                 &                                             \\
         \hline
         \multicolumn{3}{|c|}{aus-}                                                                \\
         \hline
@@ -371,6 +480,7 @@ Trennbare Verben: 前缀与基础动词可分。\\
         ein/ziehen      & to move in                &                                             \\
         ein/schlafen    & to fall asleep            &                                             \\
         ein/laden       & to invite                 &                                             \\
+        ein/kleben      & to stick on               &                                             \\
         \hline
         \multicolumn{3}{|c|}{frei-}                                                               \\
         \hline
@@ -436,49 +546,79 @@ Trennbare Verben: 前缀与基础动词可分。\\
     \begin{longtable} {|c|c|c|c|c|}
         \hline
         \rowcolor{gray}
-        word      & meaning & present                & past    & perf         \\
+        word      & meaning        & present                & past    & perf              \\
         \hline
         \endfirsthead
-        \multicolumn{5}{r}{...}                                               \\
+        \multicolumn{5}{r}{...}                                                           \\
         \hline
         \endhead
         \hline
-        \multicolumn{5}{r}{...}                                               \\
+        \multicolumn{5}{r}{...}                                                           \\
         \endfoot
         \hline
         \endlastfoot
         \hline
-        essen     &         & isst                   &         &              \\
-        sprechen  &         & spricht                & sprach  & gesprochen   \\
-        helfen    &         & hilft                  &         &              \\
-        geben     &         & gibt                   & gab     &              \\
+        sprechen  &                & spricht                & sprach  & gesprochen        \\
+        helfen    &                & hilft                  & half    & geholfen          \\
+        geben     &                & gibt                   & gab     &                   \\
+        treffen   & to meet        & trifft                 & traf    & getroffen         \\
+        nehmen    &                & \textcolor{red}{nimmt} & nahm    & genommen          \\
+        essen     &                & isst                   & aß      & gegessen          \\
+        sterben   &                & stirbt                 & starb   & ist gestorben     \\
         \hline
-        sehen     &         & sieht                  & sah     &              \\
-        lesen     &         & liest                  & las     &              \\
+        sehen     &                & sieht                  & sah     &                   \\
+        lesen     &                & liest                  & las     &                   \\
         \hline
-        nehmen    &         & \textcolor{red}{nimmt} & nahm    & genommen     \\
-        eseen     &         & isst                   & aß      & gegessen     \\
+        fahren    &                & fährt                  &         & (ist) gefahren    \\
+        fallen    &                & fällt                  & fiel    & ist gefallen      \\
+        schlafen  &                & schläft                & schlief &                   \\
+        schlagen  & to beat        & schlägt                & schlug  & (ist) geschlagen  \\
+        laufen    &                & läuft                  &         &                   \\
+        laden     &                & lädt                   & lud     &                   \\
+        waschen   &                & wäscht                 & wusch   &                   \\
+        empfangen &                & empfängt               & empfing &                   \\
+        fangen    & to catch       & fängt                  & fing    &                   \\
+        laden     &                & lädt                   &         &                   \\
+        halten    & to hold        & hält                   & hielt   & gehalten          \\
+        raten     &                & rät                    &         &                   \\
+        tragen    & to wear        & trägt                  & trug    &                   \\
         \hline
-        fahren    &         & fährt                  &         &              \\
-        schlafen  &         & schläft                & schlief &              \\
-        laufen    &         & läuft                  &         &              \\
-        waschen   &         & wäscht                 & wusch   &              \\
-        empfangen &         & empfängt               & empfing &              \\
-        laden     &         & lädt                   &         &              \\
-        halten    & to hold & hält                   & hielt   & gehalten     \\
-        raten     &         & rät                    &         &              \\
+        haben     &                & habt                   & hatte   &                   \\
+        sein      &                & ist                    & war     & ist gewesen       \\
+        werden    &                & wird                   & wurde   & ist geworden      \\
+        wissen    &                & weiß                   & wuste   & gewusst           \\
+        tun       & to do          &                        & tat     & getan             \\
         \hline
-        haben     &         & habt                   & hatte   &              \\
-        sein      &         & ist                    & war     &              \\
-        werden    &         & wird                   &         &              \\
+        schreiben &                &                        & schrieb & geschrieben       \\
+        rufen     &                &                        & rief    &                   \\
+        nennen    &                &                        & nannte  & genannt           \\
+        kommen    &                &                        & kam     & ist gekommen      \\
+        liegen    &                &                        & lag     & gelegen           \\
+        trinken   &                &                        & trank   & getrunken         \\
+        sitzen    &                &                        & saß     & gesessen          \\
         \hline
-        schreiben &         &                        & schrieb & geschrieben  \\
-        rufen     &         &                        & rief    & gerufen      \\
-        nennen    &         &                        & nannte  & genannt      \\
-        kommen    &         &                        & kam     & ist gekommen \\
-        liegen    &         &                        & lag     & gelegen      \\
-        trinken   &         &                        & trank   & getrunken    \\
-        sitzen    &         &                        & saß     & gesessen     \\
+        beginnen  &                &                        & begann  & begonnen          \\
+        bitten    &                &                        & bat     & gebeten           \\
+        bleiben   &                &                        & belieb  & ist geblieben     \\
+        heißen    &                &                        & hieß    &                   \\
+        leihen    &                &                        & lieh    & geliehen          \\
+        finden    &                &                        & fand    & gefunden          \\
+        fliegen   &                &                        & flog    & ist geflogen      \\
+        kennen    &                &                        & kannte  & gekannt           \\
+        gebären   &                &                        & gebar   & geboren           \\
+        geben     &                &                        & gab     &                   \\
+        gehen     &                &                        & ging    & ist gegangen      \\
+        swimmen   &                &                        & schwamm & (ist) geschwommen \\
+        singen    &                &                        & sang    & gesungen          \\
+        stehen    &                &                        & stand   & gestanden         \\
+        aufstehen &                &                        & gestand & ist aufgestanden  \\
+        steigen   &                &                        & stieg   & ist gestiegen     \\
+        verlieren & to lose        &                        & verlor  & verloren          \\
+        vergessen & to forget      & vergisst               & vergaß  & vergessen         \\
+        \hline
+        bringen   &                &                        & brachte & gebracht          \\
+        denken    &                &                        & dachte  & gedacht           \\
+        mögen     & (to want v/t.) & mag                    & mochte  & gemocht           \\
         \hline
     \end{longtable}
 \end{center}

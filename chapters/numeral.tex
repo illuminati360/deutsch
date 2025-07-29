@@ -75,12 +75,12 @@
             \begin{tabular}{|c|c|}
                 \rowcolor{green}
                 \hline
-                \#  & numeral    \\
+                \#  & numeral       \\
                 \hline
-                1M  & die Million    \\
+                1M  & die Million   \\
                 1B  & die Milliarde \\
-                1KB & die Billion    \\
-                1MB & die Billiarde  \\
+                1KB & die Billion   \\
+                1MB & die Billiarde \\
                 \hline
             \end{tabular}
         };
@@ -135,6 +135,50 @@
 \begin{myquote}
     大数千分号，小数小数点，英德正相反。
 \end{myquote}
+
+\subsection{问多少}
+Wie viele ist ...?
+
+\section{序数}
+\subsection{特殊词}
+\begin{center}
+    \begin{tikzpicture}
+        \node[tight, draw=none, align=center] (t1){
+            \begin{tabular}{|c|c|}
+                \rowcolor{gray}
+                \hline
+                \# & numeral \\
+                \hline
+                1  & erst    \\
+                3  & dritt   \\
+                7  & siebt   \\
+                8  & acht    \\
+                \hline
+            \end{tabular}
+        };
+    \end{tikzpicture}
+\end{center}
+\subsection{规则}
+序数词由基数词派生来，合成基数变序数只变最末词(der einundzwanzigste, der hunderterst) \\
+序数必带冠(同英)，变格同形。
+
+\subsection{问第几}
+Der/Das/Die wievielte ist ... ?
+
+\begin{center}
+    \begin{tabular}{|l|l|l|}
+        \rowcolor{gray}
+        \hline
+        range       & rule  & exception \\
+        \hline
+        1\char`\~19 & 基+t   & 1,3,7,8   \\
+        \hline
+        >19         & 基+st  &           \\
+        \hline
+        合成词         & 只变最末词 &           \\
+        \hline
+    \end{tabular}
+\end{center}
 
 \section{量词}
 \label{sec:num:unit}
@@ -271,6 +315,37 @@ if A = 1, eins \textrightarrow{ein} (e.g. 1:01 = ein Uhr eins) \\
     \item 整: Punkt. e.g. Es ist Punkt eins.
 \end{itemize}
 注意der Punkt \sqr[color=green]
+
+\section{日期}
+\subsection{问日期}
+\begin{itemize}
+    \item Q: Der wievielte ist heute?
+    \item A: Heute ist ...
+\end{itemize}
+
+\subsection{问何日}
+\begin{itemize}
+    \item Q: Am wievielten ...?
+    \item A: Am erst\textcolor{red}{en} Mai ...
+\end{itemize}
+
+\subsection{日期写法}
+从小到大日月年 \\
+\begin{itemize}
+    \item 日用序数，月可用月名或序数：
+          \begin{itemize}
+              \item der erste Mai
+              \item der erste fünfte
+          \end{itemize}
+    \item 注意变格：\\
+          \begin{itemize}
+              \item der erst\textcolor{red}{e} Mai \sqr[border=true]
+              \item am erst\textcolor{red}{en} Mai \olive[border=true]
+          \end{itemize}
+    \item 年有零头，先千后零，年无零头，两两作读。\\
+    2025: zweitausendfünfundzwanzig \\
+    1994: neunzehnhundertvierundneunzig \\
+\end{itemize}
 
 \subsection{Misc}
 带半：
