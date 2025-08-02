@@ -3,6 +3,14 @@
     \item 定冠：定冠，单三，强形，名物，疑问，指示，分配，不定(代词)
     \item 不定：不定(冠词)，否定，弱形，形物，疑问
 \end{itemize}
+
+注意：
+\begin{itemize}
+    \item 形容词在不定冠词后混变。
+    \item 形容词强变属格用-en而不是-es。
+    \item 疑问代词was für 在复数时没有ein。
+\end{itemize}
+
 \newgeometry{left=1cm, right=1cm, top=1cm, bottom=1cm}
 \begin{center}
     \def\ca{green}
@@ -72,6 +80,7 @@
         };
         \node(l3) [above=0.03cm of m3] {\small{Table 1-3 单三}};
 
+        \label{sec:pron:strong_adj}
         \matrix (m4) [pronountable, pronountable/green, below=1cm of m2]{
             \hspace{1em} & M                    & N                    & F   & P   \\
             N            & -er                  & -es                  & -e  & -e  \\
@@ -170,6 +179,7 @@
         };
         \node(r3) [above=0.03cm of n3] {\small{Table 2-3 否定}};
 
+        \label{sec:pron:weak_adj}
         \matrix (n4) [pronountable, pronountable/red, below=1cm of n2,
             row 2 column 2/.style={nodes={shade}},
             row 2 column 3/.style={nodes={shade}},
@@ -205,11 +215,11 @@
             row 2 column 3/.style={nodes={shade}},
             row 3 column 3/.style={nodes={shade}},
         ]{
-            \hspace{1em} & M                                        & N                                        & F                    & P                    \\
-            N            & \tiny{was für\hspace{2em}ein} & \tiny{was für\hspace{2em}ein} & \tiny{was für eine}  & \tiny{was für eine}  \\
-            A            & \tiny{was für einen}                     & \tiny{was für\hspace{2em}ein} & \tiny{was für eine}  & \tiny{was für eine}  \\
-            D            & \tiny{was für einem}                     & \tiny{was für einem}                     & \tiny{was für einer} & \tiny{was für einen} \\
-            G            & \tiny{was für eines}                     & \tiny{was für eines}                     & \tiny{was für einer} & \tiny{was für einer} \\
+            \hspace{1em} & M                                        & N                                        & F                    & P                                        \\
+            N            & \tiny{was für\hspace{2em}ein} & \tiny{was für\hspace{2em}ein} & \tiny{was für eine}  & \textcolor{red}{\tiny{was für}} \\
+            A            & \tiny{was für einen}                     & \tiny{was für\hspace{2em}ein} & \tiny{was für eine}  & \textcolor{red}{\tiny{was für}} \\
+            D            & \tiny{was für einem}                     & \tiny{was für einem}                     & \tiny{was für einer} & \textcolor{red}{\tiny{was für}} \\
+            G            & \tiny{was für eines}                     & \tiny{was für eines}                     & \tiny{was für einer} & \textcolor{red}{\tiny{was für}} \\
         };
         \node(r6) [above=0.03cm of n6] {\small{Table 2-6 疑问}};
     \end{tikzpicture}
@@ -278,7 +288,7 @@ euer + e \textrightarrow{eure}
               \item 国籍（带形容词限定带冠词） \\
                     Er ist Deutscher. \\
                     Er ist Chinese. \\
-              \item 国家（中性，全称是阴性 \\
+              \item 国家（中性，全称是阴性），城市 \\
                     Deutschland ist ein Land. Die BRD ist ein Land. \\
                     Die VR China ist ein Land. \\
               \item 科目 studieren
@@ -322,3 +332,17 @@ A: Nein, Ich spreche Deutsch nicht. (不地道) \\
     \item nict 特指否定（否定动词放在句尾）
 \end{itemize}
 \restoregeometry
+
+\section{疑问代词：welch- 和 was für}
+welch- 疑问对象范围确定，回答用定冠。
+\begin{itemize}
+    \item Q: Welcher Rock gefällt dir, der blaue oder der weiße?
+    \item A: Mir gefällt der blaue. 
+\end{itemize}
+was für 疑问对象范围不定，回答用不定冠或零冠。
+\begin{itemize}
+    \item Q: Was für einen Mann willst du haben? 
+    \item A: Einen reichen Mann.
+    \item Q: Was für Zeitschriften haben Sie hier?
+    \item A: Wir haben hier deutsche Zeitschriften und englische Zeitschriften. 
+\end{itemize}
