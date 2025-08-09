@@ -1,0 +1,68 @@
+\chapter{副词}
+
+\section{方位副词}
+\subsection{八方}
+\tdplotsetmaincoords{60}{120}
+\begin{tikzpicture}[tdplot_main_coords, scale=2]
+    \def\R{2.2}
+    \draw[->, thick] (0,0,0) -- (\R,0,0) node[anchor=north east]{$x$};
+    \draw[->, thick] (0,0,0) -- (0,\R,0) node[anchor=north west]{$y$};
+    \draw[->, thick] (0,0,0) -- (0,0,\R) node[anchor=south]{$z$};
+    \node (o) at (0,0,0) [below right] {$O$};
+
+    \node[draw=none, anchor=west, right=14em of o, align=center] {
+        \begin{tabular}{|c|c|c|}
+            \hline
+            \rowcolor{gray}
+            direction & prep.          & adv.         \\
+            \hline
+            x         & \makecell{an                  \\ neben \\ zwischen}       & \makecell{links \\ rechts}           \\
+            \hline
+            y         & \makecell{vor                 \\ hinter}          & \makecell{vorne, hinten}           \\
+            \hline
+            z         & \makecell{über                \\ auf \\ unter} & \makecell{oben, unten} \\
+            \hline
+            o         & in             & in der Mitte \\
+            \hline
+        \end{tabular}
+    };
+
+\end{tikzpicture}
+
+\subsection{语序}
+上下前后再左右(同英)，中间左右可调换\\
+\begin{center}
+    \begin{tikzpicture}
+        \node[tight, draw=none, align=center] (t1){
+            \begin{tabular}{|c|c|}
+                \hline
+                \rowcolor{gray}
+                direction & word   \\
+                \hline
+                up        & oben   \\
+                down      & unten  \\
+                front     & vorne  \\
+                back      & hinten \\
+                \hline
+            \end{tabular}
+        };
+
+        \node[tight, draw=none, align=center, right=3em of t1, anchor=west] (t2){
+            \begin{tabular}{|c|c|}
+                \hline
+                \rowcolor{gray}
+                direction & word   \\
+                \hline
+                left      & links  \\
+                right     & rechts \\
+                \hline
+            \end{tabular}
+        };
+
+        \draw[->, thick] (t1.east) -- (t2.west);
+
+        \node[draw=black, align=center, below=1em of t1, anchor=north] (t3){
+            in der Mitte
+        };
+    \end{tikzpicture}
+\end{center}
