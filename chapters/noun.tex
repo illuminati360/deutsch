@@ -16,7 +16,20 @@
 \subsection{变格规律}
 \label{subsec:noun:declension}
 名词的变格相对简单，黄书第一章就是它。
-单数名词只有阳中的属格加-(e)s（多音节-s,单音节-es）。复数名词与格加-n。阳性名词中有部分“弱名词”，除单数主格外一律加-(e)n。
+\begin{itemize}
+    \item 属格： \\
+          \begin{itemize}
+              \item 单数名词只有阳中的属格加-(e)s
+              \item 多音节-s,单音节-es，嘶擦或sch加-es
+              \item 人、地、中性国名，属格像英。前置，加-s，嘶擦情况加一撇 \\
+                    Julians Schwester ist eine bekannte Schwimmerin. \\
+                    Franz' Arbeit gefällt ihm nicht.
+          \end{itemize}
+    \item 与格： \\
+          复数名词与格加-n
+    \item 弱阳：\\
+          阳性名词中有部分“弱名词”，除单数主格外一律加-(e)n
+\end{itemize}
 \textcolor{gray}{（复与n,这个在冠词、人称代词还会见到！所以说德语有规可循！）}
 \begin{myquote}
     复与-n，阳弱-(e)n，单阳中属-(e)s。
@@ -110,7 +123,14 @@
 }
 \subsection{格的定义、疑问代词}
 \label{subsec:noun:inqpron}
-依赖句中角色，由动/介决定，
+\begin{itemize}
+    \item 格：\\
+          依赖句中角色，由动/介决定
+    \item 疑问代词：\\
+          疑代形同阳、中定冠 (对应人、物)。属格特殊加-en \\
+          (关系代词，指示代词类似deren,dessen)
+\end{itemize}
+
 \begin{center}
     \begin{tabular}{|c|c|c|}
         \hline
@@ -127,36 +147,48 @@
         \hline
     \end{tabular}
 \end{center}
+
 格区分名词性成分所属句子成分。因此德语句子顺序相对灵活。e.g.:
 \begin{itemize}
     \item Der Mann liebt die Frau.
     \item Die Frau liebt der Mann.
 \end{itemize}
-\noindent
-大部分带宾语动词是第四格。 \\
-关于双宾：顺序是，名与前，代宾前。区别是，人间物直，静三动四。 \\
-关于介宾搭配：疑问词用wo+prep，或者woher/wohin(介词不确定时)
-\subsubsection{wo}
+
+\subsection{可视化格、性}
+用颜色形状表示性、格，数算一种特殊性。
 \begin{center}
-    \begin{tabular}{|c|c|c|c|}
-        \hline
-        \rowcolor{gray}
-        wh                     & prep & obj case                                 & example                                        \\
-        \hline
-        \multirow{2}{*}{wo}    & in   & \pill[border=true, shape={type=olive}]   & Wo bist du? Ich bin in der Schweiz.            \\
-        \cline{2-4}
-                               & auf  & \pill[border=true, shape={type=olive}]   & Wo kauft er ein? Er Kauft auf dem Markt.       \\
-        \hline
-        woher                  & aus  & \pill[border=true, shape={type=olive}]   & Woher kommst du? Ich komme aus der Schweiz.    \\
-        \hline
-        \multirow{3}{*}{wohin} & nach & \pill[border=true, shape={type=olive}]   & Wohin fliegst du? Ich fliege nach der Schweiz. \\
-        \cline{2-4}
-                               & in   & \pill[border=true, shape={type=diamond}] & Wohin fliegst du? Ich fliege in die Schweiz.   \\
-        \cline{2-4}
-                               & auf  & \pill[border=true, shape={type=diamond}] & Wohin geht er? Er geht auf den Markt.          \\
-        \hline
-    \end{tabular}
+    \begin{tikzpicture}
+        \matrix (m1) [nountable,
+            row 1/.style={nodes={minimum height=1.5em, fill=gray!50}},
+        ]{
+            格 & 形                   & 性 & 色                  \\
+            N & \sqr[border=true]   & M & \sqr[color=green]  \\
+            A & \diam[border=true]  & N & \sqr[color=purple] \\
+            D & \olive[border=true] & F & \sqr[color=yellow] \\
+            G & \tri[border=true]   & P & \sqr[color=red]    \\
+        };
+        \node(l1) [above=0.03cm of m1] {\small{Table 1-1 可视化}};
+    \end{tikzpicture}
 \end{center}
+
+\subsection{与格}
+\subsubsection{用法}
+\begin{itemize}
+    \item 表所属 (=von, 相当于英所有格 of the) \\
+          das Haus Von meinem Bruder \\
+          das Haus meines Bruders
+    \item 搭配
+          句子：Ich bin bei der Meinung, dass ... \\
+          介词：iele Menschen treiben diesen Sport wegen der Gefahr und der Spannung. \\
+\end{itemize}
+\subsection{变格}
+
+\subsection{宾格}
+大部分带宾语动词是第四格，$v/t. \Rightarrow 可支配第四格$ \\
+少数不及物动词只支配第三格。\\
+双宾见\hyperref[chap:verb:double_object_order]{动词} \\
+
+
 \subsection{名词数，疑问代词}
 \begin{center}
     \begin{tabular}{|c|c|c|}
@@ -173,23 +205,6 @@
 z.B.:\\
 Wie viele Übungen machen Sie heute? \\
 注意Wie Viele/Viel \sqr[border=true] 算作一个句子成分。
-
-\subsection{可视化格、性}
-用颜色形状表示性、格，数算一种特殊性。
-\begin{center}
-    \begin{tikzpicture}
-        \matrix (m1) [nountable,
-            row 1/.style={nodes={minimum height=1.5em, fill=gray!50}},
-        ]{
-            格 & 形                    & 性 & 色                     \\
-            N & \sqr[border=true] & M & \sqr[color=green]  \\
-            A & \diam[border=true]   & N & \sqr[color=purple] \\
-            D & \olive[border=true]  & F & \sqr[color=yellow] \\
-            G & \tri[border=true]    & P & \sqr[color=red]    \\
-        };
-        \node(l1) [above=0.03cm of m1] {\small{Table 1-1 可视化}};
-    \end{tikzpicture}
-\end{center}
 
 
 \newgeometry{left=1cm, right=1cm, top=1cm, bottom=1cm}

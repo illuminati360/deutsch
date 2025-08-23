@@ -61,3 +61,40 @@ https://wiki.archlinux.org/title/Microsoft_fonts#Extracting_fonts_from_a_Windows
 #### Roadmap
 - from [anki plugin](https://github.com/illuminati360/gfm) to standalone app
 - WYSIWYG note taking, export to latex
+
+#### LMF Assisted Word Builder
+- Rationale:
+    - linguistics:《德语词汇巧学妙记》(王京平) to build a "WordNet"
+    - knowledge graph
+- Technical Roadmap
+    - Modeling: [ontolex](https://www.w3.org/2016/05/ontolex/)-[lemon](https://lemon-model.net/)
+    - Dataset: [DBnary](https://kaiko.getalp.org/) over [odenet](https://github.com/hdaSprachtechnologie/odenet)
+        - open (as opposed to [GermaNet](https://uni-tuebingen.de/en/faculties/faculty-of-humanities/departments/modern-languages/department-of-linguistics/chairs/general-and-computational-linguistics/ressources/lexica/germanet/))
+        - better data quality (wikitionary vs automation)
+        - better modeling (ontolex over [OWL](https://www.w3.org/TR/owl2-rdf-based-semantics/))
+    - RDF Server: [oxigraph](https://github.com/oxigraph/oxigraph) over [Apache Jena Fuseki]
+        - newer (rust vs java, actively maintained)
+        - easier setup (fuseki docker no working GUI)
+    - Design and Workflow:
+        - expand on ontolex-lemon to enable:
+            - mnemonic hint
+            - timestamp for srs
+            - etc.
+        - markdown as user input, e.g.:
+        ```markdown
+        # drucken
+        ## 1
+        - @hint: 
+        - @derive:
+            - ausdrucken: to print on
+            - der Eindruck
+        - @similar:
+            - drücken-3: to press/squeeze, drucken只是印, drücken挤更狠
+        
+        # ändern
+        ## 1,2
+        - @hint: ander-1, 使不同就是变
+        # 1
+        - sich andern: to var
+
+        ```
