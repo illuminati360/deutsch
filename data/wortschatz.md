@@ -3,7 +3,8 @@
 - @hint: 
 - @derives:
 	- ausdrucken: to print on
-	- der Eindruck
+    - der Ausdruck: expression
+	- der Eindruck: impression
 - @similarTo:
 	- drücken-3: to press/squeeze, drucken只是印, drücken挤更狠
   
@@ -32,7 +33,7 @@
 # gießen
 - @decl: , goss, hat gegossen
 ## 3
-- @hint: 
+- @hint: to pour
 - @dervies:
     - eingießen
 
@@ -61,10 +62,17 @@
 - @hint: 飞了不见了 to be missing
 - @derives:
     - empfehlen: to recommend
+    - der Fehler: mistake
 
 # fließen
 ## 2
 - @hint: 飞流 fließen, fliegen. fly flow
+
+# fliegen
+## 1
+- @hint: to fly
+- @derives:
+    - überfliegen: to fly over (to skim through)
 
 # folgen 
 ## 2
@@ -80,6 +88,8 @@
 - @derives:
     - die Feier
     - die Geburstagsfeier
+- @similar:
+    - die Ferien, , nur pl.: holidays
 
 # fordern
 ## 1
@@ -116,6 +126,8 @@
 # das Geschäft
 ## 1
 - @hint: business
+- @derives:
+    - die Geschäftszeit
 
 # hoffen
 ## 1
@@ -126,6 +138,8 @@
 # holen
 ## 3
 - @hint: 拿来 fetch (区分halten)
+- @derives:
+    - ab/holen: to pick up (接，取)
 
 # kündigen
 ## 1
@@ -165,6 +179,12 @@
 - @hint: 表现 to perform (as in performance)
 - @derives:
     - der Hochleistungssport: high performance sport
+- @example:
+    - den Wehrdienst leisten: 服兵役
+
+# der Wehrdienst
+## 2
+- @hint: military service (die Wehr: defend) (den Wehrdienst leisten)
 
 # liefern
 ## 4
@@ -187,6 +207,8 @@
 - @hint: to report
 - @syn:
     - berichten
+- @derives:
+    - anmelden
 
 # nützen
 ## 1
@@ -197,6 +219,8 @@
 # rechnen
 ## 2
 - @hint: 算 to calculate, 算得要对 (richtig), 要do justice (Recht)
+- @derives:
+    - die Rechnung: bill
 - @similar:
     - richtig: adj. right
     - das Recht: law, justice
@@ -239,7 +263,9 @@
 - @derives:
     - der Schluss
     - der Abschluss 结业
-    - der Aufschluss insight (auf- open, 打开封闭洞查)
+    - der Aufschluss: insight (auf- open, 打开封闭洞查)
+    - aus/schließen: to exclude
+    - ausschließlich: exclusively
 
 # steigen
 - @decl: , stieg, hat gestiegen
@@ -255,6 +281,10 @@
 # stellen
 ## 2
 - @hint: v/t. oder v/i.
+- @derives:
+    - aus/stellen: to exhibit
+    - vor/stellen: to introduce
+    - die Bushaltestelle: bus stop
 
 # stimmen
 ## 2
@@ -267,6 +297,11 @@
 - @decl: trägt, trug, 
 ## 15
 - @hint: to carry (扛,带)
+- @derives:
+    - ein/tragen: to register
+    - auf/tragen: to assign
+    - der Auftrag: assignment
+    - der Vertrag: contract
 ## 2
 - @hint: to wear
 
@@ -275,7 +310,7 @@
 ## 2
 - @hint: trete tread
 - @derives:
-    - das Eintritt: entrance
+    - der Eintritt: entrance
 
 # wachsen
 ## 2
@@ -286,6 +321,8 @@
 # wählen
 ## 1
 - @hint: to choose
+- @syn:
+    - aus/suchen
 - @similar
     - zählen: to count
 
@@ -317,12 +354,16 @@
 # zeigen
 ## 3
 - @hint: to show (展示 jemanden etwas sehen lassen)
+- @derives:
+    - an/zeigen: to advertise
+    - die Anzeige: advertisement, notification
 
 # zeichnen
 ## 7
 - @hint: to draw 画
 - @derives:
     - bezeichnen: to describe (be-添加新义)
+    - ausgezeichnet: adj. outstanding
 
 # ziehen
 - @decl: zog, gezogen
@@ -334,10 +375,15 @@
     - erziehen: to raise/educate, der Erziehungsurlaub
     - an/ziehen: to put on (cloth)
     - um/ziehen: to change (cloth)
-    - aus/ziehen: to move out, to take off (cloth)
-    - ein/ziehen: to move in
     - auf/ziehen: to raise (auf- 表向上)
     - alleinerziehend: adj. single parent
+    - sich beziehen: to relate
+## 2
+- @hint: (in xxx) ziehen 搬(到xxx)
+- @derives:
+    - aus/ziehen: to move out, to take off (cloth)
+    - ein/ziehen: to move in
+    - um/ziehen: to move (搬家)
 
 
 # passieren
@@ -371,6 +417,9 @@
 # der Satz
 ## 10
 - @hint: 阳句
+- @derives:
+    - der Aufsatz: article
+    - der Absatz: paragraph ~ Abschnitt; heel
 
 # der Zoll
 ## 4
@@ -386,7 +435,11 @@
 
 # reden
 ## 1
-- @hint: reden Regen 聊雨
+- @hint: reden Regen regnen 聊雨下
+- @derives:
+    - die Anrede: salutation
+    - die Ausrede: excuse
+    - die Redewendung: idiom
 
 # die Anrede
 ## 1
@@ -417,12 +470,28 @@
     - geschieden: divorced
 ## 2
 - @hint: to seperate
+- @derives:
+    - verabschieden: to say goodbye
+    - der Abschied: goodbye
+    - der Unterschied: difference
+    - verschieden: adj. different
+    - bescheiden: adj. humble (be- 赋予新义)
 
 # an/stellen
 ## 1
 - @hint: to employ 安身立命
 - @derives:
     - der/die Anstellete
+- @syn:
+    - berufstätig: employed
+
+# suchen
+## 1
+- @hint: to search
+- @derives:
+    - besuchen
+    - untersuchen: to investigate
+    - aus/suchen: to choose
 
 # besuchen
 ## 1
@@ -430,4 +499,518 @@
 - @syn:
     - besichtigen
 - @derives:
-    - der Besuch
+    - der Besuch (zu Besuch kommen)
+
+# aus/suchen
+## 1
+- @hint: to choose
+- @syn:
+    - wählen
+
+# bestehen
+- @decl: , bestand, hat bestanden
+## 4
+- @hint: 挺住，通过考试 to pass
+- example:
+    - Er hat die Prüfung bestanden.
+
+# vorschlagen
+## 1
+- @syn:
+    - empfehlen
+- @derives:
+    - der Vorschlag
+
+# sich beziehen
+## 7
+- @hint: to relate (to) sich auf etwas. beziehen (be-赋新义+ ziehen 拉 = 牵扯)
+
+
+# die Vergangenheit
+
+## 3
+- @hint: 已去 (ver-完成 + gegangen 去)
+- @derivedFrom:
+    - vergangen (adj. past)
+    - vergehen (v. to pass)
+- @similar:
+    - der Vorgang: process (vor: before + gehen = process) <-> der Zustand
+
+# die Gegenwart
+## 1
+- @hint: 人在当下，面向守望 (gegen: towards + warten: wait)
+
+# die Zukunft
+## 2
+- @hint: 未来 (zu: to, Kunft: kommen)
+
+# der Gebrauch 
+## 1
+- @hint: usage (但不是brauchen的常用义项)
+- @derviedFrom:
+    - brauchen
+
+# bewerben
+## 1
+- @hint: to advertise, (werben)
+- @syn:
+    - anzeigen
+- @derivedFrom: werben (werben-2 für)
+
+# der Bewerber
+## 1
+- @hint: applicant
+- @derivedFrom: werben (werbe-1 um)
+
+# streichen
+- @decl: , strich, hat gestrichen
+## 3
+- @hint: to brush paint 刷
+
+## 5
+- @hint: to stroke 撸
+- @example:
+    - Kann ich deine Katze streichen?
+
+
+# an/kommen
+## 5
+- @hint: to arrive
+- @syn:
+    - erreichen
+- @derives:
+    - die Ankunft,,die Ankünfte: arrival
+
+# lachen
+## 1
+- @hint: to laugh, 注意辅音变成了ch
+
+# betreiben
+## 4
+- @hint: to operate
+- @derivesFrom:
+    - treiben (= tun. Sport treiben)
+- @derives:
+    - der Betrieb: business ~ die firma
+
+# bereiten
+## 3
+- @hint: to get ready
+- @derives:
+    - bereiets: adv. already = schon
+
+# vor/bereiten
+## 1
+- @hint: auf ... etw./jmdn./sich vorbereiten: to prepare
+
+# ein/schreiben
+## 2
+- @hint: sich schreiben ein: to register/enroll
+- @syn:
+    - anmelden ~ sign up (更口语)
+
+# vielleicht
+## 3
+- @hint: perhaps
+- @syn:
+    - ungefähr
+
+# häufig
+## 1
+- @hint: often
+- @syn:
+    - oft
+
+# gerade
+## 6
+- @hint: just
+- @syn:
+    - (so)eben
+    - erst
+
+# der Mensch
+## 2
+- @hint: person (强调人类)
+- @syn:
+    - die Person (强调个体)
+
+# nähren
+## 2
+- @hint: v/i. to nourish
+- @derives:
+    - das Nahrungsmittel
+
+# an/geben
+## 2
+- @hint: to state/declare (an- 向 + geben 给 = 给出)
+- @derives:
+    - die Angabe: statement, information
+    - die Mengenangabe: indication of quantity
+
+# Menge
+## 3
+- @hint: amount 猛哥有量
+- @derives:
+    - die Mengeneinheit: unti of quantity
+
+# diktieren
+## 2
+- @hint: to dictate
+- @derives:
+    - das Diktat
+
+# die Sicht
+## 1
+- @hint: view/sight
+- @derivedFrom: sehen
+- @derives:
+    - besichtigen: to visit
+    - die Absicht: intention
+    - absichtlich: intentional
+    - die Ansicht: opinion
+    - die Aufsicht: surpervision
+    - die Aussicht: outlook
+    - die Vorsicht: care
+    - vorsichtig: careful
+    - das Gesicht: face
+- @similar:
+    - das Gericht: court, dish
+
+# erlauben
+## 2
+- @hint: to allow (er lau b)
+
+# fordern
+## 1
+- @hint: to demand
+- @derives:
+    - die Aufforderung: 更委婉 (on demand)
+
+# normalerweise
+## 1
+- @hint: adv. normally
+
+# sprechen
+## 1
+- @hint: to speak
+- @derives:
+    - besprechen: to discuss
+    - an/sprechen: to speak to 攀谈
+
+# besprechen
+## 1
+- @hint: to discuss. (be- spreche赋予新义)
+- @syn:
+    - diskutieren
+- @derives:
+    - die Besprechung
+
+# verschieben
+## 2
+- @hint: to post pone (西巴，延期)
+- @similar:
+    - vershieden: adj. different    
+    - die Scheibe: disk/slice
+
+# verbessern
+## 1
+- @hint: to correct (ver-变)
+## 2
+- @hint: to improve
+
+# buchstabieren
+## 1
+- @hint: to spell
+- @derivedFrom: der Buchstabe (letter)
+
+# wenden
+## 1
+- @hint: to turn
+## 5
+- @hint: sich wenden an jmdn.: to turn to, consult
+- @example:
+    - Bei Fragen wenden Sie sich an den Lehrer!
+
+# auswendig
+## 1
+- @hint: adv. auswendig (lernen), (to learn) by heart, (aus-: out of, wenden: to turn, 内翻到外，熟记)
+- @similar:
+    - notwendig: necessary
+- @derivesFrom:
+    - wenden: to turn
+
+# spazieren
+## 1
+- @hint: to walk
+- @derives:
+    - der Spaziergang (einen Spaziergang machen)
+
+# begleiten
+## 2
+- @hint: to accompany (be- 赋予新义, gleiten to slide)
+
+# der Regen
+## 1
+- @hint: rain
+- @similar:
+    - der Regenschirm
+
+# der Raum
+## 6
+- @hint: Raum= room
+- @syn:
+    - das Zimmer
+
+# wecken
+## 1
+- @hint: to wake
+- @syn:
+    - auf/stehen
+
+# heiraten
+## 3
+- @hint: to marry
+- @derives:
+    - verheiraten: to be married (ver-表示完成，verh.表示已婚状态)
+
+# kontrollieren
+## 1
+- @hint: to check
+
+# die Vorlesung
+## 1
+- @hint: vorlesen (to read out) -> die Vorlesung: lecture
+- @related:
+    - der Dozent: lecturer    
+
+# die Praxis
+## 3
+- @hint: clinic (practice 行医之所), pl. die Praxen 
+
+# überhaupt
+## 1
+- @hint: at all 根本，完全
+
+# die Bibliothek
+## 5
+- @hint: library
+
+# die Bekanntmachung
+## 1
+- @hint: notice. (bekannt machen: to introduce)
+- @syn:
+    - der Aushang: (bulletin) notice
+    - die Anzeige: notification
+
+# untersuchen
+## 1
+- @hint: to investigate. (unter-深入 suchen 搜寻 = 检查) 不可分
+
+# Schrift
+## 1
+- @hint: schreiben, Schrift (writing)
+- @derives:
+    - die Anschrift: address (to write to)
+    - der Schriftsteller: writer (writing arranger)
+
+# insgesamt
+## 1
+- @hint: in total (in das Gesamt)
+
+# gemeinsam
+## 2
+- @hint: together
+
+# füllen
+## 1
+- @hint: to fill
+- @derives:
+    - der Füller: (fountain) pen
+    - aus/füllen: to fill out (the form)
+
+# der Schalter
+## 1
+- @hint: counter (ticket window)
+
+# halten
+## 7
+- @hint: to hold
+- @derives:
+    - erhalten: to receive (er- 达成)
+    - sich unterhalten
+    - behalten: to keep/remember
+## 5
+- @hint: von etw. halten: consider of
+
+# ein/packen
+## 1
+- @hint: to wrap up (ein- 状态变化)
+- @ant:
+    - aus/packen
+
+# ein/schlafen
+## 3
+- @hint: to fall asleep (ein- 状态变化)
+
+# fragen
+## 2
+- @hint: to ask
+- @derives:
+    - ab/fragen: 考问
+    - nach/fragen: v/i. bei jmdm. nachfragen 询问
+
+# ab/fragen
+## 1
+- @hint: 考问 (问考题)
+- @example:
+    - Der Lehrer wollte die Studenten abfragen.
+
+# schreiben
+## 1
+- @derives:
+    - ein/schreiben: to register (写进就是注册了)
+    - auf/schreiben: to write down
+    - unter/schreiben: to sign
+    - beschreiben: to describe (be- 赋予新义) ~ bezeichnen
+    - die Beschreibung: description
+
+# unterstützen
+## 1
+- @hint: to support (hold something from the bottom)
+
+# günstig
+## 3
+- @hint: favorable (有利)
+- @derives:
+    - vergünstigt: 优惠, cost less
+
+# verlängern
+## 2,3
+- @hint: 延长 (ver-使)
+
+# verfügbar
+## 1
+- @hint: available
+
+# fahren
+## 12
+- @hint: to drive
+- @derives:
+    - ab/fahren: to depart 
+    - erfahren: to learn of
+    - die Erfahrung: experience
+
+# ab/fahren
+## 5
+- @hint: v/i. to depart
+- @example:
+    - Der Zug fährt Um 12 Uhr ab.
+
+# hören
+## 3
+- @hint: to hear
+- @derives:
+    - zu/hören: to listen (carefully) to
+
+# die Hilfe
+## 3
+- @hint: help
+
+# großartig
+## 1
+- @hint: awesome
+
+# leihen
+## 1
+- @hint: sich leihen: to borrow
+## 2
+- @hint: to lend
+
+# der Boden
+## 2
+- @hint: ground
+- @derives:
+    - der Fußboden: floor
+
+# ähnlich
+## 1
+- @hint: similar. (ähnlich wie ...: similar to ...)
+- @derives:
+    - die Ähnlichkeit: similarity
+
+# die Pommes Frites
+## 1
+- @hint: pl. french fries
+
+# umgekehrt
+## 1
+- @hint: opposite (turn around = opposite)
+- @derivedFrom:
+    - kehren: to turn
+- @similar:
+    - der Verkehr: traffic (交)
+
+# lehnen
+## 1
+- @hint: to lean
+- @derives:
+    - ab/lehnen: to refuse
+
+# sterben
+- @decl: stirbt, starb, ist gestorben
+## 1
+- @hint: to decease
+
+# die Vorwahl
+## 2
+- @hint: area code. (vor- wählen, pre-selected)
+
+# fangen
+## 5
+- @hint: to catch
+
+# laden
+## 5
+- @hint: to charge
+## 7
+- @hint: to load
+
+# an/nehmen
+## 3
+- @hint: to receive
+- @syn:
+    - empfangen
+    - erhalten
+## 4
+- @hint: (einen Vorschlag oder ein Angebot) nehmen an: to accept
+
+# laufen
+## 1
+- @hint: to run
+- @derives:
+    - ab/laufen: to flow out of
+    - der Ablauf: event sequence (日程安排)
+
+# duschen
+## 1
+- @hint: to shower (独身)
+
+# das Werk
+## 1
+- @hint: 作品
+
+# beenden
+## 1
+- @hint: to finish (be-及物化)
+
+# notieren
+## 1
+- @hint: to take a note
+- @syn:
+    - auf/schreiben
+- @similar:
+    - die Note: grade
+
+# wechseln
+## 4
+- @hint: exchange

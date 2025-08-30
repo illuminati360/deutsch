@@ -36,6 +36,7 @@ https://wiki.archlinux.org/title/Microsoft_fonts#Extracting_fonts_from_a_Windows
 
 ```
 - Build: using Tex Workshop
+    - make sure to use the XeLatex recipe
 
 ---
 

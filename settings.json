@@ -1,0 +1,39 @@
+{
+    "latex-workshop.formatting.latex": "latexindent",
+    "latex-workshop.latex.recipe.default": "Xelatex",
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "Xelatex",
+            "tools": [
+                "xelatex",
+            ]
+        },
+        {
+            "name": "XeLatex -> Biber -> XeLatex x2",
+            "tools": [
+                "xelatex",
+                "biber",
+                "xelatex",
+                "xelatex"
+            ]
+        }
+    ]
+}
