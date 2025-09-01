@@ -5,6 +5,7 @@
 	- ausdrucken: to print on
     - der Ausdruck: expression
 	- der Eindruck: impression
+    - der Drucker: printer
 - @similarTo:
 	- drücken-3: to press/squeeze, drucken只是印, drücken挤更狠
   
@@ -12,7 +13,7 @@
 ## 1,2
 - @hint: ander-1, 使不同就是变
 
-# ärgern
+# sich ärgern
 ## 1
 - @hint: anger 带er, 生气反身
 
@@ -56,6 +57,8 @@
 # fassen
 ## 8
 - @hint: fasten 系紧 => grasp 抓握
+- @similar:
+    - fast: adv. almost
 
 # fehlen
 ## 1
@@ -63,16 +66,25 @@
 - @derives:
     - empfehlen: to recommend
     - der Fehler: mistake
+- @similar:
+    - fühlen: to feel
+    - füllen: to fill
 
 # fließen
+- @decl: , floss, hat geflossen
 ## 2
 - @hint: 飞流 fließen, fliegen. fly flow
+- @similar:
+    - fleißig: diligent
+    - fliegen: to fly
+    - der Fluss: river
 
 # fliegen
 ## 1
 - @hint: to fly
 - @derives:
     - überfliegen: to fly over (to skim through)
+    - ab/fliegen: to take off
 
 # folgen 
 ## 2
@@ -127,7 +139,8 @@
 ## 1
 - @hint: business
 - @derives:
-    - die Geschäftszeit
+    - die Geschäftszeit ~ die Sprechstunde (consulting hours)
+    - das Bekelidungsgeschäft: clothing store
 
 # hoffen
 ## 1
@@ -144,6 +157,8 @@
 # kündigen
 ## 1
 - @hint: 终止，
+- @similar:
+    - sich erkündigen: to inquire
 
 # lassen
 - @decl.: lässt, ließ,
@@ -208,7 +223,7 @@
 - @syn:
     - berichten
 - @derives:
-    - anmelden
+    - sich an/melden
 
 # nützen
 ## 1
@@ -242,7 +257,9 @@
 ## 1
 - @hint: schaff 手 制、造
 - @derives:
-    - das Geschäft
+    - das Geschäft: business
+- @similar:
+    - das Schaf: sheep
 
 # schicken
 ## 5
@@ -263,9 +280,11 @@
 - @derives:
     - der Schluss
     - der Abschluss 结业
-    - der Aufschluss: insight (auf- open, 打开封闭洞查)
+    - ab/schließen: to lock/conclude
     - aus/schließen: to exclude
     - ausschließlich: exclusively
+    - der Anschluss: connection ~ die Verbindung
+    - der Aufschluss: insight (auf- open, 打开封闭洞查)
 
 # steigen
 - @decl: , stieg, hat gestiegen
@@ -284,7 +303,10 @@
 - @derives:
     - aus/stellen: to exhibit
     - vor/stellen: to introduce
+    - bestellen: to reserve/order
     - die Bushaltestelle: bus stop
+    - die Baustelle: building site
+    - her/stellen: to put here (放过来)
 
 # stimmen
 ## 2
@@ -292,6 +314,7 @@
 - @derives:
     - bestimmen: to determine (be-改语义)
     - bestimmt: adj. certainly
+    - zustimmen: to agree
 
 # tragen
 - @decl: trägt, trug, 
@@ -301,6 +324,7 @@
     - ein/tragen: to register
     - auf/tragen: to assign
     - der Auftrag: assignment
+    - aus/tragen: to deliver
     - der Vertrag: contract
 ## 2
 - @hint: to wear
@@ -374,19 +398,22 @@
     - die Beziehung
     - erziehen: to raise/educate, der Erziehungsurlaub
     - an/ziehen: to put on (cloth)
+    - aus/ziehen: to take off (cloth)
     - um/ziehen: to change (cloth)
     - auf/ziehen: to raise (auf- 表向上)
+    - der Aufzug: elevator
     - alleinerziehend: adj. single parent
     - sich beziehen: to relate
 ## 2
 - @hint: (in xxx) ziehen 搬(到xxx)
 - @derives:
-    - aus/ziehen: to move out, to take off (cloth)
+    - aus/ziehen: to move out
     - ein/ziehen: to move in
     - um/ziehen: to move (搬家)
 
 
 # passieren
+- @decl: passiert, passierte, ist passiert
 ## 3
 - @hint: to happen
 - @syn:
@@ -468,6 +495,8 @@
 - @hint: to divorce
 - @derives
     - geschieden: divorced
+- @syn
+    - getrennt
 ## 2
 - @hint: to seperate
 - @derives:
@@ -476,6 +505,8 @@
     - der Unterschied: difference
     - verschieden: adj. different
     - bescheiden: adj. humble (be- 赋予新义)
+    - der Bescheid: notification
+    - ausscheiden: to leave
 
 # an/stellen
 ## 1
@@ -556,6 +587,8 @@
 - @syn:
     - anzeigen
 - @derivedFrom: werben (werben-2 für)
+## 3
+- @hint: (um die Stelle / für etw.) sich bewerben: to apply (for)
 
 # der Bewerber
 ## 1
@@ -566,6 +599,8 @@
 - @decl: , strich, hat gestrichen
 ## 3
 - @hint: to brush paint 刷
+- @similar:
+    - das Streifen: stripe
 
 ## 5
 - @hint: to stroke 撸
@@ -607,7 +642,8 @@
 ## 2
 - @hint: sich schreiben ein: to register/enroll
 - @syn:
-    - anmelden ~ sign up (更口语)
+    - sich an/melden ~ sign up (更口语)
+    - ein/tragen
 
 # vielleicht
 ## 3
@@ -640,6 +676,14 @@
 - @derives:
     - das Nahrungsmittel
 
+# geben
+## 3
+- @hint: to give
+- @derives:
+    - ab/geben: to hand in (give up)
+    - an/geben: to declare
+    - aus/geben: to declare
+
 # an/geben
 ## 2
 - @hint: to state/declare (an- 向 + geben 给 = 给出)
@@ -667,8 +711,10 @@
     - besichtigen: to visit
     - die Absicht: intention
     - absichtlich: intentional
+    - an/sehen: to look at
     - die Ansicht: opinion
     - die Aufsicht: surpervision
+    - aus/sehen: to seems
     - die Aussicht: outlook
     - die Vorsicht: care
     - vorsichtig: careful
@@ -679,6 +725,8 @@
 # erlauben
 ## 2
 - @hint: to allow (er lau b)
+- @derives:
+    - die Erlaubnis: permission
 
 # fordern
 ## 1
@@ -744,6 +792,7 @@
 - @hint: to walk
 - @derives:
     - der Spaziergang (einen Spaziergang machen)
+    - spazieren gehen: 类似可分
 
 # begleiten
 ## 2
@@ -773,6 +822,17 @@
 - @derives:
     - verheiraten: to be married (ver-表示完成，verh.表示已婚状态)
 
+# raten
+## 3
+- @hint: advice
+- @derives:
+    - das Rathaus: city hall
+    - beraten: v/t. to give advice
+## 4
+- @hint: v/i. to guess (猜)
+- @derives:
+    - erraten: v/t. to guess (猜到)
+
 # kontrollieren
 ## 1
 - @hint: to check
@@ -801,6 +861,8 @@
 - @syn:
     - der Aushang: (bulletin) notice
     - die Anzeige: notification
+    - die Bescheid: notification
+    - die Nachricht: notification, news
 
 # untersuchen
 ## 1
@@ -811,7 +873,9 @@
 - @hint: schreiben, Schrift (writing)
 - @derives:
     - die Anschrift: address (to write to)
+    - die Zeitschrift: magazine -> die Zeitung: newspaper
     - der Schriftsteller: writer (writing arranger)
+    - schriftlich: adj. in writing
 
 # insgesamt
 ## 1
@@ -839,6 +903,7 @@
     - erhalten: to receive (er- 达成)
     - sich unterhalten
     - behalten: to keep/remember
+    - dsa Gehalt: content
 ## 5
 - @hint: von etw. halten: consider of
 
@@ -911,6 +976,7 @@
 - @hint: to hear
 - @derives:
     - zu/hören: to listen (carefully) to
+    - auf/hören: to stop (to listen up)
 
 # die Hilfe
 ## 3
@@ -968,6 +1034,10 @@
 # fangen
 ## 5
 - @hint: to catch
+- @derives:
+    - an/fangen: to begin
+    - der Anfang: beginning
+    - empfangen: to receive
 
 # laden
 ## 5
@@ -989,7 +1059,16 @@
 - @hint: to run
 - @derives:
     - ab/laufen: to flow out of
+    - ein/laufen: to shrink (跑里面去了)
     - der Ablauf: event sequence (日程安排)
+
+# kaufen
+## 2
+- @hint: to buy
+- @derives:
+    - verkaufen: to sell (ver- 反)
+    - ausverkauft: adj. sold out
+    - ein/kaufen: to shop
 
 # duschen
 ## 1
@@ -1013,4 +1092,122 @@
 
 # wechseln
 ## 4
-- @hint: exchange
+- @hint: to exchange
+- @syn:
+    - um/tauschen
+
+# die Karriere
+## 2
+- @hint: career
+- @similar:
+    - kariert: adj. checkered 
+
+# das Antonym
+## 1
+- @related
+    - niedrig: low
+    - entfernt: far
+    - schwach: weak
+    - hässlich: ugly
+    - modern <-> altmodisch
+    - kühl: cool
+    - schmutzig: dirty
+    - frech: impudent (放肆无礼)
+    - die Frechheit: impudence
+
+# streng
+## 4
+- @hint: strict
+- @similar:
+    - eng: tight
+
+# probieren
+## 1
+- @hint: to try
+- @derives:
+    - an/probieren: to try on ~ an/ziehen
+## 2
+- @hint: to rehearse
+
+# geehrt
+## 1
+- @hint: honoured, 写信用
+- @derivedFrom:
+    - ehren: to honour
+
+# gleich
+## 2
+- @hint: same
+- @derives:
+    - vergleichen: to compare (ver- 反)
+    - der Vergleich: comparision
+
+# kommen
+## 4
+- @hint: to come
+- @derives:
+    - an/kommen: to arrive
+    - die Ankunft: arrival
+    - die Zukunft: future
+    - die Unterkunft: accomodation (to go under)
+    - die Auskunft: information (to come out of)
+
+# mindestens
+## 1
+- @hint: at least (minde- -sten 最高级 -s 变副词)
+
+# das Glied
+## 4
+- @hint: limb, member
+- @similar:
+    - das Mitglied: member (das Familienmitglieder)
+
+# der/die Verwandte
+## 1
+- @hint: relative (decl. als adj.)
+- @derivedFrom:
+    - wenden: to turn
+
+# die Himmelsrichtung
+## 1
+- @hint: cardinal direction
+- @related:
+    - der Norden
+    - der Süden
+    - der Westen
+    - der Osten
+
+# passen
+## 1
+- @hint: to fit (passen zu jmdm. = stehen jmdm.: to match 款式合适; passen jmdm.: to fit 尺寸合适)
+- @derives:
+    - auf/passen: pay attention ~ achten
+
+# die Strafe
+## 1
+- @hint: fine (是大佛)
+
+# machen
+## 3
+- @hint: to do
+- @derives:
+    - an/machen: to turn on 开(灯) ~ an sein
+    - aus/machen: to put out 关(灯) ~ aus sein
+    - auf/machen: to open 开(门) ~ auf sein
+    - zu/machen: to shut 关(门) ~ zu sein
+
+# aus/sprechen
+## 1
+- @hint: to pronounce (speak out)
+
+# der Ausweis
+## 1
+- @hint: ID card (way out of)
+
+# der Automat
+## 1
+- @hint: machine
+
+# endlich
+## 3
+- @hint: finally
