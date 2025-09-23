@@ -220,8 +220,12 @@
 # bewölkt 
 ## 1
 - @hint: cloudy (die Wolke)
+- @derivedFrom:
+    - der Wolke
 - @related:
     - sonnig
+    - windig
+    - regnerisch
 
 # das Blatt
 ## 1
@@ -359,6 +363,8 @@
 - @hint: guided tour
 - @syn:
     - der Rundgang: round, tour
+    - die Tour: tour
+    - der Tourist: tourist
 
 # furchtbar
 ## 1
@@ -386,6 +392,10 @@
 - @decl: , verlor, hat verloren
 ## 1
 - @hint: to lose
+
+# verlieben
+## 1
+- @hint: sich verlieben: to fall in love (ver- 变)
 
 # die Geldbörse
 ## 1
@@ -430,6 +440,12 @@
 # herunterladen
 ## 1
 - @hint: to download
+
+# vorher
+## 1
+- @hint: beforehand (前来)
+- @ant:
+    - nachher
 
 # hinten
 ## 2
@@ -537,9 +553,11 @@
 - @syn:
     - der Bauch
 
-# die Manschaft
+# die Mannschaft
 ## 3
 - @hint: team
+- @syn:
+    - das Team
 
 # das Medikament
 ## 1
@@ -571,6 +589,31 @@
     - mit/bringen
     - mit/machen
     - mit/spielen
+
+# weg
+## 5
+- @hint: adv. away
+- @derives:
+    - bewegen: to move
+    - weg/fahren
+    - weg/gehen
+    - weg/laufen
+    - weg/machen
+    - weg/nehmen
+    - weg/werfen
+- @similar:
+    - weisen: to show
+    - die Weise: way
+
+# zurück
+## 1
+- @hint: adv. back
+- @derives:
+    - zurück/fahren
+    - zurück/gehben
+    - zurück/gehen
+    - zurück/kommen
+    - zurück/laufen
 
 # der Mitarbeiter
 ## 1
@@ -699,6 +742,9 @@
 # der Reifen
 ## 3
 - @hint: tire
+- @similar:
+    - das Streifen: stripe
+    - greifen: to grab
 
 # die Reihe
 # 10
@@ -762,6 +808,8 @@
 # sammeln
 ## 1
 - @hint: to collect
+- @similar:
+    - insgesamt: in total (注意sam, samm词根不一样)
 
 # der Schalter
 ## 1
@@ -858,3 +906,139 @@
 # streng
 ## 4
 - @hint: strict
+
+# der Teller
+## 2
+- @hint: plate
+
+# das Tiere
+## 2
+- @hint: animal
+
+# tief
+## 2
+- @hint: deep (water)
+
+# der Traum
+## 3
+- @hint: dream
+- @derivedFrom:
+    - träumen: to dream
+
+# das Training
+## 1
+- @hint: training
+- @derivedFrom:
+    - trainieren: to train
+
+# traurig
+## 1
+- @hint: sad (sorry)
+
+# die Treppe
+## 1
+- @hint: stairs
+
+# überall
+## 1
+- @hint: everywhere
+- @similar:
+    - überhaput: 总
+
+# übernachten
+## 1
+- @hint: to spend the night
+
+# der Umzug
+## 1
+- @hint: parade (um- around, zug ziehen)
+## 2
+- @hint: relocation
+
+# das Unternehmen
+## 1
+- @hint: business
+- @derivedFrom: unternehmen (to undertake)
+- @syn:
+    - der Betrieb
+    - die Firma
+    - das Geschäft
+
+# der Verein
+## 2
+- @hint: club, organization (ver-变 ein)
+
+# verletzen
+## 1
+- @hint: to hurt
+
+# verpassen
+## 4
+- @hint: to miss (ver- 反, passen: to match)
+
+# verreisen
+## 1
+- @hint: to go away (ver- 离, reisen: to travel)
+
+# versuchen
+## 5
+- @hint: to try (ver- 强)
+
+# der Vogel
+## 3
+- @hint: bird
+
+# vorwärts
+## 1
+- @hint: adv. forward
+
+# wach
+## 1
+- @hint: adj. awake
+- @similar:
+    - schwach: adj. weak
+    - wachsen: to grow
+    - wecken: to wake
+
+# wandern
+## 1
+- @hint: to hike (wander)
+
+# wahrscheinlich
+## 2
+- @hint: probably (wahr 真, schein: to seem)
+- @syn:
+    - ungefähr
+    - vielleicht
+
+# witzig
+## 1
+- @hint: witty, funny
+- @derivedFrom:
+    - der Witz: joke
+
+# zuletzt
+## 1
+- @hint: lastly
+## 2
+- @hint: at last, finally (终于)
+
+# zuhören
+## 1
+- @hint: to listen (carefully)
+- @derives:
+    - der Zuhörer: listener
+- @similar:
+    - der Zushauer: audience
+
+# das Zeugnis
+## 3
+- @hint: report card, certificate
+
+# der Zirkus
+## 2
+- @hint: circus
+
+# verbringen
+## 9
+- @hint: to spend

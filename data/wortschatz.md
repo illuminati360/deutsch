@@ -21,6 +21,9 @@
 - @decl: , bot, hat geboten
 ## 1
 - @hint: to offer
+- @derives:
+    - an/bieten: to offer ~ bieten
+    - verbieten: to forbid
 
 # brennen
 ## 9
@@ -222,6 +225,7 @@
 - @hint: to report
 - @syn:
     - berichten
+    - das Zeugnis: report card, certificate
 - @derives:
     - sich an/melden
 
@@ -307,6 +311,7 @@
     - die Bushaltestelle: bus stop
     - die Baustelle: building site
     - her/stellen: to put here (放过来)
+    - 
 
 # stimmen
 ## 2
@@ -358,10 +363,11 @@
     - Er weist mir den Weg.
 - @derives:
     - die Weise: way
+    - überweisen: to transfer (über-迁 )
 
 # werfen 
 ## 3
-- @hint: to throw
+- @hint: to throw (谁粪, 扔)
 
 # wirken
 ## 4
@@ -399,7 +405,7 @@
     - erziehen: to raise/educate, der Erziehungsurlaub
     - an/ziehen: to put on (cloth)
     - aus/ziehen: to take off (cloth)
-    - um/ziehen: to change (cloth)
+    - sich um/ziehen: to change (cloth)
     - auf/ziehen: to raise (auf- 表向上)
     - der Aufzug: elevator
     - alleinerziehend: adj. single parent
@@ -502,6 +508,7 @@
 - @derives:
     - verabschieden: to say goodbye
     - der Abschied: goodbye
+    - unterscheiden: to distinguish
     - der Unterschied: difference
     - verschieden: adj. different
     - bescheiden: adj. humble (be- 赋予新义)
@@ -512,9 +519,14 @@
 ## 1
 - @hint: to employ 安身立命
 - @derives:
-    - der/die Anstellete
+    - der/die Anstellete: employer, decl. wie adj.
 - @syn:
     - berufstätig: employed
+
+## 2
+- @hint: to manage
+- @derives:
+    - der Veranstaltung: event, arrangement
 
 # suchen
 ## 1
@@ -523,6 +535,7 @@
     - besuchen
     - untersuchen: to investigate
     - aus/suchen: to choose
+    - versuchen: to try
 
 # besuchen
 ## 1
@@ -589,6 +602,8 @@
 - @derivedFrom: werben (werben-2 für)
 ## 3
 - @hint: (um die Stelle / für etw.) sich bewerben: to apply (for)
+- @derives:
+    - der Wettbewerb: competetion = der Wettkampf
 
 # der Bewerber
 ## 1
@@ -681,8 +696,11 @@
 - @hint: to give
 - @derives:
     - ab/geben: to hand in (give up)
-    - an/geben: to declare
     - aus/geben: to declare
+    - an/geben: to declare
+    - die Angabe: information
+    - auf/geben: to give up (auf- 表向上)
+    - die Aufgabe: assignment (die Hausaufgabe, 引申，交给)
 
 # an/geben
 ## 2
@@ -1094,6 +1112,7 @@
 ## 4
 - @hint: to exchange
 - @syn:
+    - tauschen
     - um/tauschen
 
 # die Karriere
@@ -1182,6 +1201,7 @@
 - @hint: to fit (passen zu jmdm. = stehen jmdm.: to match 款式合适; passen jmdm.: to fit 尺寸合适)
 - @derives:
     - auf/passen: pay attention ~ achten
+    - verpassen: to miss
 
 # die Strafe
 ## 1
@@ -1211,3 +1231,13 @@
 # endlich
 ## 3
 - @hint: finally
+
+# weich
+## 5
+- @hint: soft
+
+# wenigstens:
+## 1
+- @hint: adv. at least (起码，至少)
+- @related:
+    - mindestens (at least, 数量上至少)
